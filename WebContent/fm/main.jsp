@@ -8,6 +8,7 @@
 <title>여기에 제목을 입력하십시오</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
+
 #btnImage{
 	align-items: center;
 }
@@ -128,7 +129,7 @@ body{
 	background-image: url("../images/paper.jpg");
 }
 #logo{
-	padding-top: 200px;
+	padding-top: 150px;
 	align-content: center;
 	padding-bottom: 130px;
 }
@@ -138,6 +139,25 @@ body{
 }
 #mainimage{
 	width: 100%;
+}
+.mainFirst{
+	margin-top: 100px;
+	background-color: black;
+	position: relative;
+	margin-bottom: 50px;
+}
+.mainFirst img{
+	opacity: 0.4;
+}
+.mainFirst p{
+	position: absolute;
+	bottom: 20px;
+	left: 50px;
+	font-size: 30pt;
+	color: white;
+}
+.section{
+	margin-bottom: 80px;
 }
 </style>
 <script>
@@ -165,9 +185,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-
-
-
 <div class="section">
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
@@ -189,7 +206,7 @@ $(document).ready(function(){
 					<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />
 					  <figcaption>
 					    <h3>스토어 바로가기</h3>
-					    <p>전주영이 만들고 불법적으로 파는 스토어</p><i class="ion-ios-arrow-right"></i>
+					    <p>전주영이 만들고 불법적으로 파는 스토어입니다</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
 					  <a href="#"></a>
 					</figure>
@@ -198,10 +215,14 @@ $(document).ready(function(){
 		</table>
 	</div>
 </div>
-
-
-<div id="section">
-	<h1>두번째 페이지 시발</h1>
+<div class="section">
+	<div class="mainFirst">
+		<img src="../images/mainimage3.png" width="100%" height="auto"/>
+		<p>What is fleaMarket?</p>
+	</div>
+	<div class="mainSecond">
+		
+	</div>
 </div>
 </body>
 </html>
