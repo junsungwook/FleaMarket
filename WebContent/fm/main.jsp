@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
-<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 #btnImage{
 	align-items: center;
@@ -136,7 +136,9 @@ body{
 	width: 491px;
 	height: 79px;
 }
-
+#mainimage{
+	width: 100%;
+}
 </style>
 <script>
 $(document).ready(function(){
@@ -145,40 +147,61 @@ $(document).ready(function(){
 			$(this).removeClass("hover");
 		}
 	);
+	var win_h = $(window).height();
+	$(".section").each(function(index){
+		$(this).attr("data-index",win_h*index);
+	});
+	$(".section").on("mousewheel",function(e){
+		var sectionPos = parseInt($(this).attr("data-index"));
+		if(e.originalEvent.wheelDelta >= 0){
+			$("html,body").stop().animate({scrollTop:sectionPos - win_h});
+			return false;
+		}else if(e.originalEvent.wheelDelta < 0){
+			$("html,body").stop().animate({scrollTop:sectionPos + win_h});
+			return false;
+		}
+	});
 })
-
 </script>
 </head>
 <body>
-<div id="logo">
-	<img alt="로고그림" src="../images/logo4.png">
+
+
+
+<div class="section">
+	<div id="logo">
+		<img alt="로고그림" src="../images/logo4.png">
+	</div>
+	<div id="btnImage">
+		<table>
+			<tr>
+				<td>
+					<figure class="snip1384">
+					  <img src="../images/market.png" alt="market" width="564px" height="333.33px"/>
+					  <figcaption>
+					    <h3>플리마켓 바로가기</h3>
+					    <p>사용자가 직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
+					  </figcaption>
+					  <a href="#"></a>
+					</figure>
+				</td>
+				<td>
+					<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />
+					  <figcaption>
+					    <h3>스토어 바로가기</h3>
+					    <p>전주영이 만들고 불법적으로 파는 스토어</p><i class="ion-ios-arrow-right"></i>
+					  </figcaption>
+					  <a href="#"></a>
+					</figure>
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>
-<div id="btnImage">
-	<table>
-		<tr>
-			<td>
-				<figure class="snip1384">
-				  <img src="../images/market.png" alt="market" width="564px" height="333.33px"/>
-				  <figcaption>
-				    <h3>플리마켓 바로가기</h3>
-				    <p>사용자가 직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
-				  </figcaption>
-				  <a href="#"></a>
-				</figure>
-			</td>
-			<td>
-				<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />
-				  <figcaption>
-				    <h3>스토어 바로가기</h3>
-				    <p>전주영이 만들고 불법적으로 파는 스토어</p><i class="ion-ios-arrow-right"></i>
-				  </figcaption>
-				  <a href="#"></a>
-				</figure>
-			</td>
-		</tr>
-	</table>
-	
-	
+
+
+<div id="section">
+	<h1>두번째 페이지 시발</h1>
 </div>
 </body>
 </html>
