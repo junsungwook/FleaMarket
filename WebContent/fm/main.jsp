@@ -159,30 +159,56 @@ body{
 .section{
 	margin-bottom: 80px;
 }
+.mainSecond{
+	width: 100%;
+	height:2000px;
+	position: relative;
+}
+.mainSecond .text1{
+	text-align: left;
+	position: absolute;
+	top: 200px;
+	left: 210px;
+}
+.mainSecond .text2{
+	text-align: left;
+	position: absolute;
+	bottom: 600px;
+	right: 320px;
+}
+.mainSecond .squ1{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width:1000px;
+	height:100%;
+	background-color: gray;
+	opacity:0.2;
+	z-index: 40;
+}
+.mainSecond .squ2{
+	position: absolute;
+	bottom: 400px;
+	left: 0px;
+	width:600px;
+	height:900px;
+	background-color: olive;
+	opacity:0.2;
+	z-index: 30;
+}
+.pic1{
+	position: absolute;
+	top: 500px;
+	right: 100px;
+	z-index: 500;
+}
+.pic3{
+	position: absolute;
+	bottom: 250px;
+	left: 150px;
+	z-index: 450;
+}
 </style>
-<script>
-$(document).ready(function(){
-	$(".hover").mouseleave(
-		function () {
-			$(this).removeClass("hover");
-		}
-	);
-	var win_h = $(window).height();
-	$(".section").each(function(index){
-		$(this).attr("data-index",win_h*index);
-	});
-	$(".section").on("mousewheel",function(e){
-		var sectionPos = parseInt($(this).attr("data-index"));
-		if(e.originalEvent.wheelDelta >= 0){
-			$("html,body").stop().animate({scrollTop:sectionPos - win_h});
-			return false;
-		}else if(e.originalEvent.wheelDelta < 0){
-			$("html,body").stop().animate({scrollTop:sectionPos + win_h});
-			return false;
-		}
-	});
-})
-</script>
 </head>
 <body>
 <div class="section">
@@ -221,7 +247,34 @@ $(document).ready(function(){
 		<p>What is fleaMarket?</p>
 	</div>
 	<div class="mainSecond">
-		
+		<div class="squ1"></div>
+		<div class="squ2"></div>
+		<div class="pic1">
+			<img src="../images/pic1.jpg" width="800px" height="auto"/>
+		</div>
+		<div class="pic3">
+			<img src="../images/pic3.jpg" width="600px" height="auto"/>
+		</div>
+		<div class="text1">
+			<h3>플리마켓은 하지마세요 귀찮습니다</h3>
+			<p>진짜 귀찮게 왜 플리마켓에 오세요?</p>
+			<p>아무 쓰잘데기 없는 것만 팝니다</p>
+			<p>핵쓰레기의 천국입니다</p>
+			<p>이 사이트는 중개 수수료를 존나 떼먹습니다</p>
+			<p>양심이 있으면 사지마세요</p>
+			<p>삽되는거임 한번에</p>
+			<p>오케이?</p>
+		</div>
+		<div class="text2">
+			<h3>플리마켓은 하지마세요 귀찮습니다</h3>
+			<p>진짜 귀찮게 왜 플리마켓에 오세요?</p>
+			<p>아무 쓰잘데기 없는 것만 팝니다</p>
+			<p>핵쓰레기의 천국입니다</p>
+			<p>이 사이트는 중개 수수료를 존나 떼먹습니다</p>
+			<p>양심이 있으면 사지마세요</p>
+			<p>삽되는거임 한번에</p>
+			<p>오케이?</p>
+		</div>
 	</div>
 </div>
 </body>
