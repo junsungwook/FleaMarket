@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +10,9 @@
 <style>
 #btnImage{
 	align-items: center;
+}
+#btnImage table{
+	margin: auto;
 }
 figure.snip1384 {
   font-family: 'Raleway', Arial, sans-serif;
@@ -20,7 +24,7 @@ figure.snip1384 {
   color: #ffffff;
   text-align: left;
   font-size: 16px;
-
+  background-color: #000000;
 }
 figure.snip1384 * {
   -webkit-box-sizing: border-box;
@@ -154,7 +158,7 @@ $(document).ready(function(){
 		<tr>
 			<td>
 				<figure class="snip1384">
-				  <img src="../images/market.png" alt="market" height="333.33px"/>
+				  <img src="../images/market.png" alt="market" width="564px" height="333.33px"/>
 				  <figcaption>
 				    <h3>플리마켓 바로가기</h3>
 				    <p>사용자가 직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
@@ -163,7 +167,7 @@ $(document).ready(function(){
 				</figure>
 			</td>
 			<td>
-				<figure class="snip1384"><img src="../images/store.png" alt="store" height="333.33px" />
+				<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />
 				  <figcaption>
 				    <h3>스토어 바로가기</h3>
 				    <p>전주영이 만들고 불법적으로 파는 스토어</p><i class="ion-ios-arrow-right"></i>
