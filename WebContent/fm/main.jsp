@@ -119,7 +119,7 @@ body{
 </head>
 <body>
 <div id="logo">
-	로고이미지 박힐 곳ejkfekfkefij
+	로고이미지 박힐 곳
 </div>
 <div class="page">
 
