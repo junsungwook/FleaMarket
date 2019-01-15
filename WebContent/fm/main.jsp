@@ -2,14 +2,15 @@
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 메인페이지 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <div class="section">
@@ -67,19 +68,17 @@
 			<p>오케이?</p>
 		</div>
 		<div class="text2">
-			<h3>플리마켓은 하지마세요 귀찮습니다</h3>
-			<p>진짜 귀찮게 왜 플리마켓에 오세요?</p>
-			<p>아무 쓰잘데기 없는 것만 팝니다</p>
-			<p>핵쓰레기의 천국입니다</p>
-			<p>이 사이트는 중개 수수료를 존나 떼먹습니다</p>
-			<p>양심이 있으면 사지마세요</p>
-			<p>삽되는거임 한번에</p>
+			<h3>하지 말라는데 굳이 이 사이트에 왜 옵니까</h3>
+			<p>말을 왜 이렇게 안듣죠?</p>
+			<p>역시 중고나라 사기 당하는 사람 답네요</p>
+			<p>여기도 다를 바가 없습니다</p>
+			<p>수수료료 한 달에 몇 백만원을 뺏어갑니다</p>
+			<p>개꿀아닙니까</p>
+			<p>기부 같은 건 당연히 안합니다</p>
 			<p>오케이?</p>
 		</div>
 	</div>
 </div>
-<div class="footer">
-	<div class="fText"><p>since 2019 부산it교육센터 김원빈휴가썼다 나도 쓴다</p></div> 	
-</div>
+<%@include file="footer.jsp"%>
 </body>
 </html>

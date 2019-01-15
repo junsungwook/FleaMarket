@@ -3,33 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
 <link rel="stylesheet" href="style.css" type="text/css">
-<html>
-<head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<html>
+<head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
-	<div id="menu">
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        <div class="menu-inner">  
-            <ul>
-                <li><a href="shop.jsp">플리마켓</a></li>
-                <li><a href="#">스토어</a></li>
-                <li><a href="#">커뮤니티</a></li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="main.jsp">메인화면</a></li>
-            </ul>
-        </div>
-        <svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z"/>
-        </svg>
-    </div>
+	<%@include file="menu.jsp"%>
     <div class="cat">
     	<div class="squ1"></div>
 		<div class="squ2"></div>
@@ -80,5 +63,6 @@
 		  <a href="#"></a>
 		</figure>
     </div>
+<%@include file="footer.jsp"%>
 </body>
 </html>
