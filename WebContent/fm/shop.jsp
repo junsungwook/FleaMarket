@@ -246,9 +246,9 @@ a:link {
         <div class="menu-inner">  
             <ul>
                 <li><a href="shop.jsp">플리마켓</a></li>
-                <li><a href="#">스토어</li>
-                <li><a href="#">커뮤니티</li>
-                <li><a href="#">마이페이지</li>
+                <li><a href="#">스토어</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">마이페이지</a></li>
                 <li><a href="main.jsp">메인화면</a></li>
             </ul>
         </div>
