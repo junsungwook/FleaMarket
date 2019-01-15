@@ -15,7 +15,7 @@ import vo.CommentVO;
 /**
  * Servlet implementation class CommentAction
  */
-@WebServlet("/board/comment")
+@WebServlet("/fmBoard/comment")
 public class CommentAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
