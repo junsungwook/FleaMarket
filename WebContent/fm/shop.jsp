@@ -88,7 +88,7 @@ $(document).ready(function(){
     }
 
     window.requestAnimationFrame(svgCurve);
-    
+
 });
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -107,10 +107,11 @@ body, html {
       height: 100%;
       position: fixed;
       background-color: #977966;
-      width: 300px;
+      width: 286.1px;
       transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
       transform: translateX(-100%);
       left: 60px;
+      z-index: 3;
   }
 
   #menu.expanded {
@@ -234,6 +235,193 @@ a:link {
   width:100%;
   transition:800ms ease all;
 }
+.cat{
+	z-index: 2;
+	width: 100%;
+	height:1200px;
+	position: relative;
+}
+.cat .squ1{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width:1000px;
+	height:100%;
+	background-color: gray;
+	opacity:0.2;
+	z-index: 40;
+}
+.cat .squ2{
+	position: absolute;
+	bottom: 400px;
+	left: 0px;
+	width:600px;
+	height:900px;
+	background-color: olive;
+	opacity:0.2;
+	z-index: 30;
+}
+.cat .squ3{
+	position: absolute;
+	top: 40px;
+	left: 300px;
+	width:400px;
+	height:750px;
+	background-color: white;
+	opacity:0.3;
+	z-index: 50;
+}
+
+/* 마우스오버 효과 css */
+.snip1445 {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 550px;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  background-color: #000000;
+}
+.snip1445 *,
+.snip1445 *:before,
+.snip1445 *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.55s ease;
+  transition: all 0.55s ease;
+}
+.snip1445 img {
+  max-width: 100%;
+  backface-visibility: hidden;
+  vertical-align: top;
+}
+.snip1445 figcaption {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  padding: 5px 10px 10px;
+}
+.snip1445 figcaption:before,
+.snip1445 figcaption:after {
+  height: 2px;
+  width: 400px;
+  position: absolute;
+  content: '';
+  background-color: #ffffff;
+}
+.snip1445 figcaption:before {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.snip1445 figcaption:after {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+.snip1445 figcaption div:before,
+.snip1445 figcaption div:after {
+  width: 2px;
+  height: 300px;
+  position: absolute;
+  content: '';
+  background-color: #ffffff;
+}
+.snip1445 figcaption div:before {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+.snip1445 figcaption div:after {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.snip1445 h2,
+.snip1445 h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+.snip1445 h2 {
+  font-weight: 400;
+}
+.snip1445 h4 {
+  display: block;
+  font-weight: 700;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  color: #000000;
+}
+.snip1445 a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.snip1445:hover img,
+.snip1445.hover img {
+  zoom: 1;
+  filter: alpha(opacity=50);
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+}
+.snip1445:hover figcaption:before,
+.snip1445.hover figcaption:before,
+.snip1445:hover figcaption:after,
+.snip1445.hover figcaption:after,
+.snip1445:hover figcaption div:before,
+.snip1445.hover figcaption div:before,
+.snip1445:hover figcaption div:after,
+.snip1445.hover figcaption div:after {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.snip1445:hover figcaption:before,
+.snip1445.hover figcaption:before,
+.snip1445:hover figcaption:after,
+.snip1445.hover figcaption:after {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+.cate1{
+	position: absolute;
+	top: 100px;
+	left: 370px;
+	z-index: 11111;
+}
+.cate2{
+	position: absolute;
+	top: 300px;
+	left: 970px;
+	z-index: 11111;
+}
+.cate3{
+	position: absolute;
+	top: 500px;
+	left: 370px;
+	z-index: 11111;
+}
+.cate4{
+	position: absolute;
+	top: 700px;
+	left: 970px;
+	z-index: 11111;
+}
+.cate5{
+	position: absolute;
+	top: 900px;
+	left: 370px;
+	z-index: 11111;
+}
+
 </style>
 </head>
 <body>
@@ -255,7 +443,57 @@ a:link {
         <svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z"/>
         </svg>
+        <>
     </div>
-<h2> hover close to the menu </h2>
+    <div class="cat">
+    	<div class="squ1"></div>
+		<div class="squ2"></div>
+		<div class="squ3"></div>
+		<figure class="snip1445 cate1">
+		  <img src="../images/feshion.png" alt="fashion" />
+		  <figcaption>
+		    <div>
+		      <h4>fashion & beauty</h4>
+		    </div>
+		  </figcaption>
+		  <a href="#"></a>
+		</figure>
+		<figure class="snip1445 cate2">
+		  <img src="../images/living.png" alt="living" />
+		  <figcaption>
+		    <div>
+		      <h4>living</h4>
+		    </div>
+		  </figcaption>
+		  <a href="#"></a>
+		</figure>
+		<figure class="snip1445 cate3">
+		  <img src="../images/elec.png" alt="elec" />
+		  <figcaption>
+		    <div>
+		      <h4>hobby</h4>
+		    </div>
+		  </figcaption>
+		  <a href="#"></a>
+		</figure>
+		<figure class="snip1445 cate4">
+		  <img src="../images/food.png" alt="food" />
+		  <figcaption>
+		    <div>
+		      <h4>food</h4>
+		    </div>
+		  </figcaption>
+		  <a href="#"></a>
+		</figure>
+		<figure class="snip1445 cate5">
+		  <img src="../images/pet.png" alt="pet" />
+		  <figcaption>
+		    <div>
+		      <h4>pet</h4>
+		    </div>
+		  </figcaption>
+		  <a href="#"></a>
+		</figure>
+    </div>
 </body>
 </html>
