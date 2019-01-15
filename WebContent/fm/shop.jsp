@@ -150,7 +150,7 @@ body, html {
   .hamburger .line {
       width: 100%;
       height: 4px;
-      background-color: #aaa;
+      background-color: #fff;
       position: absolute;
   }
 
