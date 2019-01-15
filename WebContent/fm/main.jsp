@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 메인페이지 -->
 <html>
@@ -9,7 +10,13 @@
 <title>여기에 제목을 입력하십시오</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
-
+a:visited{
+	text-decoration: none;
+}
+body,html{
+	font-family: "Nanum Gothic", sans-serif;
+	
+}
 #btnImage{
 	align-items: center;
 }
@@ -156,6 +163,7 @@ body{
 	left: 50px;
 	font-size: 30pt;
 	color: white;
+	font-family: "Nanum Gothic", sans-serif;
 }
 .section{
 	margin-bottom: 80px;
@@ -170,12 +178,14 @@ body{
 	position: absolute;
 	top: 200px;
 	left: 210px;
+	font-family: "Nanum Gothic", sans-serif;
 }
 .mainSecond .text2{
 	text-align: left;
 	position: absolute;
 	bottom: 600px;
 	right: 320px;
+	font-family: "Nanum Gothic", sans-serif;
 }
 .mainSecond .squ1{
 	position: absolute;
@@ -241,7 +251,7 @@ body{
 					    <h3>플리마켓 바로가기</h3>
 					    <p>사용자가 직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
-					  <a href="#"></a>
+					  <a href="shop.jsp"></a>
 					</figure>
 				</td>
 				<td>
