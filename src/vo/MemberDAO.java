@@ -22,7 +22,7 @@ public class MemberDAO {
 	private Connection getConnection() throws Exception{
 		Context initContext = new InitialContext();
 		Context envContext = (Context)initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource)envContext.lookup("jdbc/fm");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/web");
 		return ds.getConnection();
 	}
 
@@ -226,7 +226,7 @@ public class MemberDAO {
 		}
 		return arr;
 	}
-	//ÁýÃ£±â
+	//ï¿½ï¿½Ã£ï¿½ï¿½
 	public ArrayList<ZipcodeDTO> zipSearch(String dong){
 		Connection con = null;
 		Statement st =null;
