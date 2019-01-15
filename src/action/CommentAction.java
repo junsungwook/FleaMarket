@@ -40,7 +40,6 @@ public class CommentAction extends HttpServlet {
 		dao.commentInsert(c);
 		
 		request.setAttribute("bnum", bnum);
-		System.out.println(bnum);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("commentList");
 		dispatcher.forward(request, response);
 }
