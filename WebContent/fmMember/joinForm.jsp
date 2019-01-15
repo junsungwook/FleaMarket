@@ -42,6 +42,7 @@ $(document).ready(function(){
         $("#pw2").val("");
         $("#pwcheck").remove();
         return false;
+        
     });
     $("#pw2").keyup(function() {
         if ($("#pw1").val() != "") {

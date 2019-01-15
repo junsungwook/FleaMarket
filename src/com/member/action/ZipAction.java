@@ -1,4 +1,4 @@
-package action;
+package com.member.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +21,7 @@ import vo.ZipcodeDTO;
 /**
  * Servlet implementation class ZipAction
  */
-@WebServlet("/fm/zip.do")
+@WebServlet("/fmMember/zip.do")
 public class ZipAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
