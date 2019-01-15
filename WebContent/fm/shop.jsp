@@ -417,7 +417,7 @@ a:link {
 }
 .cate5{
 	position: absolute;
-	top: 900px;
+	top: 800px;
 	left: 370px;
 	z-index: 11111;
 }
