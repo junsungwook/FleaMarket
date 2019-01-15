@@ -208,6 +208,21 @@ body{
 	left: 150px;
 	z-index: 450;
 }
+.footer{
+	text-align: center;
+	background-color: black;
+	opacity: 0.3;
+	height: 100px;
+	position: relative;
+}
+.footer .fText{
+	position: absolute;
+	bottom: 42px;
+	left: 40%;
+}
+.footer .fText p{
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -276,6 +291,9 @@ body{
 			<p>오케이?</p>
 		</div>
 	</div>
+</div>
+<div class="footer">
+	<div class="fText"><p>since 2019 부산it교육센터 김원빈휴가썼다 나도 쓴다</p></div> 	
 </div>
 </body>
 </html>
