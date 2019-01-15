@@ -239,7 +239,7 @@ body{
 					  <img src="../images/market.png" alt="market" width="564px" height="333.33px"/>
 					  <figcaption>
 					    <h3>플리마켓 바로가기</h3>
-					    <p>사용자가 직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
+					    <p>사용자가 직접 판매하d 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
 					  <a href="#"></a>
 					</figure>
