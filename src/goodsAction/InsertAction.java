@@ -69,7 +69,7 @@ public class InsertAction extends HttpServlet {
 			System.out.println(summernote);
 			goods.setMainpic(mainpic);
 			goodsDAO dao = goodsDAO.getInstance();
-			dao.goodsInsert(goods);
+		/*	dao.goodsInsert(goods);*/
 		}catch(Exception e){
 			e.printStackTrace();
 		}
