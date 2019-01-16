@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 메인페이지 -->
 <html>
@@ -8,7 +9,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#join_bt").click(function(){
+			location.href="../fmMember/joinForm.jsp";
+		})
+	})
+</script>
 <style>
+
 
 #btnImage{
 	align-items: center;
@@ -231,6 +240,8 @@ body{
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
 	</div>
+	<input type="button" value="회원가입" id="join_bt">
+	${id }
 	<div id="btnImage">
 		<table>
 			<tr>

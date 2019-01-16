@@ -37,13 +37,6 @@ public class IDcheckAction extends HttpServlet {
       String check=dao.idcheck(userid);
       PrintWriter out = resp.getWriter();
       out.println(check);   
-      
-//      req.setAttribute("arr", arr);
-//      RequestDispatcher rd =req.getRequestDispatcher("searchResult.jsp");
-//      rd.forward(req, resp);
-//      resp.getWriter().append("Served at: ").append(req.getContextPath());
-   
-   
    }
 
    /**
