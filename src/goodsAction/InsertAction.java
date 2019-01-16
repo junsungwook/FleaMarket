@@ -76,7 +76,7 @@ public class InsertAction extends HttpServlet {
 		
 		response.sendRedirect("CSSRecipe.do");
 	}
-	
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

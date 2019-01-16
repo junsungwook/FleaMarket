@@ -1,6 +1,7 @@
 package vo;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -17,5 +18,18 @@ public class goodsDAO {
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/board");
 		return ds.getConnection();
 	}
-	
+	//ªÛ«∞ insert
+	public void goodsInsert(goodsDTO g) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = getConnection();
+			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?)";
+			ps = con.prepareStatement(sql);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
