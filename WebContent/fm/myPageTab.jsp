@@ -7,9 +7,14 @@
  
   
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
-      <link rel="stylesheet" href="tabs.css">
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+      <link rel="stylesheet" href="tabs.css">	
+      <link rel="stylesheet" href="style.css" type="text/css">
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 <style>
+
 .pricingTable{
 	margin-top:50px;
     text-align: center;
@@ -106,6 +111,18 @@
 </head>
 
 <body>
+<%@include file="menu.jsp"%>
+	<%@include file="logo.jsp"%>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
   <section class="design-process-section" id="process-tab">
   <div class="container">
     <div class="row">
@@ -131,7 +148,7 @@
         </ul>
         <!-- end design process steps--> 
         <!-- Tab panes -->
-        <div class="tab-content">
+        <div class="tab-content" >
           <div role="tabpanel" class="tab-pane active" id="discover">
             <div class="design-process-content">
               <div class="container">
