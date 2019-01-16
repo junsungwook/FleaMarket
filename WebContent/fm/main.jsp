@@ -37,7 +37,7 @@
 					    <h3>스토어 바로가기</h3>
 					    <p>전주영이 만들고 불법적으로 파는 스토어입니다</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
-					  <a href="#"></a>
+					  <a href="store.jsp"></a>
 					</figure>
 				</td>
 			</tr>
