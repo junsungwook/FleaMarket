@@ -181,7 +181,7 @@
           </div>
           <div role="tabpanel" class="tab-pane" id="strategy">
             <div class="design-process-content">
-              <h3 class="semi-bold">Strategy</h3>
+              <h3 class="semi-bold">당신의 정보입니다. 수수료는 5% 입니다.^^ ~</h3>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
               </div>
           </div>

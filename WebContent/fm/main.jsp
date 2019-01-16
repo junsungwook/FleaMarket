@@ -16,19 +16,13 @@
 
 </head>
 <body>
-<script>
-	$(document).ready(function(){
-		$("#join_bt").click(function(){
-			location.href='../fmMember/joinForm.jsp';
-		})
-	})
-</script>
 <div class="section">
+<div class="login" align="right" >
+		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="#"><strong>회원가입</strong></a>
+	</div> 
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
 	</div>
-	<input type="button" value="회원가입" id="join_bt">
-	${state }
 	<div id="btnImage">
 		<table>
 			<tr>
