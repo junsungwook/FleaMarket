@@ -13,6 +13,7 @@
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
+
 <div class="section">
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
