@@ -13,14 +13,22 @@
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  <script type="text/javascript" src="../fm/script.js"></script>
+
 </head>
 <body>
+<script>
+	$(document).ready(function(){
+		$("#join_bt").click(function(){
+			location.href='../fmMember/joinForm.jsp';
+		})
+	})
+</script>
 <div class="section">
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
 	</div>
 	<input type="button" value="회원가입" id="join_bt">
-	${id }
+	${state }
 	<div id="btnImage">
 		<table>
 			<tr>
