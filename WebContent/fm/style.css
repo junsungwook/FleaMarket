@@ -537,5 +537,23 @@ body{
 	z-index: 50000;
 	width: 600px;
 	margin: 0 auto;
-	
+}
+.store{
+	height:auto;
+	width:400px;
+	position: absolute;
+	top: 120px;
+	z-index: 500;
+}
+.store1{
+	left: 100px;
+}
+.store2{
+	left: 540px;
+}
+.store3{
+	right: 500px;
+}
+.store4{
+	right: 40px;
 }
