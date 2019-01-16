@@ -16,7 +16,7 @@ import vo.BoardDAO;
 import vo.BoardVO;
 
 
-@WebServlet("/board/reply")
+@WebServlet("/fmBoard/reply")
 public class ReplyAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public ReplyAction() {

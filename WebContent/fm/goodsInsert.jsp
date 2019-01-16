@@ -9,22 +9,82 @@
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script src = "upload1.js"></script>
 <script>
 $(document).ready(function() {
     $('#summernote').summernote({
-            height: 300,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true                  // set focus to editable area after initializing summernote
+            height: 300,          
+            minHeight: null,       
+            maxHeight: null,          
+            focus: true,
+            onImageUpload: function(files, editor, welEditable) {
+          	  for (var i = files.length - 1; i >= 0; i--) {
+                    sendFile(files[i], this);
+                  }
+              } 
     });
 });
-
+function sendFile(files,editor,welEditable){
+    // 파일 전송을 위한 폼생성
+		data = new FormData();
+		data.append("file", files);
+	    $.ajax({ // ajax를 통해 파일 업로드 처리
+	        data :data,
+	        type :"POST",
+	        url :"uploadAction.re",
+	        cache : false,
+	        contentType : false,
+	        processData : false,
+	       success: function(url) {
+             editor.insertImage(welEditable, url);
+      }
+	    });
+	}
 </script>
+<style>
+.insertForm{
+	width:75%;
+	margin:0 auto;
+}
+.btnLine{
+	width:50%;
+	margin:0 auto;
+}
+
+</style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
-<textarea name="content" id="summernote" value=""></textarea>
+<div class="cantainer">
+<form role="form" action = "uploadAction.re" enctype="multipart/form-data" id = "frm" name="frm" method="post">
+	<div class="insertForm">
+		<div class="form-group">
+			<input type="text" class="form-control" id="title" name ="title" placeholder="제목">
+		</div>
+		<div class="form-group">
+			<label for="noticeContent"><b>카테고리</b></label>
+		    <select class="form-control" id="category" name="category">
+				<option value="fashion">패션 / 뷰티</option>
+				<option value="living">생활</option>
+				<option value="hobby">취미</option>
+				<option value="food">식품</option>
+				<option value="pet">반려용품</option>
+		    </select>
+		</div>
+	    <div class="form-group">
+			<textarea name="content" id="summernote" value=""></textarea>
+		</div>
+		<div class="form-group">
+			<input type="file" class="form-control-file" id="mainpic" name="mainpic"><b>메인으로 등록할 사진을 올려주세요 10mb 이하만 가능합니다</b>
+		</div>
+		<div class="btnLine">
+			<button type="button" onclick="" class="btn btn-success">작성</button>
+			<button type="reset" onclick="" class="btn btn-success">취소</button>
+		</div>
+	</div>
+</form>
+</div>
 </body>
 </html>
