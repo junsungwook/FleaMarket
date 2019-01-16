@@ -71,7 +71,6 @@ public class FmDAO {
 				ps.setString(3, mb.getPwd());
 				ps.setString(4, mb.getEmail());
 				ps.setString(5, mb.getPhone());
-				ps.setInt(6, mb.getAdmin());
 				ps.setString(7, mb.getZipcode());
 				ps.setString(8, mb.getAddr());
 				ps.executeUpdate();
@@ -110,7 +109,7 @@ public class FmDAO {
 			ps.setString(2, mb.getPwd());
 			ps.setString(3, mb.getEmail());
 			ps.setString(4, mb.getPhone());
-			ps.setInt(5, mb.getAdmin());
+	//		ps.setInt(5, mb.getAdmin());
 			ps.setString(6, mb.getZipcode());
 			ps.setString(7, mb.getAddr());
 			ps.executeUpdate();
@@ -139,7 +138,7 @@ public class FmDAO {
 					mb.setPwd(rs.getString("pwd"));
 					mb.setEmail(rs.getString("email"));
 					mb.setPhone(rs.getString("phone"));
-					mb.setAdmin(rs.getInt("admin"));
+		//			mb.setAdmin(rs.getInt("admin"));
 					mb.setZipcode(rs.getString("zipcode"));
 					mb.setAddr(rs.getString("addr"));
 				}
@@ -174,7 +173,7 @@ public class FmDAO {
 				mb.setPwd(rs.getString("pwd"));
 				mb.setEmail(rs.getString("email"));
 				mb.setPhone(rs.getString("phone"));
-				mb.setAdmin(rs.getInt("admin"));
+			//	mb.setAdmin(rs.getInt("admin"));
 				mb.setZipcode(rs.getString("zipcode"));
 				mb.setAddr(rs.getString("addr"));
 				arr.add(mb);
@@ -210,7 +209,7 @@ public class FmDAO {
 				mb.setPwd(rs.getString("pwd"));
 				mb.setEmail(rs.getString("email"));
 				mb.setPhone(rs.getString("phone"));
-				mb.setAdmin(rs.getInt("admin"));
+			//	mb.setAdmin(rs.getInt("admin"));
 				mb.setZipcode(rs.getString("zipcode"));
 				mb.setAddr(rs.getString("addr"));
 				arr.add(mb);
@@ -223,7 +222,7 @@ public class FmDAO {
 		}
 		return arr;
 	}
-	//ÁýÃ£±â
+	//ï¿½ï¿½Ã£ï¿½ï¿½
 	public ArrayList<ZipcodeDTO> zipSearch(String dong){
 		Connection con = null;
 		Statement st =null;

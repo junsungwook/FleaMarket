@@ -8,9 +8,8 @@ public class MemberDTO {
 	private String phone;
 	private String zipcode;
 	private String addr;
-	private String pwque;
-	private String pwans;
-	private int admin;
+
+	
 	
 	public String getZipcode() {
 		return zipcode == null ? "" : zipcode.trim();
@@ -55,24 +54,6 @@ public class MemberDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getAdmin() {
-		return admin;
-	}
-	public void setAdmin(int admin) {
-		this.admin = admin;
-	}
 	
-	public String getPwque() {
-		return pwque == null ? "" : pwque.trim();
-	}
-	public void setPwque(String pwque) {
-		this.pwque = pwque;
-	}
-	public String getPwans() {
-		return pwans == null ? "" : pwans.trim();
-	}
-	public void setPwans(String pwans) {
-		this.pwans = pwans;
-	}
 
 }
