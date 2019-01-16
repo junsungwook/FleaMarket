@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+   
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 메인페이지 -->
@@ -13,6 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+ <link rel="stylesheet" href="../fm/style.css" type="text/css">
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <script type="text/javascript" src="../fm/script.js"></script>
 </head>
 <body>
 <div class="section">
@@ -31,7 +31,7 @@
 					    <h3>플리마켓 바로가기</h3>
 					    <p>사용자가 직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
-					  <a href="shop.jsp"></a>
+					  <a href="../fm/shop.jsp"></a>
 					</figure>
 				</td>
 				<td>
@@ -40,7 +40,7 @@
 					    <h3>스토어 바로가기</h3>
 					    <p>전주영이 만들고 불법적으로 파는 스토어입니다</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
-					  <a href="store.jsp"></a>
+					  <a href="../fm/store.jsp"></a>
 					</figure>
 				</td>
 			</tr>
@@ -83,6 +83,6 @@
 		</div>
 	</div>
 </div>
-<%@include file="footer.jsp"%>
+	<%@include file="../fm/footer.jsp"%>
 </body>
 </html>
