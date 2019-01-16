@@ -16,11 +16,12 @@
 </head>
 <body>
 <div class="section">
+<div class="login" align="right" >
+		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="#"><strong>회원가입</strong></a>
+	</div> 
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
 	</div>
-	<input type="button" value="회원가입" id="join_bt">
-	${id }
 	<div id="btnImage">
 		<table>
 			<tr>
