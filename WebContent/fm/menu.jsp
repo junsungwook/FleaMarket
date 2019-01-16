@@ -11,11 +11,11 @@
 	    	<li></li>
 	    	<li><a href="#">로그인</a></li>
 	    	<li><a href="#">회원가입</a></li>
-	        <li><a href="shop.jsp">플리마켓</a></li>
-	        <li><a href="store.jsp">스토어</a></li>
+	        <li><a href="../fm/shop.jsp">플리마켓</a></li>
+	        <li><a href="../fm/store.jsp">스토어</a></li>
 	        <li><a href="#">커뮤니티</a></li>
-	        <li><a href="myPageTab.jsp">마이페이지</a></li>
-	        <li><a href="main.jsp">메인화면</a></li>
+	        <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
+	        <li><a href="../fm/main.jsp">메인화면</a></li>
 	    </ul>
 	</div>
 	<svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
