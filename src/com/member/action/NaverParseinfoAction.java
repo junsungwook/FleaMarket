@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -33,11 +37,13 @@ public class NaverParseinfoAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("인포에서 토큰 : "+request.getParameter("access_token"));
 		
-		
-		 String token = "AAAAOvCQZqHPTYrFkVDNHMrjyJySp2exgLvabcETUXwEnUXqlCEVOrykMwhdlxvLt1XuUoeTrXqNNidDcPHJApMwHE0=";// 네이버 로그인 접근 토큰;
+		String token = (String) request.getAttribute("token");
+		// String token = "AAAAOorspXpmQSF2PZG3hZJuuhQAdLUGZNxYWyAtHmy5LeGnDyEpL3nHMFk2YKgfZGHQ8kY0xkpFYTNOINlEO8+hIzI=";// 네이버 로그인 접근 토큰;
 	        String header = "Bearer " + token; // Bearer 다음에 공백 추가
+	       String email = "";
+	       String name="";
+	       String id="";
 	        try {
 	            String apiURL = "https://openapi.naver.com/v1/nid/me";
 	            URL url = new URL(apiURL);
@@ -57,14 +63,29 @@ public class NaverParseinfoAction extends HttpServlet {
 	                resp.append(inputLine);
 	            }
 	            br.close();
-	            System.out.println(resp.toString());
+	            
+	            String origin_str = resp.toString();
+	            System.out.println("내가원하는거 : "+ origin_str);
+	            
+	            JSONParser jsonparser = new JSONParser();
+	            JSONObject jsonObject = (JSONObject)jsonparser.parse(origin_str);
+	            JSONObject responseObject = (JSONObject)jsonObject.get("response");
+
+				
+				 email = (String) responseObject.get("email");
+				name = (String) responseObject.get("name");
+				 id = (String) responseObject.get("id");
+				
+				
+				
 	        } catch (Exception e) {
 	            System.out.println(e);
 	        }
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("id", request.getParameter("access_token"));
-		
+		session.setAttribute("name", name);
+		session.setAttribute("id", id);
+		session.setAttribute("email", email);
 		RequestDispatcher rd = request.getRequestDispatcher("../fm/main.jsp");
 	    rd.forward(request, response);
 	}
