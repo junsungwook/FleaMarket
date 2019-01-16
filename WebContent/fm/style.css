@@ -8,10 +8,10 @@ html {
 	height: 100%;
 	font-family: "Nanum Gothic", sans-serif;
 }
+
 #menu {
 	height: 100%;
 	position: fixed;
- master
 	background-color:#8B8067;
 
 	width: 286.1px;
@@ -162,7 +162,22 @@ a:link {
 	opacity:0.3;
 	z-index: 50;
 }
-
+/* 메인화면 로그인버튼 */
+.login{
+	margin:40px;
+	font-size:19px;
+}
+.login a:link{
+	text-decoration:none;
+	color:#664B00;
+}
+.login a:visited{
+	text-decoration:none;
+	color:#664B00;
+}
+.login a:hover{
+	color:black;
+}
 /* 마우스오버 효과 css */
 .snip1445 {
   position: relative;
@@ -235,6 +250,7 @@ a:link {
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
 }
+
 .snip1445 h2,
 .snip1445 h4 {
   margin: 0;
@@ -284,31 +300,31 @@ a:link {
 }
 .cate1{
 	position: absolute;
-	top: 100px;
+	top: 200px;
 	left: 370px;
 	z-index: 11111;
 }
 .cate2{
 	position: absolute;
-	top: 300px;
+	top: 400px;
 	left: 970px;
 	z-index: 11111;
 }
 .cate3{
 	position: absolute;
-	top: 500px;
+	top: 600px;
 	left: 370px;
 	z-index: 11111;
 }
 .cate4{
 	position: absolute;
-	top: 700px;
+	top: 800px;
 	left: 970px;
 	z-index: 11111;
 }
 .cate5{
 	position: absolute;
-	top: 800px;
+	top: 900px;
 	left: 370px;
 	z-index: 11111;
 }
@@ -546,14 +562,18 @@ body{
 	z-index: 500;
 }
 .store1{
+	top: 230px;
 	left: 100px;
 }
 .store2{
+		top: 230px;
 	left: 540px;
 }
 .store3{
+		top: 230px;
 	right: 500px;
 }
 .store4{
+		top: 230px;
 	right: 40px;
 }
