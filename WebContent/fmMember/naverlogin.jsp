@@ -20,7 +20,6 @@
     session.setAttribute("state", state);
  %>
   <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"></a>
- 
-  <input type="button" onclick="location.href='naver.do'">
+
   </body>
 </html>
