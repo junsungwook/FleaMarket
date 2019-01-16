@@ -22,11 +22,17 @@ public class goodsDAO {
 	public void goodsInsert(goodsDTO g) {
 		Connection con = null;
 		PreparedStatement ps = null;
-		
 		try {
 			con = getConnection();
-			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?)";
+			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql);
+			ps.setString(1, "sungwook");
+			ps.setString(2, g.getTitle());
+			ps.setString(3, g.getCategory());
+			ps.setString(4, g.getSummernote());
+			ps.setString(5, g.getMainpic());
+			ps.setInt(6, g.getPrice());
+			ps.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
