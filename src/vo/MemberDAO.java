@@ -7,10 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import java.util.*;
+import javax.mail.*;
 
 
 public class MemberDAO {
@@ -67,17 +74,17 @@ public class MemberDAO {
 		PreparedStatement ps =  null;
 			try {
 				con = getConnection();
-				String sql = "Insert into memberDB values (?,?,?,?,?,?,?,?)";
+				String sql = "Insert into memberDB values (?,?,?,?,?,?,?)";
 				ps = con.prepareStatement(sql);
 				ps.setString(1,mb.getName());
 				ps.setString(2, mb.getUserid());
 				ps.setString(3, mb.getPwd());
 				ps.setString(4, mb.getEmail());
 				ps.setString(5, mb.getPhone());
-				ps.setInt(6, mb.getAdmin());
-				ps.setString(7, mb.getZipcode());
-				ps.setString(8, mb.getAddr());
+				ps.setString(6, mb.getZipcode());
+				ps.setString(7, mb.getAddr());
 				ps.executeUpdate();
+				System.out.println("회원가입 완료 ID : " + mb.getUserid() );
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -113,9 +120,8 @@ public class MemberDAO {
 			ps.setString(2, mb.getPwd());
 			ps.setString(3, mb.getEmail());
 			ps.setString(4, mb.getPhone());
-			ps.setInt(5, mb.getAdmin());
-			ps.setString(6, mb.getZipcode());
-			ps.setString(7, mb.getAddr());
+			ps.setString(5, mb.getZipcode());
+			ps.setString(6, mb.getAddr());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -142,7 +148,6 @@ public class MemberDAO {
 					mb.setPwd(rs.getString("pwd"));
 					mb.setEmail(rs.getString("email"));
 					mb.setPhone(rs.getString("phone"));
-					mb.setAdmin(rs.getInt("admin"));
 					mb.setZipcode(rs.getString("zipcode"));
 					mb.setAddr(rs.getString("addr"));
 				}
@@ -177,7 +182,6 @@ public class MemberDAO {
 				mb.setPwd(rs.getString("pwd"));
 				mb.setEmail(rs.getString("email"));
 				mb.setPhone(rs.getString("phone"));
-				mb.setAdmin(rs.getInt("admin"));
 				mb.setZipcode(rs.getString("zipcode"));
 				mb.setAddr(rs.getString("addr"));
 				arr.add(mb);
@@ -213,7 +217,6 @@ public class MemberDAO {
 				mb.setPwd(rs.getString("pwd"));
 				mb.setEmail(rs.getString("email"));
 				mb.setPhone(rs.getString("phone"));
-				mb.setAdmin(rs.getInt("admin"));
 				mb.setZipcode(rs.getString("zipcode"));
 				mb.setAddr(rs.getString("addr"));
 				arr.add(mb);
@@ -316,6 +319,43 @@ public class MemberDAO {
 	public int membercnt() {
 		return arr.size();
 	}
+	
+	public void sendEmail(String email, String num) throws AddressException, MessagingException {
+		// TODO Auto-generated method stub
+		String host = "smtp.gmail.com";
+		String subject = "Flea Market 인증번호 ";
+		String fromName="관리자";
+		String to = email;
+		String from = "dmdjqn@gmail.com";
+		String pwd="kwb3500!";
+		
+		String content = "인증번호 [" +num+ "]";
+		
+		Properties props = System.getProperties();
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.port", "465");
+		props.put("mail.smtp.auth", host);
+		props.put("mail.smtp.ssl.enable", "true");
+		props.put("mail.smtp.ssl.trust", host);
+		
+		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+			protected javax.mail.PasswordAuthentication getPasswordAuthentication(){
+				return new javax.mail.PasswordAuthentication(from, pwd);
+			}
+		});
+		session.setDebug(true);
+		
+		Message mimeMessage = new MimeMessage(session);
+		mimeMessage.setFrom(new InternetAddress(email));
+		mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+		
+		mimeMessage.setSubject(subject);
+		mimeMessage.setText(content);
+		
+		Transport.send(mimeMessage);
+		
+	}
+			
 	private void closeCon(Connection con, PreparedStatement ps){
 		
 		try {
@@ -338,6 +378,7 @@ private void closeCon(Connection con,Statement st, ResultSet rs){
 		e.printStackTrace();
 	}
 }
+
 	
 
 }

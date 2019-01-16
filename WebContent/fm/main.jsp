@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 메인페이지 -->
 <html>
@@ -13,11 +15,12 @@
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
-
 <div class="section">
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
 	</div>
+	<input type="button" value="회원가입" id="join_bt">
+	${id }
 	<div id="btnImage">
 		<table>
 			<tr>
