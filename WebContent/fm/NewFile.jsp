@@ -2,169 +2,201 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet"> 
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <link href='https://fonts.googleapis.com/css?family=Nunito:400,900|Montserrat|Roboto' rel="stylesheet">
+<style>
+
+
+body {
+  background: linear-gradient(to right, $aqua, $green);
+}
+
+.container {
+  background: $white;
+  width: 540px;
+  height: 420px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 10%;
+  box-shadow: 2px 5px 20px rgba($gray, .5);
+}
+
+.logo {
+  float: right;
+  margin-right: 12px;
+  margin-top: 12px;
+  font-family: $hulu;
+  color: $logo;
+  font-weight: 900;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+.CTA {
+  width: 80px;
+  height: 40px;
+  right: -20px;
+  bottom: 0;
+  margin-bottom: 90px;
+  position: absolute;
+  z-index: 1;
+  background: $green;
+  font-size: 1em;
+  transform: rotate(-90deg);
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+  h1 {
+    color: $white;
+    margin-top: 10px;
+    margin-left: 9px;
+  }
+  &:hover {
+    background: $aqua;
+    transform: scale(1.1);
+  }
+}
+
+.leftbox {
+  float: left;
+  top: -5%;
+  left: 5%;
+  position: absolute;
+  width: 15%;
+  height: 110%;
+  background: $green;
+  box-shadow: 3px 3px 10px rgba($gray, .5);
+}
+
+nav a {
+  list-style: none;
+  padding: 35px;
+  color: $white;
+  font-size: 1.1em;
+  display: block;
+  transition: all .3s ease-in-out;
+  &:hover {
+    color: $aqua;
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  &:first-child {
+    margin-top: 7px;
+  }
+}
+
+.active {
+  color: $aqua;
+}
+
+.rightbox {
+  float: right;
+  width: 60%;
+  height: 100%;
+}
+
+
+.profile, .payment, .subscription, .privacy, .settings {
+  transition: opacity .5s ease-in;
+  position: absolute;
+  width: 70%;
+}
+
+h1 {
+  font-family: $heading;
+  color: $green;
+  font-size: 1em;
+  margin-top: 40px;
+  margin-bottom: 35px;
+}
+
+h2 {
+  color: $gray;
+  font-family: $body;
+  width: 80%;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 1px;
+  margin-left: 2px;
+}
+
+p {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to right, $aqua, rgba($green,.5)) 1 0%;
+  border-top: 0;
+  width: 80%;
+  font-family: $heading;
+  font-size: .7em;
+  padding: 7px 0;
+  color: $black;
+}
+span {
+  font-size: .5em;
+  color: $gray;
+}
+
+.btn {
+  float: right;
+  font-family: $body;
+  text-transform: uppercase;
+  font-size: 10px;
+  border: none;
+  color: $aqua;
+}
+
+.btn:hover {
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+input {
+  border: 1px solid lighten($gray,40%); 
+  font-family: $body;
+  padding: 2px;
+  margin: 0;
+}
+
+.privacy h2{
+  margin-top: 25px;
+}
+
+.settings h2{
+  margin-top: 25px;
+}
+
+.noshow {
+  opacity: 0;
+}
+
+footer {
+  position: absolute;
+  width: 20%;
+  bottom: 0;
+  right: -20px;
+  text-align: right;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: $body;
+  p {
+    border: none;
+    padding: 0;
+  }
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    &:hover {
+      color: #7d7d7d;
+    }
+  }
+}
+
+
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet"> 
- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-
-<style>
-HTML  CSS Result
-EDIT ON
- html,body{
-  height:100%;
-  font-family: "Nanum Gothic", sans-serif;
-}
-body{
-  text-align:center;
-  padding:50px;
-}
-body:before{
-  content:'';
-  height:100%;
-  display:inline-block;
-  vertical-align:middle;
-}
-h2{
-background-color: 
-	}
-hr{
-	border: 0;
-    height: 3px;
-    background: #674947;
-	}
-button{
-  background:#9D6962;
-  color:#fff;
-  margin:50px;;
-  border:none;
-  position:relative;
-  height:170px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button:hover{
-  background:#fff;
-  color:#9D6962;
-}
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #9D6962;
-  transition:400ms ease all;
-}
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
-.pricingTable{
-	margin-top:50px;
-    text-align: center;
-    border: 1px solid #dbdbdb;
-    position: relative;
-    overflow: hidden;
-}
-.pricingTable .pricingTable-header h3{
-    color: #9999a5;
-    font-size: 18px;
-    text-transform: uppercase;
-}
-.pricingTable .price-value {
-    background: #fafafa;
-    color: #666;
-    font-weight: 900;
-    padding: 15px 0;
-}
-.pricingTable .price-value span {
-    color: #666;
-    display: inline-block;
-    font-size: 70px;
-    font-weight: normal;
-    line-height: normal;
-}
-.pricingTable .price-value small{
-    font-size: 20px;
-    position: relative;
-    top: -30px;
-    left:0;
-}
-.pricingTable .price-value .subtitle{
-    color: #82919F;
-    display: block;
-    font-size: 16px;
-    font-weight: 100;
-    font-style: italic;
-}
-.pricingTable .best-offer{
-    background-color: #3498db;
-    color: #fff;
-    padding: 6px 50px;
-    font-size: 10px;
-    line-height: 12px;
-    text-transform: uppercase;
-    position: absolute;
-    top: 20px;
-    right: -55px;
-    transform: rotate(45deg);
-}
-.pricingTable .pricingContent ul{
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0;
-}
-.pricingTable .pricingContent ul li{
-    border-bottom:1px solid #ededed;
-    color: #9999A5;
-    padding: 10px 0 ;
-}
-.pricingTable .pricingContent ul li:first-child {
-    border-top:1px solid #ededed;
-}
-.pricingTable .pricingTable-sign-up{
-    padding: 25px 0;
-}
-.pricingTable .btn-block{
-    background:#666;
-    border-radius: 0px;
-    border:0px none;
-    color:#fff;
-    width: 50%;
-    padding: 10px 5px;
-    margin: 0 auto;
-    text-transform: capitalize;
-    transition:all 0.3s ease 0s;
-}
-.pricingTable .btn-block:after{
-    content: "\f090";
-    font-family: "Font Awesome 5 Free"; font-weight: 900;
-    padding-left: 10px;
-    font-size: 15px;
-}
-.pricingTable .btn-block:hover{
-    background: #282828;
-    color:#fff;
-}
-@media screen and (max-width:990px){
-    .pricingTable{
-        margin-bottom: 20px;
-    }
-}
-
 </head>
 <body>
 <div class="container">
@@ -258,45 +290,9 @@ button:hover:before,button:hover:after{
 <footer>
   <p>made by <a href="https://codepen.io/juliepark"> julie</a> ♡
 </footer>
-
-<h2 align="left"><strong>마이페이지</strong></h2>
-<hr>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <div class="pricingTable">
-                <div class="pricingTable-header">
-                    <h3>내정보</h3>
-                </div>
-                <div class="price-value">
-                    <small class="fa fa-usd"></small>
-                    <span>ID</span>
-                    <span class="subtitle">이름</span>
-                </div>
-                <div class="pricingContent">
-                    <ul>
-                        <li><b>판매등급</b>DIAMOND</li>
-                        <li><b>총판매액</b>4.254,000</li>
-                        <li><b>구매등급</b>DIAMOND</li>
-                    </ul>
-                </div><!-- /  CONTENT BOX-->
-                <div class="pricingTable-sign-up"><!-- BUTTON BOX-->
-                    <a href="#" class="btn btn-block btn-default">상세보기</a>
-                </div><!-- BUTTON BOX-->
-            </div>
-        </div>
-        <button id="myProduct">&nbsp;&nbsp;내상품&nbsp;&nbsp;<br>PRODUCT</button>
-
-		<button id="myProduct">장바구니<br>MY CART</button>
-
-		<button id="myProduct">회원정보<br>MY INFO</button>
-
-		<button id="myProduct">&nbsp;&nbsp;내등급&nbsp;&nbsp;<br>MY RANK</button>
-    </div>
-</div>
 </body>
 <script>
-/*active button class onclick*/
+​/*active button class onclick*/
 $('nav a').click(function(e) {
   e.preventDefault();
   $('nav a').removeClass('active');
