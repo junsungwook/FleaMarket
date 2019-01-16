@@ -42,8 +42,10 @@ public class NaverLoginAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+
 		String clientId = "n5xLTOVp7Saleq411Wya";//애플리케이션 클라이언트 아이디값";
 	    String clientSecret = "2uWhk5pC26";//애플리케이션 클라이언트 시크릿값";
+
 	    String code = request.getParameter("code");
 	    String state = request.getParameter("state");
 	    String redirectURI = URLEncoder.encode("http://localhost:8888/FleaMarket/fmMember/naver.do", "UTF-8");
@@ -65,9 +67,9 @@ public class NaverLoginAction extends HttpServlet {
 	      int responseCode = con.getResponseCode();
 	      BufferedReader br;
 	      System.out.print("responseCode="+responseCode);
-	      if(responseCode==200) { // 정상 호출
+	      if(responseCode==200) {
 	        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-	      } else {  // 에러 발생
+	      } else {  // �뿉�윭 諛쒖깮
 	        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 	      }
 	      String inputLine;
@@ -82,10 +84,12 @@ public class NaverLoginAction extends HttpServlet {
 	    } catch (Exception e) {
 	      System.out.println(e);
 	    }
+
 	    System.out.println("요기서 토큰파싱합시다:" + res.toString());
 	    String origin_str = res.toString(); //우루루  다 있는거 이중에서 토큰 파싱하자
 	    
 	
+
 	    
 	    String token="";
 	    JSONParser jsonparser = new JSONParser();
