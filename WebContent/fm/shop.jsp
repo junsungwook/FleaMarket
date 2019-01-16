@@ -13,6 +13,7 @@
 </head>
 <body>
 	<%@include file="menu.jsp"%>
+	<%@include file="logo.jsp"%>
     <div class="cat">
     	<div class="squ1"></div>
 		<div class="squ2"></div>
