@@ -10,11 +10,11 @@
 	<div class="menu-inner">  
 	    <ul>
 	    	<li></li>
-	    	  <c:if test="${sessionScope.userid==null}">
+	    	  <c:if test="${sessionScope.id==null}">
 	    	<li><a href="../fmMember/naverlogin.jsp">로그인</a></li>
 	    	<li><a href="../fmMember/joinForm.jsp">회원가입</a></li>
 	    	</c:if>
-	    	   	<c:if test = "${sessionScope.userid!=null }">
+	    	   	<c:if test = "${sessionScope.id!=null }">
 	    	  	<li><a href="logout.do">로그아웃</a></li>
 	    	</c:if>
 	        <li><a href="../fm/shop.jsp">플리마켓</a></li>

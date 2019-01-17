@@ -78,11 +78,11 @@ body{
 		<table id="blueone">
 			<tr>
 			
-				<c:if test="${sessionScope.userid=='master'}">
+				<c:if test="${sessionScope.id=='master'}">
 					<th colspan ="2" class="td_left"><label for="board_name">※공지사항※</label></th>
 					<input type ="hidden" name="board_name" value="공지사항" id="board_name">
 				</c:if>
-				<c:if test="${sessionScope.userid!='master'}">
+				<c:if test="${sessionScope.id!='master'}">
 					<th  class="td_left"><label for="board_name">글쓴이</label></th>
 					<th class="td_right"><input type="text" name="board_name" id="board_name" class="form-control"></th>
 				</c:if>
