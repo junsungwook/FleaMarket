@@ -5,6 +5,7 @@
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
@@ -13,15 +14,15 @@
 <script>
 $(document).ready(function() {
     $('#summernote').summernote({
-            height: 300,          
-            minHeight: null,       
-            maxHeight: null,          
-            focus: true,
-            onImageUpload: function(files, editor, welEditable) {
-          	  for (var i = files.length - 1; i >= 0; i--) {
-                    sendFile(files[i], this);
-                  }
-              } 
+          height: 300,          
+          minHeight: null,       
+          maxHeight: null,          
+          focus: true,
+          onImageUpload: function(files, editor, welEditable) {
+        	  for (var i = files.length - 1; i >= 0; i--) {
+                  sendFile(files[i], this);
+                }
+            } 
     });
 });
 function sendFile(files,editor,welEditable){
@@ -58,8 +59,12 @@ function sendFile(files,editor,welEditable){
 </head>
 <body>
 <div class="cantainer">
-<form role="form" action = "uploadAction.re" enctype="multipart/form-data" id = "frm" name="frm" method="post">
+<form action="uploadAction.re" enctype="multipart/form-data" id ="frm" name="frm" method="post">
 	<div class="insertForm">
+		<div class="form-group">
+			<input type="hidden" id="userid2" name="userid" value="${userid }">
+			<input type="text" class="form-control" id="userid" name="userid" value="${userid }" disabled="disabled">
+		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" id="title" name ="title" placeholder="제목">
 		</div>
@@ -73,14 +78,18 @@ function sendFile(files,editor,welEditable){
 				<option value="pet">반려용품</option>
 		    </select>
 		</div>
+		<div class="form-group">
+			<b>가격을 입력</b>
+			<input type="text" class="form-control" id="price" name ="price" placeholder="가격">
+		</div>
 	    <div class="form-group">
-			<textarea name="content" id="summernote" value=""></textarea>
+			<textarea name="summernote" id="summernote" value=""></textarea>
 		</div>
 		<div class="form-group">
 			<input type="file" class="form-control-file" id="mainpic" name="mainpic"><b>메인으로 등록할 사진을 올려주세요 10mb 이하만 가능합니다</b>
 		</div>
 		<div class="btnLine">
-			<button type="button" onclick="" class="btn btn-success">작성</button>
+			<button type="button" id="upload" class="btn btn-success">작성</button>
 			<button type="reset" onclick="" class="btn btn-success">취소</button>
 		</div>
 	</div>

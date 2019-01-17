@@ -1,7 +1,32 @@
 package vo;
 
 public class goodsDTO {
-	String title,category,summernote,mainpic;
+	String title,category,summernote,mainpic,userid;
+	int num,price;
+
+	public String getUserid() {
+		return userid == null ? "" : userid.trim();
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 	public String getTitle() {
 		return title == null ? "" : title.trim();
