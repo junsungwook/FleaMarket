@@ -86,6 +86,7 @@ public class NaverParseinfoAction extends HttpServlet {
 		session.setAttribute("name", name);
 		session.setAttribute("id", "naver_login:"+id);
 		session.setAttribute("email", email);
+		request.setAttribute("sign", "sign");
 		RequestDispatcher rd = request.getRequestDispatcher("../fm/main.jsp");
 	    rd.forward(request, response);
 	}
