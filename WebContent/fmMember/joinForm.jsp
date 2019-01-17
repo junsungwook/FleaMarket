@@ -13,15 +13,6 @@
  <script type="text/javascript" src="../fm/script.js"></script>
 <style>
 
-body {
-	padding: 30px;
-}
-
-body {
-	background: #fff;
-	font-family: "Nanum Gothic", sans-serif;
-}
-
 #blueone {
 	border-collapse: collapse;
 }
@@ -49,15 +40,15 @@ body {
 var emailPattern =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 
 $(document).ready(function(){
-    $("#pwd").keyup(function(){
+    $("#password").keyup(function(){
         $("#pwd_check").val("");
         return false;
         
     });
     var pw_p= /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
-    $("#pwd").keyup(function(){
+    $("#password").keyup(function(){
        $("#password_valid_div").remove();
-       if(!$("#pwd").val().match(pw_p)){
+       if(!$("#password").val().match(pw_p)){
           $("#password_valid_span").append("<div style='color:red' id='password_valid_div'>"+ "사용 불가능(특수문자,영어,숫자 각 1개 이상)</div>");
           
        }
@@ -71,7 +62,7 @@ $(document).ready(function(){
     
     $("#pwd_check").keyup(function(){
        $("#password_check_div").remove();
-       if($("#pwd").val()== $("#pwd_check").val()){
+       if($("#password").val()== $("#pwd_check").val()){
           $("#password_check_span").append("<div style='color:green' id= 'password_check_div' >일치!</div>");
        }
        else{   
@@ -80,7 +71,7 @@ $(document).ready(function(){
           
     });
     $("#insert_bt").click(function(){
-    	if(!$("#pwd").val().match(pw_p)){
+    	if(!$("#password").val().match(pw_p)){
     		alert("비밀번호는 영어,특수문자를 포함해야합니다.")
     		return false;
     	}
@@ -126,7 +117,7 @@ $(document).ready(function(){
 	<br>
 	<h1>회원가입</h1>
 	<br>
-	<form name="frm" id="frm" action="join.do">
+	<form name="frm" id="frm" action="join.do" method="post">
 		<input type="hidden" name="userid" id="userid">
 		<input type="hidden" name="password_valid">
 		<div align="center" class="container">
@@ -147,7 +138,7 @@ $(document).ready(function(){
 				</tr>
 				<tr>
 					<td>PASSWORD *</td>
-					<td colspan=2 class="col-xs-3"><input type="password" id="pwd"	name="pwd" class="form-control" placeholder="(영문,특수기호포함)">
+					<td colspan=2 class="col-xs-3"><input type="password" id="password"	name="password" class="form-control" placeholder="(영문,특수기호포함)">
 					<span id = 'password_valid_span'></span></td>
 				</tr>
 				<tr>
