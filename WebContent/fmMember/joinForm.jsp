@@ -145,7 +145,9 @@ $(document).ready(function(){
 				<tr>
 					<td>E-MAIL</td>
 					<td class="col-xs-4"><input type="email" name="email" id="email" class="form-control"></td>
-					<td> <input type="button" value="e-mail 인증" id="email_check_bt" class="btn btn-default" ></td>
+					<td> <input type="button" value="e-mail 인증" id="email_check_bt" class="btn btn-default" >
+						<input type="hidden" value="0" id="email_check">
+					</td>
 				</tr>
 				<tr>
 					<td>PHONE</td>
