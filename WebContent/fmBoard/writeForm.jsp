@@ -3,8 +3,13 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet"> 
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+      <link rel="stylesheet" href="tabs.css">	
+      <link rel="stylesheet" href="../fm/style.css" type="text/css">
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../fm/script.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 글쓰기</title>
@@ -21,7 +26,6 @@
 	}
 %>
 <style> 
-
 body{
 	padding : 30px;
 	 background: #fff; 
@@ -49,8 +53,23 @@ body{
 </style>
 </head>
 <body>
-<div class="container" >
-	<h2>공지사항</h2>
+    <%@include file="../fm/menu.jsp"%>
+	<%@include file="../fm/logo.jsp"%>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+<div class="container"  align="center">
+
+	<font size="6. 26em">게시판</font>
+	<br>
+	<br>
 	<form action="insert.bo" method="post" enctype="multipart/form-data" name="boardform">
 	<input type ="hidden" name="num" value=<%=num %>>
 	<input type ="hidden" name="ref" value=<%=ref %>>
