@@ -40,7 +40,7 @@ public class MemberDAO {
 			try {
 				con = getConnection();
 				st = con.createStatement();
-				String sql = "select * from memberDB where userid='"+id+"'";
+				String sql = "select * from fmmember where userid='"+id+"'";
 				rs = st.executeQuery(sql);
 				if(rs.next()) {
 					check="no";
