@@ -7,7 +7,6 @@
 <script type="text/javascript" src="script.js"></script>
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
 </head>

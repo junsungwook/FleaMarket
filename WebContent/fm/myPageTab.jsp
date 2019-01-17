@@ -111,7 +111,7 @@
 </head>
 
 <body>
-<%@include file="menu.jsp"%>
+	<%@include file="menu.jsp"%>
 	<%@include file="logo.jsp"%>
 	<br>
 	<br>
