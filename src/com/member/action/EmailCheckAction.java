@@ -55,7 +55,7 @@ public class EmailCheckAction extends HttpServlet {
 		try {
 			String host = "smtp.naver.com";
 			final String username = "dmdjqn21wb";
-			final String password = "dnjsqlsdl1@";
+			final String password = "fleamarket1!";
 			int port = 465;
 			
 			String recipient =email;
