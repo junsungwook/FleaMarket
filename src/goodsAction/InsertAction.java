@@ -37,12 +37,11 @@ public class InsertAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
-		String uploadPath = "Gupload";
+		String uploadPath = "upload";
 		String encType = "UTF-8";
 		ServletContext context = getServletContext();
 		String uploadFilePath = context.getRealPath(uploadPath);
 		int size = 50 * 1024 * 1024;  
-	 	String summernote = null;
 	 	try{
 			MultipartRequest multi = new MultipartRequest(
 						request,uploadFilePath,size,encType,
@@ -51,30 +50,34 @@ public class InsertAction extends HttpServlet {
 			Enumeration files = multi.getFileNames();
 			String file = (String)files.nextElement(); 
 			
-			summernote=multi.getParameter("summernote");
-			summernote = summernote.replaceAll("width", "");
-			summernote=summernote.replaceAll("style", "");
-			summernote=summernote.replaceAll("height","");
-			System.out.println(summernote);
 			
+			String summernote=multi.getParameter("summernote");
+			String userid = multi.getParameter("userid");
 			String title = multi.getParameter("title");
 			String category = multi.getParameter("category");
 			String mainpic = multi.getFilesystemName("mainpic");
+			int price = Integer.parseInt(multi.getParameter("price"));
 			
+			System.out.println(userid);
+			System.out.println(title);
+			System.out.println(summernote);
+			System.out.println(category);
+			System.out.println(mainpic);
 			
 			goodsDTO goods = new goodsDTO();
+			goods.setUserid(userid);
 			goods.setTitle(title);
 			goods.setCategory(category);
 			goods.setSummernote(summernote);
-			System.out.println(summernote);
 			goods.setMainpic(mainpic);
+			goods.setPrice(price);
 			goodsDAO dao = goodsDAO.getInstance();
-		/*	dao.goodsInsert(goods);*/
+			dao.goodsInsert(goods);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("CSSRecipe.do");
+		response.sendRedirect("../fm/main.jsp");
 	}
 
 

@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.net.URLEncoder;
  import java.net.URL;
 import java.net.HttpURLConnection;
@@ -38,8 +42,10 @@ public class NaverLoginAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String clientId = "v0i7mXAeO5DCR14ZXUDN";
-	    String clientSecret = "mmf4XzztRQ";
+
+		String clientId = "n5xLTOVp7Saleq411Wya";//애플리케이션 클라이언트 아이디값";
+	    String clientSecret = "2uWhk5pC26";//애플리케이션 클라이언트 시크릿값";
+
 	    String code = request.getParameter("code");
 	    String state = request.getParameter("state");
 	    String redirectURI = URLEncoder.encode("http://localhost:8888/FleaMarket/fmMember/naver.do", "UTF-8");
@@ -53,6 +59,7 @@ public class NaverLoginAction extends HttpServlet {
 	    String access_token = "";
 	    String refresh_token = "";
 	    System.out.println("apiURL="+apiURL);
+	    StringBuffer res = null;
 	    try {
 	      URL url = new URL(apiURL);
 	      HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -66,7 +73,7 @@ public class NaverLoginAction extends HttpServlet {
 	        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 	      }
 	      String inputLine;
-	      StringBuffer res = new StringBuffer();
+	      res = new StringBuffer();
 	      while ((inputLine = br.readLine()) != null) {
 	        res.append(inputLine);
 	      }
@@ -77,9 +84,24 @@ public class NaverLoginAction extends HttpServlet {
 	    } catch (Exception e) {
 	      System.out.println(e);
 	    }
-	    System.out.println("�슂湲곗꽌 �넗�겙:" + "AAAAOvCQZqHPTYrFkVDNHMrjyJySp2exgLvabcETUXwEnUXqlCEVOrykMwhdlxvLt1XuUoeTrXqNNidDcPHJApMwHE0=");
+
+	    System.out.println("요기서 토큰파싱합시다:" + res.toString());
+	    String origin_str = res.toString(); //우루루  다 있는거 이중에서 토큰 파싱하자
 	    
-	   request.setAttribute("access_token", access_token.toString());
+	
+
+	    
+	    String token="";
+	    JSONParser jsonparser = new JSONParser();
+	    try {
+			JSONObject jsonObject = (JSONObject)jsonparser.parse(origin_str);
+			System.out.println(jsonObject.get("access_token"));
+			token = jsonObject.get("access_token").toString();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    request.setAttribute("token", token);
 	    RequestDispatcher rd = request.getRequestDispatcher("parse.do");
 	    rd.forward(request, response);
 	    

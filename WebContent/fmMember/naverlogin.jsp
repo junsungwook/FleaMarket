@@ -24,7 +24,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <body>
   <%
-    String clientId = "v0i7mXAeO5DCR14ZXUDN";//애플리케이션 클라이언트 아이디값";
+    String clientId = "n5xLTOVp7Saleq411Wya";//애플리케이션 클라이언트 아이디값";
     String redirectURI = URLEncoder.encode("http://localhost:8888/FleaMarket/fmMember/naver.do", "UTF-8");
     SecureRandom random = new SecureRandom();
     String state = new BigInteger(130, random).toString();
