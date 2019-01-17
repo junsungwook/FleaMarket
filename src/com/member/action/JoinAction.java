@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.Security_SHA256;
 import vo.MemberDAO;
 import vo.MemberDTO;
 
@@ -36,7 +37,10 @@ public class JoinAction extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		String userid = request.getParameter("userid");
-		String pwd = request.getParameter("pwd");
+
+		util.Security_SHA256 security = new Security_SHA256();
+		String pwd = security.encriptSHA256((String)request.getParameter("pwd"));
+		
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String zipcode= request.getParameter("zipcode");
@@ -56,7 +60,7 @@ public class JoinAction extends HttpServlet {
 	    RequestDispatcher rd =request.getRequestDispatcher("../fm/main.jsp");
 	    rd.forward(request, response);
 	    
-
+	    System.out.println("암호화 pwd :"+ pwd);
 
 	}
 
