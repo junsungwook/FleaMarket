@@ -29,13 +29,13 @@ public class MemberDAO {
 	private Connection getConnection() throws Exception{
 		Context initContext = new InitialContext();
 		Context envContext = (Context)initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource)envContext.lookup("jdbc/web");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/board");
 		return ds.getConnection();
 	}
 
 	 String url,id,pwd;
 	 
-	public MemberDAO() {
+/*	public MemberDAO() {
 		try {
 		         Class.forName("oracle.jdbc.driver.OracleDriver");
 		         url ="jdbc:oracle:thin:@localhost:1521:xe";
@@ -45,7 +45,7 @@ public class MemberDAO {
 		      catch (ClassNotFoundException e) {
 		         e.printStackTrace();
 		      }
-		}
+		}*/
 
 	public String idcheck(String id) {
 		Connection con =null;
