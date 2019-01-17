@@ -22,22 +22,16 @@
 ${id }
 ${name }
 ${email }
-<script>
-$(document).ready(function(){
-	$("#??").click(function(){
-		window.open("chat.jsp","","width=500 height =500");
-	})
-})
-</script>
 
 <div class="section">
+
 <div class="login" align="right" >
 
-	  <c:if test="${sessionScope.userid==null}">
+	  <c:if test="${name==null}">
 	   		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="../fmMember/joinForm.jsp"><strong>회원가입</strong></a>
 	   	</c:if>
-	   	<c:if test = "${sessionScope.userid!=null }">
-	   	  	${userid}님 환영합니다 ♥<a href="../fmMember/naverlogin.jsp"><strong>로그아웃</strong></a>
+	   	<c:if test = "${name!=null }">
+	   	  	${name}님 환영합니다 ♥<a href="logout.do"><strong>로그아웃</strong></a>
     	</c:if>
 
 	</div> 

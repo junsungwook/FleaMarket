@@ -29,7 +29,7 @@ public class LogoutAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("../fm/main.jsp");
 	}
 
 	/**
