@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 <div class="section">
 <div class="login" align="right" >
-		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="#"><strong>회원가입</strong></a>
+		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="../fmMember/joinForm.jsp"><strong>회원가입</strong></a>
 	</div> 
 	<div id="logo">
 		<img alt="로고그림" src="../images/logo4.png">
