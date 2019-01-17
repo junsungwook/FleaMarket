@@ -16,18 +16,16 @@
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  <script type="text/javascript" src="../fm/script.js"></script>
-
+ 
 </head>
 <body>
-${id }
-${name }
-${email }
 <script>
 	$(document).ready(function(){
 		if($("#sign").val()!= "" )
 			location.href="../fm/main.jsp";
 	})
 </script>
+
 <div class="section">
 
 <div class="login" align="right" >
