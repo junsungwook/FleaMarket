@@ -1,9 +1,15 @@
 package com.member.action;
 
 import java.io.IOException;
+import java.util.Properties;
 
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,9 +51,43 @@ public class EmailCheckAction extends HttpServlet {
 		String num = str.toString();
 		System.out.println(num);
 		
-		MemberDAO dao = MemberDAO.getInstance();
+		
 		try {
-			dao.sendEmail(email,num);
+			String host = "smtp.naver.com";
+			final String username = "dmdjqn21wb";
+			final String password = "fleamarket1!";
+			int port = 465;
+			
+			String recipient =email;
+			
+			String subject = "인증번호 확인 메일";
+			String content = "인증번호 [" +num+ "]";
+			
+			Properties props = System.getProperties();
+			
+			
+			props.put("mail.smtp.host", host);
+			props.put("mail.smtp.port", port);
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.ssl.enable", "true");
+			props.put("mail.smtp.ssl.trust", host);
+			
+			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+				protected javax.mail.PasswordAuthentication getPasswordAuthentication(){
+					return new javax.mail.PasswordAuthentication(username, password);
+				}
+			});
+			session.setDebug(true);
+			
+			Message mimeMessage = new MimeMessage(session);
+			mimeMessage.setFrom(new InternetAddress("dmdjqn21wb@naver.com"));
+			mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+			
+			mimeMessage.setSubject(subject);
+			mimeMessage.setText(content);
+			
+			Transport.send(mimeMessage);
+			
 			System.out.println("전송성공 email :" + email);
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block

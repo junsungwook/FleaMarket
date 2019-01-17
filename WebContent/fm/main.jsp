@@ -19,6 +19,14 @@
 ${id }
 ${name }
 ${email }
+<script>
+$(document).ready(function(){
+	$("#??").click(function(){
+		window.open("chat.jsp","","width=500 height =500");
+	})
+})
+</script>
+
 <div class="section">
 <div class="login" align="right" >
 		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="#"><strong>회원가입</strong></a>

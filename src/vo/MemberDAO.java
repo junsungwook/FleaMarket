@@ -319,42 +319,7 @@ public class MemberDAO {
 	public int membercnt() {
 		return arr.size();
 	}
-	
-	public void sendEmail(String email, String num) throws AddressException, MessagingException {
-		// TODO Auto-generated method stub
-		String host = "smtp.gmail.com";
-		String subject = "Flea Market 인증번호 ";
-		String fromName="관리자";
-		String to = email;
-		String from = "dmdjqn@gmail.com";
-		String pwd="kwb3500!";
-		
-		String content = "인증번호 [" +num+ "]";
-		
-		Properties props = System.getProperties();
-		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", "465");
-		props.put("mail.smtp.auth", host);
-		props.put("mail.smtp.ssl.enable", "true");
-		props.put("mail.smtp.ssl.trust", host);
-		
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected javax.mail.PasswordAuthentication getPasswordAuthentication(){
-				return new javax.mail.PasswordAuthentication(from, pwd);
-			}
-		});
-		session.setDebug(true);
-		
-		Message mimeMessage = new MimeMessage(session);
-		mimeMessage.setFrom(new InternetAddress(email));
-		mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
-		
-		mimeMessage.setSubject(subject);
-		mimeMessage.setText(content);
-		
-		Transport.send(mimeMessage);
-		
-	}
+
 			
 	private void closeCon(Connection con, PreparedStatement ps){
 		
