@@ -37,10 +37,10 @@ public class JoinAction extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		String userid = request.getParameter("userid");
-
+		System.out.println(request.getParameter("password"));
 		util.Security_SHA256 security = new Security_SHA256();
-		String pwd = security.encriptSHA256((String)request.getParameter("pwd"));
-		
+		String pwd = security.encriptSHA256((String)request.getParameter("password"));
+		System.out.println(pwd);
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String zipcode= request.getParameter("zipcode");
@@ -49,18 +49,19 @@ public class JoinAction extends HttpServlet {
 		MemberDTO mb = new MemberDTO();
 	    mb.setName(name);
 	    mb.setUserid(userid);
-	    mb.setPwd(pwd);
+	    mb.setPassword(pwd);
 	    mb.setPhone(phone);
 	    mb.setEmail(email);
 	    mb.setZipcode(zipcode);
 	    mb.setAddr(addr);
-
+	    
+	    
 	    dao.memberInsert(mb);
 	    
 	    RequestDispatcher rd =request.getRequestDispatcher("../fm/main.jsp");
 	    rd.forward(request, response);
 	    
-	    System.out.println("암호화 pwd :"+ pwd);
+	    System.out.println("�븫�샇�솕 pwd :"+ pwd);
 
 	}
 

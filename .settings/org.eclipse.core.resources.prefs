@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/fm/menu.jsp=UTF-8
+encoding//src/com/member/action/JoinAction.java=UTF-8
 encoding//src/com/member/action/NaverLoginAction.java=UTF-8
+encoding//src/vo/MemberDAO.java=UTF-8
+encoding/<project>=UTF-8
