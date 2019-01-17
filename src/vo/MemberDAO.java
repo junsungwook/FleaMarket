@@ -32,21 +32,6 @@ public class MemberDAO {
 		DataSource ds = (DataSource)envContext.lookup("jdbc/board");
 		return ds.getConnection();
 	}
-
-	 String url,id,pwd;
-	 
-/*	public MemberDAO() {
-		try {
-		         Class.forName("oracle.jdbc.driver.OracleDriver");
-		         url ="jdbc:oracle:thin:@localhost:1521:xe";
-		         id = "HR";
-		         pwd = "TIGER";
-		      } 
-		      catch (ClassNotFoundException e) {
-		         e.printStackTrace();
-		      }
-		}*/
-
 	public String idcheck(String id) {
 		Connection con =null;
 		Statement st = null;
@@ -74,17 +59,17 @@ public class MemberDAO {
 		PreparedStatement ps =  null;
 			try {
 				con = getConnection();
-				String sql = "Insert into memberDB values (?,?,?,?,?,?,?)";
+				String sql = "Insert into fmmember values (?,?,?,?,?,?,?,0,'white')";
 				ps = con.prepareStatement(sql);
-				ps.setString(1,mb.getName());
-				ps.setString(2, mb.getUserid());
-				ps.setString(3, mb.getPwd());
-				ps.setString(4, mb.getEmail());
-				ps.setString(5, mb.getPhone());
-				ps.setString(6, mb.getZipcode());
-				ps.setString(7, mb.getAddr());
+				ps.setString(1,mb.getUserid());
+				ps.setString(2, mb.getPassword());
+				ps.setString(3, mb.getName());
+				ps.setString(4, mb.getAddr());
+				ps.setString(5, mb.getZipcode());
+				ps.setString(6, mb.getEmail());
+				ps.setString(7, mb.getPhone());
 				ps.executeUpdate();
-				System.out.println("회원가입 완료 ID : " + mb.getUserid() );
+				System.out.println("userid : " + mb.getUserid() );
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -98,7 +83,7 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		try {
 			con = getConnection();
-			String sql = "Delete from memberdb where userid=?";
+			String sql = "Delete from fmmember where userid=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, mb.getUserid());
 			ps.executeUpdate();
@@ -114,10 +99,10 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		try {
 			con = getConnection();
-			String sql = "Update memberdb set name=?,pwd=?,email=?,phone=?,admin=?,zipcode=?,addr=? where userid='"+mb.getUserid()+"'";
+			String sql = "Update fmmember set name=?,password=?,email=?,phone=?,admin=?,zipcode=?,addr=? where userid='"+mb.getUserid()+"'";
 			ps = con.prepareStatement(sql);
 			ps.setString(1,mb.getName());
-			ps.setString(2, mb.getPwd());
+			ps.setString(2, mb.getPassword());
 			ps.setString(3, mb.getEmail());
 			ps.setString(4, mb.getPhone());
 			ps.setString(5, mb.getZipcode());
@@ -139,13 +124,13 @@ public class MemberDAO {
 			try {
 				con = getConnection();
 				st = con.createStatement();
-				String sql = "select * from memberdb where userid='"+userid+"'";
+				String sql = "select * from fmmember where userid='"+userid+"'";
 				rs = st.executeQuery(sql);
 				if (rs.next()) {
 					mb = new MemberDTO();
 					mb.setName(rs.getString("name"));
 					mb.setUserid(rs.getString("userid"));
-					mb.setPwd(rs.getString("pwd"));
+					mb.setPassword(rs.getString("pwd"));
 					mb.setEmail(rs.getString("email"));
 					mb.setPhone(rs.getString("phone"));
 					mb.setZipcode(rs.getString("zipcode"));
@@ -170,16 +155,16 @@ public class MemberDAO {
 			String sql="";
 			if(textsch=="1"||textsch=="2") {
 				int num= Integer.parseInt(textsch);
-					sql = "select * from memberdb where " +selsch+"="+num;
+					sql = "select * from fmmember where " +selsch+"="+num;
 				}else {
-					sql = "select * from memberdb where " +selsch+" like '%"+textsch+"%'";
+					sql = "select * from fmmember where " +selsch+" like '%"+textsch+"%'";
 				}
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
 				MemberDTO mb = new MemberDTO();
 				mb.setName(rs.getString("name"));
 				mb.setUserid(rs.getString("userid"));
-				mb.setPwd(rs.getString("pwd"));
+				mb.setPassword(rs.getString("password"));
 				mb.setEmail(rs.getString("email"));
 				mb.setPhone(rs.getString("phone"));
 				mb.setZipcode(rs.getString("zipcode"));
@@ -214,7 +199,7 @@ public class MemberDAO {
 				MemberDTO mb = new MemberDTO();
 				mb.setName(rs.getString("name"));
 				mb.setUserid(rs.getString("userid"));
-				mb.setPwd(rs.getString("pwd"));
+				mb.setPassword(rs.getString("password"));
 				mb.setEmail(rs.getString("email"));
 				mb.setPhone(rs.getString("phone"));
 				mb.setZipcode(rs.getString("zipcode"));
@@ -229,7 +214,7 @@ public class MemberDAO {
 		}
 		return arr;
 	}
-	//��ã��
+	//占쏙옙찾占쏙옙
 	public ArrayList<ZipcodeDTO> zipSearch(String dong){
 		Connection con = null;
 		Statement st =null;
@@ -269,10 +254,10 @@ public class MemberDAO {
 		try {
 			con = getConnection();
 			st = con.createStatement();
-			String sql = "select * from memberdb";
+			String sql = "select * from fmmember";
 			rs = st.executeQuery(sql);
 			while (rs.next()) {	
-				hm.put(rs.getString("userid"),rs.getString("pwd"));
+				hm.put(rs.getString("userid"),rs.getString("password"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -291,7 +276,7 @@ public class MemberDAO {
 		try {
 			con = getConnection();
 			st = con.createStatement();
-			String sql = "select admin from memberdb where userid='"+userid+"'";
+			String sql = "select admin from fmmember where userid='"+userid+"'";
 			rs = st.executeQuery(sql);
 			if (rs.next()) {	
 				admin =rs.getInt("admin");
