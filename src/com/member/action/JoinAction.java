@@ -33,6 +33,7 @@ public class JoinAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
 		MemberDAO dao = MemberDAO.getInstance();
 		
 		String name = request.getParameter("name");
@@ -57,11 +58,11 @@ public class JoinAction extends HttpServlet {
 	    
 	    
 	    dao.memberInsert(mb);
-	    
+	    response.setContentType("text/html; charset=UTF-8");
 	    RequestDispatcher rd =request.getRequestDispatcher("../fm/main.jsp");
 	    rd.forward(request, response);
 	    
-	    System.out.println("�븫�샇�솕 pwd :"+ pwd);
+
 
 	}
 

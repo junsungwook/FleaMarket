@@ -36,7 +36,7 @@ public class InsertAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=UTF-8");
+		
 		String uploadPath = "upload";
 		String encType = "UTF-8";
 		ServletContext context = getServletContext();
@@ -72,6 +72,7 @@ public class InsertAction extends HttpServlet {
 			goods.setMainpic(mainpic);
 			goods.setPrice(price);
 			goodsDAO dao = goodsDAO.getInstance();
+			response.setContentType("text/html; charset=UTF-8");
 			dao.goodsInsert(goods);
 		}catch(Exception e){
 			e.printStackTrace();
