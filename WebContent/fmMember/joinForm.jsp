@@ -6,9 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+ <link rel="stylesheet" href="../fm/style.css" type="text/css">
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <script type="text/javascript" src="../fm/script.js"></script>
 <style>
+
 body {
 	padding: 30px;
 }
@@ -111,11 +115,21 @@ $(document).ready(function(){
 });
 </script>
 <body>
+	<%@include file="../fm/menu.jsp"%>
+	<%@include file="../fm/logo.jsp"%>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<h1>회원가입</h1>
+	<br>
 	<form name="frm" id="frm" action="join.do">
 		<input type="hidden" name="userid" id="userid">
 		<input type="hidden" name="password_valid">
-		<div class="container">
+		<div align="center" class="container">
 			<table id="blueone">
 				<tr>
 					<th></th>
