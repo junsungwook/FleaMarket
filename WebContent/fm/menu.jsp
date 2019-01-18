@@ -17,7 +17,17 @@
 	    	   	<c:if test = "${sessionScope.id!=null }">
 	    	  	<li><a href="logout.do">로그아웃</a></li>
 	    	</c:if>
-	        <li><a href="../fm/shop.jsp">플리마켓</a></li>
+	        <li><a href="../fm/shop.jsp">플리마켓</a>
+	 		<!--  
+	 			<ul>	
+	 				<li><a href="#">패션/뷰티</a></li>
+	 				<li><a href="#">리빙</a></li>
+	 				<li><a href="#">취미</a></li>
+	 				<li><a href="#">패션/뷰티</a></li>
+	 				<li><a href="#">펫</a></li>
+	 			</ul>       
+	 		-->	
+	        </li>
 	        <li><a href="../fm/store.jsp">스토어</a></li>
 	        <li><a href="#">커뮤니티</a></li>
 	        <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
