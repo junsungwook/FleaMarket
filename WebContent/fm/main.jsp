@@ -32,10 +32,10 @@
 <input type="hidden" id="sign" value="${sign }">
 <input type="hidden" id="id" value="${id }">
 
-	  <c:if test="${name==null}">
+	  <c:if test="${id==null}">
 	   		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="../fmMember/joinForm.jsp"><strong>회원가입</strong></a>
 	   	</c:if>
-	   	<c:if test = "${name!=null }">
+	   	<c:if test = "${id!=null }">
 	   	  	${name}님 환영합니다 ♥<a href="logout.do"><strong>로그아웃</strong></a>
     	</c:if>
 
