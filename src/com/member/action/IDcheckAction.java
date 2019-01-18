@@ -31,12 +31,12 @@ public class IDcheckAction extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      MemberDTO m = new MemberDTO();
+  
       String userid=req.getParameter("userid");
       MemberDAO dao = new MemberDAO();
       String check=dao.idcheck(userid);
       PrintWriter out = resp.getWriter();
-      out.println(check);   
+      out.println(check);
    }
 
    /**

@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class Security_SHA256 {
 	public String encriptSHA256(String str) {
 		String sha = null;
-		
+		System.out.println("요기는 시큐리티 클래스 : "+str);
 		MessageDigest sh;
 		try {
 			sh = MessageDigest.getInstance("SHA-256");
@@ -17,6 +17,7 @@ public class Security_SHA256 {
 				sb.append(Integer.toString((byteData[i]&0xff) + 0x100,16).substring(1)); 
 			}
 			sha = sb.toString();
+			System.out.println("클래스에서 암호화된내용" + sha);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
