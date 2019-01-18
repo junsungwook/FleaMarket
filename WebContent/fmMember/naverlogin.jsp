@@ -22,7 +22,10 @@
 	<link rel="stylesheet" href="login.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+	
   <body>
+  
   <%
     String clientId = "n5xLTOVp7Saleq411Wya";//애플리케이션 클라이언트 아이디값";
     String redirectURI = URLEncoder.encode("http://localhost:8888/FleaMarket/fmMember/naver.do", "UTF-8");
@@ -42,28 +45,45 @@
 			<div class="box-header">
 				<font size="6. 5em" color="#fff">로그인</font>
 			</div>
-			<label for="username">ID</label>
-			<br/>
-			<input type="text" id="username">
-			<br/>
+			
+			<form action = "login.do" method="post">
+			<label for="userid">ID</label>
+			<br>
+			<input type="text" id="userid" name="userid">
+			<br>
 			<label for="password">PW</label>
-			<br/>
-			<input type="password" id="password">
-			<br/>
+			<br>
+			<input type="password" id="password" name="password">
+			<br>
 			<button type="submit">확인</button>
+			</form>
 			<br/>
-			<a href="#"><p class="small">비밀번호/패스워드 찾기</p></a>
+			
+
+			<br>
 			<br>
 			 <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"></a>
+			 <br>
+			 <input type="button" id="id_search_bt" value="아이디찾기">
+			 <input type="button" id="pwd_seach_bt" value="비밀번호찾기">
 		</div>
 	</div>
 
   </body>
 <script>
-	$(document).ready(function () {
-    	$('#logo').addClass('animated fadeInDown');
-    	$("input:text:visible:first").focus();
+	$(document).ready(function() {
+		$('#logo').addClass('animated fadeInDown');
+		$("input:text:visible:first").focus();
+		
+		$("#id_search_bt").click(function(){
+	    	window.open("searchID.jsp","","width=500 height=200");
+	    	});
+		$("#pwd_seach_bt").click(function(){
+	    	window.open("searchPWD.jsp","","width=500 height=200");
+	    	});
 	});
+	
+	
 	$('#username').focus(function() {
 		$('label[for="username"]').addClass('selected');
 	});

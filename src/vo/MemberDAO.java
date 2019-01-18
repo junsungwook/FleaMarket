@@ -16,6 +16,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import util.Security_SHA256;
+
 import java.util.*;
 import javax.mail.*;
 
@@ -290,17 +292,145 @@ public class MemberDAO {
 		return admin;
 	}
 	public int userCheck(String userid, String pwd) {
-		HashMap<String, String> hm= gethm();
-		int result=0;
-		if(hm.containsKey(userid)){
-			if(hm.get(userid).equals(pwd)) {
-				result=1;
-			}else {result=0;}
-		}else{
-			result=-1;
+		int result = 0 ;
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select password from fmmember where userid= '"+userid+"'";
+			con = getConnection();
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			
+			if(rs.next()) {
+				if(rs.getString("password").equals(pwd)) {
+					result =  1;
+				}
+				else
+					result = -1;
+			}
+			else
+				result = -10;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return result;
 	}
+	public String getName(String userid) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String name = null;
+		
+		try {
+			String sql = "select name from fmmember where userid = ?";
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				name = rs.getString("name");
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			closeCon(con, ps, rs);
+		}
+		
+		return name;
+	}
+	
+	public String getID(String name, String email, String phone) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String id = null;
+		
+		try {
+			String sql = "select userid from fmmember where name= ? and email= ? and phone= ?";
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, email);
+			ps.setString(3, phone);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				id = rs.getString("userid");
+			}
+			else 
+				id= "-1";
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
+	public int getPWD(String userid, String email) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result =0;
+		
+		try {
+			String sql = "select password from fmmember where userid= ? and email= ?";
+			con = getConnection();
+			ps =con.prepareStatement(sql);
+			ps.setString(1, userid);
+			ps.setString(2, email);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}
+			else {
+				result =-1;
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public void updatePWD(String userid, String num) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		System.out.println("기존 인증번호(넘): " +num);
+		Security_SHA256 sha = new Security_SHA256();
+		num = sha.encriptSHA256(num);
+		System.out.println("암호화 이후 : " + num);
+		String sql = "update fmmember set password = ? where userid = ?";
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, num);
+			ps.setString(2, userid);
+			ps.executeQuery();
+			System.out.println(userid +"비번 변경성공");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeCon(con, ps);
+		}
+		
+	}
+	
+	
 	public int membercnt() {
 		return arr.size();
 	}
@@ -348,6 +478,21 @@ private void closeCon(Connection con,Statement st, ResultSet rs){
 		e.printStackTrace();
 	}
 }
+private void closeCon(Connection con,PreparedStatement ps, ResultSet rs){
+	
+	try {
+		if(con!=null)con.close();
+		if(ps!=null)ps.close();
+		if(rs!=null)rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+
+
+
 
 	
 

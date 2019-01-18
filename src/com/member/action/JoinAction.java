@@ -58,11 +58,12 @@ public class JoinAction extends HttpServlet {
 	    
 	    
 	    dao.memberInsert(mb);
-	    
+	    request.setAttribute("sign", "sign");
+	    response.setContentType("text/html; charset=UTF-8");
 	    RequestDispatcher rd =request.getRequestDispatcher("../fm/main.jsp");
 	    rd.forward(request, response);
 	    
-	    System.out.println("�븫�샇�솕 pwd :"+ pwd);
+
 
 	}
 
