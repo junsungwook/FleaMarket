@@ -15,7 +15,7 @@ import vo.BoardVO;
 /**
  * Servlet implementation class ViewAction
  */
-@WebServlet("/fmBoard/view")
+@WebServlet("/fmBoard/view.do")
 public class ViewAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

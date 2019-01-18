@@ -70,15 +70,15 @@ body{
 	<font size="6. 26em">게시판</font>
 	<br>
 	<br>
-	<form action="insert.do" method="post"  name="boardform">
+	<form action="insert.bo" method="post" enctype="multipart/form-data" name="boardform">
 	<input type ="hidden" name="num" value=<%=num %>>
 	<input type ="hidden" name="ref" value=<%=ref %>>
 	<input type ="hidden" name="re_seq" value=<%=re_seq %>>
 	<input type ="hidden" name="re_lev" value=<%=re_lev %>>
 		<table id="blueone">
 			<tr>
-					<th  class="td_left"><label for="board_name">글쓴이</label></th>
-					<th class="td_right"><input type="text" name="board_name" id="board_name" class="form-control"></th>
+				<th  class="td_left"><label for="board_name">공지사항</label></th>
+				<th class="td_right"><input type="text" name="board_name" id="board_name" class="form-control"></th>
 			</tr>
 			<tr>
 				<td class="td_left"><label for="board_pass">비밀번호</label></td>
@@ -93,11 +93,11 @@ body{
 				<td><textarea id="board_content" name="board_content" cols="55" rows="15" class="form-control"></textarea></td>
 			</tr>
 			<tr>
-				<td class="td_left"><label for="board_file"> 공개여부 </label></td>
-				<td class="td_left"><input type="radio" name="board_open" id ="board_open" value="공개" checked>공개 <input type="radio" name="board_open" id="board_open" value="비공개">비공개</td>
+				<td class="td_left"><label for="board_file"> 파일 첨부 </label></td>
+				<td class="td_right"><input name="board_file" type="file" id="board_file" class="btn btn-default"></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td class="td_left"><input type="radio" name="open" value="공개" checked>공개 <input type="radio" name="open" value="비공개">비공개</td>
 				<td class="td_right"> <input type="submit" value="등록" class="btn btn-default"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" value="다시쓰기" class="btn btn-default"></td>
 			</tr>
 		</table>

@@ -51,7 +51,7 @@ public class DeleteAction extends HttpServlet {
 		if(resp==false){
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-            out.println("<script>alert('ºñ¹Ð¹øÈ£°¡ ´Ù¸¨´Ï´Ù'); history.go(-1);</script>");
+            out.println("<script>alert('ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤!'); history.go(-1);</script>");
             out.flush(); 
 		}
 		else{

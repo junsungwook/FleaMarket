@@ -9,7 +9,7 @@ public class BoardVO {
 	private String BOARD_PASS;
 	private String BOARD_SUBJECT;
 	private String BOARD_CONTENT;
-	private String BOARD_FILE;
+	private String BOARD_OPEN;
 	private int BOARD_RE_REF;
 	private int BOARD_RE_LEV;
 	private int BOARD_RE_SEQ;
@@ -55,11 +55,11 @@ public class BoardVO {
 		BOARD_CONTENT = board_content;
 	}
 	
-	public String getBOARD_FILE() {
-		return BOARD_FILE;
+	public String getBOARD_OPEN() {
+		return BOARD_OPEN;
 	}
-	public void setBOARD_FILE(String board_file) {
-		BOARD_FILE = board_file;
+	public void setBOARD_OPEN(String board_open) {
+		BOARD_OPEN = board_open;
 	}
 	
 	public int getBOARD_RE_REF() {

@@ -4,8 +4,22 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+   
+      <link rel="stylesheet" href="../fm/style.css" type="text/css">
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../fm/script.js"></script>
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="animate.css">
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="login.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
 <script>
 function getData(pageNum){
 	$("#results").load("boardList.bo",{"pageNum":pageNum},function(data){
@@ -18,6 +32,8 @@ function getData(pageNum){
 <title>여기에 제목을 입력하십시오</title>
 </head>
 	<body>
+		<%@include file="../fm/menu.jsp"%>
+		<%@include file="../fm/logo.jsp"%>
 		<div class="container" id="results">
 			<div align="center" id="count">
 				총 게시물 수 : ${count }
@@ -45,7 +61,18 @@ function getData(pageNum){
 							<c:if test ="${list.BOARD_RE_LEV  eq 0}">
 							<img src="../image/level.gif" width="5" height="16">
 							</c:if>
-							<a href="#" onclick="location.href='view?BOARD_NUM=${list.BOARD_NUM}'">${list.BOARD_SUBJECT }</a></td>
+							<c:if test="${list.BOARD_OPEN eq '공개'}">
+							<a href="#" onclick="location.href='view.do?BOARD_NUM=${list.BOARD_NUM}'">${list.BOARD_SUBJECT }</a>
+							</c:if>
+							<c:if test="${list.BOARD_OPEN eq '비공개'}">
+								<c:if test="${sessionScope.id=='master'}">
+									<a href="#" onclick="location.href='view.do?BOARD_NUM=${list.BOARD_NUM}'">비공개글입니다.</a>
+								</c:if>
+								<c:if test="${sessionScope.id!= 'master'}">
+									비공개글입니다.
+								</c:if>
+							</c:if>
+							</td>
 							<td>${list.BOARD_DATE }</td>
 							<td>${list.BOARD_READCOUNT }</td>
 						</tr>
