@@ -2,6 +2,10 @@ package vo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -18,7 +22,7 @@ public class goodsDAO {
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/board");
 		return ds.getConnection();
 	}
-	//��ǰ insert
+	//insert(goods)
 	public void goodsInsert(goodsDTO g) {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -38,4 +42,48 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
+	//goodsList
+	public ArrayList<goodsDTO> goodsList(String field, String search, int startRow, int endRow){
+		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	//객체 닫는 놈들
+	private void closeCon(Connection con, PreparedStatement ps) {
+		try {
+			if(ps!=null) ps.close();
+			if(con!=null) con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	}
+	private void closeCon(Connection con, Statement st,ResultSet rs) {
+		try {
+			if(st!=null) st.close();
+			if(con!=null) con.close();
+			if(rs!=null) rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	}
+	private void closeCon(Connection con, Statement st) {
+		try {
+			if(st!=null) st.close();
+			if(con!=null) con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

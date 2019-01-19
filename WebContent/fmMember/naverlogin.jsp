@@ -2,6 +2,7 @@
 <%@ page import="java.security.SecureRandom" %>
 <%@ page import="java.math.BigInteger" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+
 <html>
   <head>
     <title>네이버로그인</title> 
@@ -20,12 +21,9 @@
 	<link rel="stylesheet" href="animate.css">
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="login.css">
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	
-	
   <body>
-  
+
   <%
     String clientId = "n5xLTOVp7Saleq411Wya";//애플리케이션 클라이언트 아이디값";
     String redirectURI = URLEncoder.encode("http://localhost:8888/FleaMarket/fmMember/naver.do", "UTF-8");
