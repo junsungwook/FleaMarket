@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
-   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- 메인페이지 -->
+<!-- 패션 조회 된 페이지 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>여기에 제목을 입력하십시오</title>
+<title>Fashion & beauty</title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
@@ -61,6 +57,24 @@
  		width: 100%;
  		height: 100%;
  	}
+ 	.goodsList{
+ 		width: 100%;
+ 		padding-left: 5%;
+ 		background-color: green;
+ 	}
+ 	.goodsDiv{
+ 		width: 400px;
+ 		height: 500px;
+ 		float: left;
+ 		background-color: orange;
+ 	}
+ 	.goodsDiv img{
+ 		height: 70%;
+ 		background-color: gray;
+ 	}
+ 	.goodsDiv .goodsText{
+ 	
+ 	}
  </style>
 </head>
 <body>
@@ -75,7 +89,17 @@
 		<img alt="패션메인" src="../images/feshion.png" class="faImage">
 	</div>
 	<div class="goodsList">
+		<c:forEach items="${lists }" var="list">
+			<div class="goodsDiv">
+				<img alt="상품사진" src="#">
+				<div class="goodsText">
+					${list.title }<br>
+					${list.price }<br>
+					${list.userid }
+				</div>
+			</div>
 		
+		</c:forEach>
 	</div>
 	<%@include file="../fm/footer.jsp"%>
 </body>

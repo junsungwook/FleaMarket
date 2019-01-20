@@ -57,13 +57,7 @@ public class InsertAction extends HttpServlet {
 			String category = multi.getParameter("category");
 			String mainpic = multi.getFilesystemName("mainpic");
 			int price = Integer.parseInt(multi.getParameter("price"));
-			
-			System.out.println(userid);
-			System.out.println(title);
-			System.out.println(summernote);
-			System.out.println(category);
-			System.out.println(mainpic);
-			
+		
 			goodsDTO goods = new goodsDTO();
 			goods.setUserid(userid);
 			goods.setTitle(title);
@@ -77,7 +71,6 @@ public class InsertAction extends HttpServlet {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		response.sendRedirect("../fm/main.jsp");
 	}
 
