@@ -1,6 +1,7 @@
 package vo;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,15 +43,35 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
-	//goodsList
-	public ArrayList<goodsDTO> goodsList(String field, String search, int startRow, int endRow){
+	//goodsList(fashion)
+	public ArrayList<goodsDTO> goodsList(){
 		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
 		Connection con = null;
-		PreparedStatement ps = null;
+		Statement st = null;
 		ResultSet rs = null;
-		
-		
-		return null;
+		String sql="";
+		 try {
+		     con = getConnection();
+	    	 sql = "select * from goods";
+	    	 st = con.createStatement();
+	    	 rs = st.executeQuery(sql);
+	    	 while(rs.next()) {
+				 goodsDTO g = new goodsDTO();
+				 g.setNum(rs.getInt("num"));
+				 g.setUserid(rs.getString("userid"));
+				 g.setTitle(rs.getString("title"));
+				 g.setCategory(rs.getString("category"));
+				 g.setSummernote(rs.getString("summernote"));
+				 g.setMainpic(rs.getString("mainpic"));
+				 g.setPrice(rs.getInt("price"));
+				 arr.add(g);
+		     }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+		     closeCon(con,st,rs);
+		  }
+		  return arr;
 	}
 	
 	
