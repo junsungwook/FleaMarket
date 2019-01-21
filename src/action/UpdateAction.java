@@ -55,16 +55,12 @@ public class UpdateAction extends HttpServlet {
 		String BOARD_PASS = request.getParameter("BOARD_PASS");
 		int BOARD_NUM = Integer.parseInt(request.getParameter("BOARD_NUM"));
 		BoardDAO dao  = BoardDAO.getInstance();
-		boolean resp = dao.updateBoard(BOARD_NUM,BOARD_PASS,BOARD_SUBJECT,BOARD_CONTENT);
-		if(resp==false){
+		dao.updateBoard(BOARD_NUM,BOARD_PASS,BOARD_SUBJECT,BOARD_CONTENT);
+		
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-            out.println("<script>alert('ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù'); history.go(-1);</script>");
+            out.println("<script>alert('ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.'); </script>");
             out.flush(); 
-		}
-		else{
 			response.sendRedirect("boardList.bo");
-		}
 	}
-
 }

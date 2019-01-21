@@ -25,8 +25,8 @@ public class BoardDAO {
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/board");
 		return ds.getConnection();
 	}
-	//boolean retrun
-	   public boolean updateBoard(int BOARD_NUM,String BOARD_PASS,String BOARD_SUBJECT,String BOARD_CONTENT) {
+	//updateboard
+	   public void updateBoard(int BOARD_NUM,String BOARD_PASS,String BOARD_SUBJECT,String BOARD_CONTENT) {
 	      Connection con =null;
 	      PreparedStatement ps = null;
 	      ResultSet rs = null;
@@ -34,54 +34,39 @@ public class BoardDAO {
 	      String sql="";
 	      boolean b=false;
 	         try {
-	        	 con=getConnection();
-		            sql = "select BOARD_PASS from board where BOARD_NUM=?";
-		            ps = con.prepareStatement(sql);
-		            ps.setInt(1, BOARD_NUM);
-		            rs = ps.executeQuery();
-		            if(rs.next()) {
 		            	if(rs.getString("BOARD_PASS").equals(BOARD_PASS)) {
 		            		sql = "update board set BOARD_SUBJECT='"+BOARD_SUBJECT+"',BOARD_CONTENT='"+BOARD_CONTENT+"' where BOARD_NUM="+BOARD_NUM;
 		            		st = con.createStatement();
 		                    st.executeQuery(sql);
 			            	b = true;
-	            	}	 
 	            }
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }finally {
 	            closeCon(con,ps,rs);
 	         }
-			return b;
+		
 	   }
 	//delboard
-	public boolean delBoard(int BOARD_NUM,String BOARD_PASS) {
+	public void delBoard(int BOARD_NUM,String BOARD_PASS) {
 	      Connection con =null;
 	      PreparedStatement ps = null;
 	      ResultSet rs = null;
 	      String sql="";
 	      boolean b=false;
 	         try {
-	        	con=getConnection();
-	            sql = "select BOARD_PASS from board where BOARD_NUM=?";
-	            ps = con.prepareStatement(sql);
-	            ps.setInt(1, BOARD_NUM);
-	            rs = ps.executeQuery();
-	            if(rs.next()) {
 	            	if(rs.getString("BOARD_PASS").equals(BOARD_PASS)) {
 	            		sql = "delete from board where BOARD_NUM=?";
 		            	 PreparedStatement ps1 =con.prepareStatement(sql); 
 		            	 ps1.setInt(1, BOARD_NUM);
 		            	 ps1.executeUpdate();
 		            	 b = true;
-	            	}	 
-	            }
+	            	}
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }finally {
 	            closeCon(con,ps,rs);
 	         }
-			return b;
 	   }
 //read count
 	   public void updateReadCount(int board_num){
@@ -266,6 +251,7 @@ public class BoardDAO {
 				 b.setBOARD_NUM(rs.getInt("BOARD_NUM"));
 				 b.setBOARD_NAME(rs.getString("BOARD_NAME"));
 				 b.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				 b.setBOARD_PASS(rs.getString("BOARD_PASS")); 
 				 b.setBOARD_DATE(rs.getDate("BOARD_DATE"));
 				 b.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
 				 b.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));

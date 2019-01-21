@@ -15,7 +15,7 @@ import vo.BoardDAO;
 /**
  * Servlet implementation class DeleteAction
  */
-@WebServlet("/board/delete")
+@WebServlet("/fmBoard/delete")
 public class DeleteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,16 +47,14 @@ public class DeleteAction extends HttpServlet {
 		int BOARD_NUM = Integer.parseInt(request.getParameter("BOARD_NUM"));
 		String BOARD_PASS = request.getParameter("BOARD_PASS");
 		BoardDAO dao  = BoardDAO.getInstance();
-		boolean resp = dao.delBoard(BOARD_NUM,BOARD_PASS);
-		if(resp==false){
+		dao.delBoard(BOARD_NUM,BOARD_PASS);
+		
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-            out.println("<script>alert('비밀번호가 틀렸습니다!'); history.go(-1);</script>");
+            out.println("<script>alert('삭제되었습니다!'); history.go(-1);</script>");
             out.flush(); 
-		}
-		else{
 			response.sendRedirect("boardList.bo");
-		}
+		
 	}
 
 }
