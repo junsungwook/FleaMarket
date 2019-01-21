@@ -53,24 +53,36 @@
  		font-size: 13pt;
  	}
  	.goodsList{
- 		background-color: pink;
  		width: 100%;
  		height: 100%;
- 	}
- 	.goodsList{
- 		width: 100%;
- 		padding-left: 5%;
- 		background-color: green;
+ 		padding-left: 143px;
+ 		padding-top: 20px;
  	}
  	.goodsDiv{
- 		width: 400px;
- 		height: 500px;
+ 		width: 320.5px;
+ 		height: 450px;
  		float: left;
- 		background-color: orange;
+ 		margin-right: 45.5px;
+ 		margin-bottom: 57.8px;
+ 		border: 1px solid #CBCACA;
+ 	}
+ 	.goodsDiv:hover{
+ 		border: 2px solid #7F7F7F;
+ 	}
+ 	.goodsListBox{
+ 		width: 75%;
+ 		margin: 0 auto;
+ 	}
+ 	.goodsDiv .imageBox{
+ 		height: 70%;
+ 		overflow: hidden;
  	}
  	.goodsDiv img{
- 		height: 70%;
- 		background-color: gray;
+ 		height: 100%;
+ 		width: auto;
+ 		display: block;
+ 		margin: 0 auto;
+
  	}
  	.goodsDiv .goodsText{
  	
@@ -89,17 +101,20 @@
 		<img alt="패션메인" src="../images/feshion.png" class="faImage">
 	</div>
 	<div class="goodsList">
-		<c:forEach items="${lists }" var="list">
-			<div class="goodsDiv">
-				<img alt="상품사진" src="#">
-				<div class="goodsText">
-					${list.title }<br>
-					${list.price }<br>
-					${list.userid }
+		<div class="goodsListBox">
+			<c:forEach items="${lists }" var="list">
+				<div class="goodsDiv">
+					<div class="imageBox">
+						<img alt="상품사진" src="../upload/${list.mainpic}">
+					</div>
+					<div class="goodsText">
+						${list.title }<br>
+						${list.price }<br>
+						${list.userid }
+					</div>
 				</div>
-			</div>
-		
-		</c:forEach>
+			</c:forEach>
+		</div>
 	</div>
 	<%@include file="../fm/footer.jsp"%>
 </body>
