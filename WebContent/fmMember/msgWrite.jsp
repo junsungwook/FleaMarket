@@ -67,7 +67,8 @@ body{
 </head>
 
 <body>
-
+<form action="message.do">
+<input type="hidden" id="userid" name="userid" value="${sessionScope.id}">
 <table id="blueone">
 <h3 align="left"><strong>쪽지 보내기</strong></h3>
 	<tr>
@@ -76,14 +77,19 @@ body{
 	</tr>
 	<tr>	
 		<th>받을 사람 ID:</th>
-		<th><input type="text" class ="form-control"></th>
+		<th><input type="text" class ="form-control" id="sendid" name="sendid"></th>
 	</tr>
 	<tr>
 		<td>내용:</td>
-		<td><textarea maxlength="200"  cols="55" rows="15" class ="form-control" id="contents" name="contents" onkeyup="textCount(this,'contentcount')"></textarea>	
+		<td><textarea maxlength="200"  cols="55" rows="15" class ="form-control" id="content" name="content" onkeyup="textCount(this,'contentcount')"></textarea>	
 		*200글자 이내
 		(<span id="contentcount" style="color:green;">0</span>)</td>
 	</tr>
+	<tr>
+	<td></td>
+	<td><input type="submit" value="메세지 보내기" class="btn btn-default"></td>
+	<tr>
 </table>
+</form>
 </body>
 </html>
