@@ -434,26 +434,6 @@ public class MemberDAO {
 	public int membercnt() {
 		return arr.size();
 	}
-	//메세지 보내기
-	public void insertMsg(String userid, String sendid,String contents) {
-		Connection con= null;
-		PreparedStatement ps =  null;
-			try {
-				con = getConnection();
-				String sql = "Insert into FMMSG values (?,?,?)";
-				ps = con.prepareStatement(sql);
-				ps.setString(1,userid);
-				ps.setString(2, sendid);
-				ps.setString(3, contents);
-				ps.executeUpdate();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				closeCon(con,ps);
-			}
-			
-	}
 
 			
 	private void closeCon(Connection con, PreparedStatement ps){

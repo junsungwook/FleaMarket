@@ -187,8 +187,13 @@
           </div>
           <div role="tabpanel" class="tab-pane" id="optimization">
             <div class="design-process-content">
-              <h3 class="semi-bold">Optimization</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
+              <h3 class="semi-bold">장바구니</h3>
+              <table>
+              	<tr>
+              		<th>상품이름</th>
+              		<th>옵션</th>
+              	</tr>
+              </table>
                </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="content">
