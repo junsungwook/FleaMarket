@@ -1,7 +1,12 @@
 package vo;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -18,7 +23,7 @@ public class goodsDAO {
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/board");
 		return ds.getConnection();
 	}
-	//��ǰ insert
+	//insert(goods)
 	public void goodsInsert(goodsDTO g) {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -38,4 +43,68 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
+	//goodsList(fashion)
+	public ArrayList<goodsDTO> goodsList(){
+		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		String sql="";
+		 try {
+		     con = getConnection();
+	    	 sql = "select * from goods";
+	    	 st = con.createStatement();
+	    	 rs = st.executeQuery(sql);
+	    	 while(rs.next()) {
+				 goodsDTO g = new goodsDTO();
+				 g.setNum(rs.getInt("num"));
+				 g.setUserid(rs.getString("userid"));
+				 g.setTitle(rs.getString("title"));
+				 g.setCategory(rs.getString("category"));
+				 g.setSummernote(rs.getString("summernote"));
+				 g.setMainpic(rs.getString("mainpic"));
+				 g.setPrice(rs.getInt("price"));
+				 arr.add(g);
+		     }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+		     closeCon(con,st,rs);
+		  }
+		  return arr;
+	}
+	
+	
+	
+	
+	
+	//객체 닫는 놈들
+	private void closeCon(Connection con, PreparedStatement ps) {
+		try {
+			if(ps!=null) ps.close();
+			if(con!=null) con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	}
+	private void closeCon(Connection con, Statement st,ResultSet rs) {
+		try {
+			if(st!=null) st.close();
+			if(con!=null) con.close();
+			if(rs!=null) rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	}
+	private void closeCon(Connection con, Statement st) {
+		try {
+			if(st!=null) st.close();
+			if(con!=null) con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

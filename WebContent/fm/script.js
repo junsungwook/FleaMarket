@@ -105,13 +105,13 @@ $(document).ready(function(){
 		}
 		return str;
 	}
-	var cellPhone = document.getElementById('phone');
-	
-	cellPhone.onkeyup = function(event) {
-		event = event || window.event;
-		var val = this.value.trim();
-		this.value = autoHypenPhone(val);
-	}
+//	var cellPhone = document.getElementById('phone');
+//	
+//	cellPhone.onkeyup = function(event) {
+//		event = event || window.event;
+//		var val = this.value.trim();
+//		this.value = autoHypenPhone(val);
+//	}
 	
 	window.requestAnimationFrame(svgCurve);
 

@@ -25,7 +25,7 @@
 		      <h4>fashion & beauty</h4>
 		    </div>
 		  </figcaption>
-		  <a href="#"></a>
+		  <a href="fashionList.do"></a>
 		</figure>
 		<figure class="snip1445 cate2">
 		  <img src="../images/living.png" alt="living" />
