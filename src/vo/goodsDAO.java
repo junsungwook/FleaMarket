@@ -73,7 +73,38 @@ public class goodsDAO {
 		  }
 		  return arr;
 	}
-	//이미지 불러오는 놈
+	//제품 상세보기
+	public goodsDTO goodsView(int num) {
+	   Connection con= null;
+	   Statement st = null;
+	   ResultSet rs = null;
+	   goodsDTO g = null;
+	   String sql="";
+	   try {
+	     con = getConnection();
+	     sql = "select * "+
+	    	   "from (select * from goods where category='fashion')"+
+	    	   "where num="+num;
+		 st = con.createStatement();
+		 rs = st.executeQuery(sql);
+		 if(rs.next()) {
+			 g = new goodsDTO();
+			 g.setNum(rs.getInt("num"));
+			 g.setUserid(rs.getString("userid"));
+			 g.setTitle(rs.getString("title"));
+			 g.setCategory(rs.getString("category"));
+			 g.setSummernote(rs.getString("summernote")); 
+			 g.setMainpic(rs.getString("mainpic")); 
+			 g.setPrice(rs.getInt("price"));
+	     }
+	  } catch (Exception e) {
+	    e.printStackTrace();
+	  }finally {
+	     closeCon(con,st,rs);
+	  }
+	  return g;
+	}
+	
 	
 	
 	
