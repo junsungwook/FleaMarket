@@ -96,7 +96,7 @@ $(document).ready(function(){
 						</c:if>
 					</td>
 					<td>
-						<input type="button" value="글목록" class="btn btn-default" onclick="location='boardList.jsp'">
+						<input type="button" value="글목록" class="btn btn-default" onclick="location='boardList.bo'">
 						<input type="button" value="답글쓰기" class="btn btn-default" onclick="location='ReplyForm.jsp?num=${board.BOARD_NUM }&board_re_ref=${board.BOARD_RE_REF }&board_re_seq=${board.BOARD_RE_SEQ }&board_re_lev=${board.BOARD_RE_LEV }'">
 					</td>
 				</tr>
