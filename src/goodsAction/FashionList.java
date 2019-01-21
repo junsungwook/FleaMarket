@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +36,10 @@ public class FashionList extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		goodsDAO dao = goodsDAO.getInstance();
 		ArrayList<goodsDTO> arr = dao.goodsList();
+		//request.setAttribute("", "");
 		request.setAttribute("lists", arr);
 		response.setContentType("text/html; charset=UTF-8");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("fashionPage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/fashionPage.jsp");
 		dispatcher.forward(request, response);
 	}
 
