@@ -18,6 +18,7 @@
     	<div class="squ1"></div>
 		<div class="squ2"></div>
 		<div class="squ3"></div>
+		
 		<figure class="snip1445 cate1">
 		  <img src="../images/feshion.png" alt="fashion" />
 		  <figcaption>
@@ -25,8 +26,9 @@
 		      <h4>fashion & beauty</h4>
 		    </div>
 		  </figcaption>
-		  <a href="fashionList.do"></a>
+		  <a href="CaList.do?category=fashion"></a>
 		</figure>
+		
 		<figure class="snip1445 cate2">
 		  <img src="../images/living.png" alt="living" />
 		  <figcaption>
@@ -34,17 +36,19 @@
 		      <h4>living</h4>
 		    </div>
 		  </figcaption>
-		  <a href="#"></a>
+		  <a href="CaList.do?category=living"></a>
 		</figure>
+		
 		<figure class="snip1445 cate3">
-		  <img src="../images/elec.png" alt="elec" />
+		  <img src="../images/elec.png" alt="hobby" />
 		  <figcaption>
 		    <div>
 		      <h4>hobby</h4>
 		    </div>
 		  </figcaption>
-		  <a href="#"></a>
+		  <a href="CaList.do?category=hobby"></a>
 		</figure>
+		
 		<figure class="snip1445 cate4">
 		  <img src="../images/food.png" alt="food" />
 		  <figcaption>
@@ -52,8 +56,9 @@
 		      <h4>food</h4>
 		    </div>
 		  </figcaption>
-		  <a href="#"></a>
+		  <a href="CaList.do?category=food"></a>
 		</figure>
+		
 		<figure class="snip1445 cate5">
 		  <img src="../images/pet.png" alt="pet" />
 		  <figcaption>
@@ -61,7 +66,7 @@
 		      <h4>pet</h4>
 		    </div>
 		  </figcaption>
-		  <a href="#"></a>
+		  <a href="CaList.do?category=pet"></a>
 		</figure>
     </div>
 <%@include file="footer.jsp"%>
