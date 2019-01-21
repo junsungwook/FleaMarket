@@ -1,28 +1,28 @@
 package action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import vo.BoardDAO;
-import vo.BoardVO;
+import vo.MSGDAO;
+import vo.MSGVO;
 
 /**
- * Servlet implementation class ViewAction
+ * Servlet implementation class MessageAction
  */
-@WebServlet("/fmBoard/view.do")
-public class ViewAction extends HttpServlet {
+@WebServlet("/fmMember/message.do")
+public class MessageAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAction() {
+    public MessageAction() {
+    	
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +32,21 @@ public class ViewAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		int BOARD_NUM = Integer.parseInt(request.getParameter("BOARD_NUM"));
-		BoardDAO dao = BoardDAO.getInstance();
-		dao.updateReadCount(BOARD_NUM);
-		BoardVO b = dao.boardView(BOARD_NUM);
-		request.setAttribute("board", b);	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("boardView.jsp");
-		dispatcher.forward(request, response);
+		
+		MSGVO m = new MSGVO();
+		m.setUserid(request.getParameter("userid"));
+		m.setSendid(request.getParameter("sendid"));
+		m.setContent(request.getParameter("content"));
+		
+		
+		
+		MSGDAO dao = MSGDAO.getInstance();
+		dao.msgInsert(m);
+		PrintWriter out=response.getWriter();
+		out.println("<script>history.back();</script>");
+		response.sendRedirect("boardList.bo");
+		
+	    
 	}
 
 	/**

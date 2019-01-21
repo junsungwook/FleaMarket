@@ -25,7 +25,7 @@ public class BoardDAO {
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/board");
 		return ds.getConnection();
 	}
-	//수정시 비번 조회 한 후 수정하기
+	//boolean retrun
 	   public boolean updateBoard(int BOARD_NUM,String BOARD_PASS,String BOARD_SUBJECT,String BOARD_CONTENT) {
 	      Connection con =null;
 	      PreparedStatement ps = null;
@@ -54,7 +54,7 @@ public class BoardDAO {
 	         }
 			return b;
 	   }
-	//삭제시 비번 조회 한 후 삭제하기
+	//delboard
 	public boolean delBoard(int BOARD_NUM,String BOARD_PASS) {
 	      Connection con =null;
 	      PreparedStatement ps = null;
@@ -83,7 +83,7 @@ public class BoardDAO {
 	         }
 			return b;
 	   }
-	//조회수 업데이트
+//read count
 	   public void updateReadCount(int board_num){
 		    Connection con= null;
 			PreparedStatement ps = null;
@@ -95,14 +95,14 @@ public class BoardDAO {
 				ps=con.prepareStatement(sql);
 				updateCount = ps.executeUpdate();
 			} catch (Exception e) {
-				// TODO 자동 생성된 catch 블록
+		
 				e.printStackTrace();
 			}
 			finally{
 				closeCon(ps);
 			}
 		}
-	//게시판 글 카운팅
+	//board count
 	public int boardCount() {
 		int count = 0;
 		Connection con = null;
@@ -149,7 +149,7 @@ public class BoardDAO {
 			              ps.setString(2, bv.getBOARD_PASS());
 			              ps.setString(3, bv.getBOARD_SUBJECT());
 			              ps.setString(4, bv.getBOARD_CONTENT());
-			              ps.setString(5, bv.getBOARD_FILE());
+			              ps.setString(5, bv.getBOARD_OPEN());
 			              ps.setInt(6,bv.getBOARD_RE_REF());
 			              ps.setInt(7,re_level);
 			              ps.setInt(8, number);
@@ -161,7 +161,7 @@ public class BoardDAO {
 			              closeCon(con,ps,rs);
 			           }    
 				}
-	//게시판 글 쓰기
+	//board insert function
 	public void boardInsert(BoardVO bv) {
         Connection con= null;
         PreparedStatement ps =  null;
@@ -176,7 +176,7 @@ public class BoardDAO {
               ps.setString(2, bv.getBOARD_PASS());
               ps.setString(3, bv.getBOARD_SUBJECT());
               ps.setString(4, bv.getBOARD_CONTENT());
-              ps.setString(5, bv.getBOARD_FILE());
+              ps.setString(5, bv.getBOARD_OPEN());
               ps.executeQuery();
            } catch (Exception e) {
               // TODO Auto-generated catch block
@@ -185,7 +185,7 @@ public class BoardDAO {
               closeCon(con,ps,rs);
            }    
      }
-	//게시판 글 목록(전체보기)
+	//boardList check
 	public ArrayList<BoardVO> boardList(int startRow, int endRow) {
 	   Connection con= null;
 	   Statement st = null;
@@ -194,7 +194,7 @@ public class BoardDAO {
 	   String sql="";
 	   try {
 	     con = getConnection();
-	     sql = "select * from (select rownum rn,aa.* from (select * from board order by board_re_ref desc,board_re_seq asc)aa) where rn>="+startRow+" and rn<="+endRow;
+	     sql = "select * from (select rownum rn,aa.* from (select * from board order by board_re_ref desc,board_re_seq asc)aa) where rn>="+startRow+" and rn<="+endRow+" and board_pass!='master'";
 		 st = con.createStatement();
 		 rs = st.executeQuery(sql);
 		 while(rs.next()) {
@@ -207,6 +207,7 @@ public class BoardDAO {
 			 b.setBOARD_RE_REF(rs.getInt("BOARD_RE_REF"));
 			 b.setBOARD_RE_LEV(rs.getInt("BOARD_RE_LEV"));
 			 b.setBOARD_RE_SEQ(rs.getInt("BOARD_RE_SEQ"));
+			 b.setBOARD_OPEN(rs.getString("BOARD_OPEN"));
 			 arr.add(b);
 	     }
 	  } catch (Exception e) {
@@ -216,7 +217,39 @@ public class BoardDAO {
 	  }
 	  return arr;
 	}
-	//제목 눌렀을 때 상세보기
+	//noticelist
+	public ArrayList<BoardVO> noticeList() {
+		   Connection con= null;
+		   Statement st = null;
+		   ResultSet rs = null; 
+		   ArrayList<BoardVO> arr = new ArrayList<>();
+		   String sql="";
+		   try {
+		     con = getConnection();
+		     sql = "select * from board where board_pass='master'";
+			 st = con.createStatement();
+			 rs = st.executeQuery(sql);
+			 while(rs.next()) {
+				 BoardVO b = new BoardVO();
+				 b.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				 b.setBOARD_NAME(rs.getString("BOARD_NAME"));
+				 b.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				 b.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				 b.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT")); 
+				 b.setBOARD_RE_REF(rs.getInt("BOARD_RE_REF"));
+				 b.setBOARD_RE_LEV(rs.getInt("BOARD_RE_LEV"));
+				 b.setBOARD_RE_SEQ(rs.getInt("BOARD_RE_SEQ"));
+				 b.setBOARD_OPEN(rs.getString("BOARD_OPEN"));
+				 arr.add(b);
+		     }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+		     closeCon(con,st,rs);
+		  }
+		  return arr;
+		}
+	//board view
 	public BoardVO boardView(int num) {
 		   Connection con= null;
 		   Statement st = null;
@@ -236,7 +269,7 @@ public class BoardDAO {
 				 b.setBOARD_DATE(rs.getDate("BOARD_DATE"));
 				 b.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
 				 b.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
-				 b.setBOARD_FILE(rs.getString("BOARD_FILE"));
+				 b.setBOARD_OPEN(rs.getString("BOARD_OPEN"));
 				 b.setBOARD_RE_REF(rs.getInt("BOARD_RE_REF"));
 				 b.setBOARD_RE_LEV(rs.getInt("BOARD_RE_LEV"));
 				 b.setBOARD_RE_SEQ(rs.getInt("BOARD_RE_SEQ"));
@@ -249,7 +282,7 @@ public class BoardDAO {
 		  }
 		  return b;
 		}
-	//댓글 쓰기
+	//comment insert
 	   public void commentInsert(CommentVO cb) {
 	       Connection con= null;
 	       PreparedStatement ps =  null;
@@ -270,7 +303,7 @@ public class BoardDAO {
 	             closeCon(con,ps,rs);
 	          }
 	    }
-	   //댓글 불러오기
+	   //commentList return
 	  public ArrayList<CommentVO> commentList(int bnum){
 		  Connection con= null;
 		   Statement st = null;
@@ -299,7 +332,7 @@ public class BoardDAO {
 		  }
 		  return arr;
 	  }
-	//닫아주는 것들
+	//占쌥억옙占쌍댐옙 占싶듸옙
 	private void closeCon(Connection con, PreparedStatement ps){
 	      try {
 	         if(con!=null)con.close();

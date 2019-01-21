@@ -44,7 +44,7 @@ public class ReplyAction extends HttpServlet {
 		bv.setBOARD_NUM(Integer.parseInt(multi.getParameter("num")));
 		String filename = multi.getFilesystemName("board_file");
 		String orgName = multi.getOriginalFileName("board_file");
-		bv.setBOARD_FILE(orgName);
+//		bv.setBOARD_FILE(orgName);
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.boardReply(bv,num);
 		response.sendRedirect("boardList.bo");

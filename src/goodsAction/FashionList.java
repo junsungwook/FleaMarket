@@ -1,28 +1,30 @@
-package action;
+package goodsAction;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vo.BoardDAO;
+import vo.goodsDAO;
+import vo.goodsDTO;
 
 /**
- * Servlet implementation class DeleteAction
+ * Servlet implementation class FashionList
  */
-@WebServlet("/board/delete")
-public class DeleteAction extends HttpServlet {
+@WebServlet("/fm/fashionList.do")
+public class FashionList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteAction() {
+    public FashionList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +34,12 @@ public class DeleteAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		int BOARD_NUM = Integer.parseInt(request.getParameter("BOARD_NUM"));
-		request.setAttribute("BOARD_NUM", BOARD_NUM);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("deleteForm.jsp");
+		goodsDAO dao = goodsDAO.getInstance();
+		ArrayList<goodsDTO> arr = dao.goodsList();
+		//request.setAttribute("", "");
+		request.setAttribute("lists", arr);
+		response.setContentType("text/html; charset=UTF-8");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/fashionPage.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -43,20 +48,7 @@ public class DeleteAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		int BOARD_NUM = Integer.parseInt(request.getParameter("BOARD_NUM"));
-		String BOARD_PASS = request.getParameter("BOARD_PASS");
-		BoardDAO dao  = BoardDAO.getInstance();
-		boolean resp = dao.delBoard(BOARD_NUM,BOARD_PASS);
-		if(resp==false){
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-            out.println("<script>alert('비밀번호가 틀렸습니다!'); history.go(-1);</script>");
-            out.flush(); 
-		}
-		else{
-			response.sendRedirect("boardList.bo");
-		}
+		doGet(request, response);
 	}
 
 }
