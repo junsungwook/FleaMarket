@@ -25,6 +25,16 @@
 			re_lev=Integer.parseInt(request.getParameter("re_lev"));
 	}
 %>
+<script>
+	function textCount(obj,target){
+		var len =obj.value.length;//입력한글자수
+		if(200<len){//글쓴이:20 내용:70
+			alert("글자수 초과!");
+			return;
+		}
+		$("#"+target).text(len);//target영역에 글자 수 출력
+	}
+</script>
 <style> 
 body{
 	padding : 30px;
@@ -82,18 +92,19 @@ body{
 			</tr>
 			<tr>
 				<td class="td_left"><label for="board_pass">비밀번호</label></td>
-				<td class="td_right"><input name="board_pass" type="password" id="board_pass" class="form-control"></td>
+				<td class="td_right"><input type="text"  name="board_pass" type="password" id="board_pass" class="form-control"></td>
 			</tr>
 			<tr>
 				<td class="td_left"><label for="board_subject">제 목</label></td>
-				<td class="td_right"><input name="board_subject" type="text" id="board_subject" class="form-control"></td>
+				<td class="td_right"><input type="text"  name="board_subject" type="text" id="board_subject" class="form-control"></td>
 			</tr>
 			<tr>
 				<td class="td_left"><label for="board_content">내 용</label></td>
-				<td><textarea id="board_content" name="board_content" cols="55" rows="15" class="form-control"></textarea></td>
+				<td><textarea maxlength="400"  cols="55" rows="15" class ="form-control" id="board_content" name="board_content" onkeyup="textCount(this,'contentcount')"></textarea>	
+				*300글자 이내(<span id="contentcount" style="color:green;">0</span>)</td>
 			</tr>
 			<tr>
-				<td class="td_left"><label for="board_file"> 공개여부 </label></td>
+				<td class="td_left"><label for="board_open"> 공개여부 </label></td>
 				<td class="td_left"><input type="radio" name="board_open" id ="board_open" value="공개" checked>공개 <input type="radio" name="board_open" id="board_open" value="비공개">비공개</td>
 			</tr>
 			<tr>

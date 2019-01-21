@@ -34,11 +34,33 @@ function getData(pageNum){
 	<body>
 		<%@include file="../fm/menu.jsp"%>
 		<%@include file="../fm/logo.jsp"%>
+			<br><br><br><br><br><br><br><br>
 		<div class="container" id="results">
-			<div align="center" id="count">
-				총 게시물 수 : ${count }
-			</div>
-			<table class="table table-hover">
+		<font size="5px" color="#610B21" ><strong>공지사항 </strong></font>
+
+		<table class="table table-hover" >
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성날짜</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${noticelists}" var="list" varStatus="i">
+						<tr>	
+							<td>${number-i.index }</td>
+							<td>			
+							<a href="#" onclick="location.href='view.do?BOARD_NUM=${list.BOARD_NUM}'"><font color="red">공지사항 : </font>${list.BOARD_SUBJECT }</a>
+							<td>${list.BOARD_DATE }</td>
+							<td>${list.BOARD_READCOUNT }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		<font size="5px" color="#610B21" ><strong>커뮤니티</strong></font>
+			<table class="table table-hover" >
 				<thead>
 					<tr>
 						<th>NO</th>
@@ -79,6 +101,9 @@ function getData(pageNum){
 					</c:forEach>
 				</tbody>
 			</table>
+			<div align="center" id="count">
+				총 게시물 수 : ${count }
+			</div>
 			<div align="center">
 			<!-- 이전 -->
 			<c:if test="${startpage>blockpage }">
