@@ -2,6 +2,7 @@ package vo;
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,8 +44,8 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
-	//goodsList(fashion)
-	public ArrayList<goodsDTO> goodsList(){
+	//goodsList
+	public ArrayList<goodsDTO> goodsList(String category){
 		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
 		Connection con = null;
 		Statement st = null;
@@ -52,7 +53,7 @@ public class goodsDAO {
 		String sql="";
 		 try {
 		     con = getConnection();
-	    	 sql = "select * from goods";
+	    	 sql = "select * from goods where category='"+category+"'";
 	    	 st = con.createStatement();
 	    	 rs = st.executeQuery(sql);
 	    	 while(rs.next()) {
@@ -83,7 +84,7 @@ public class goodsDAO {
 	   try {
 	     con = getConnection();
 	     sql = "select * "+
-	    	   "from (select * from goods where category='fashion')"+
+	    	   "from goods "+
 	    	   "where num="+num;
 		 st = con.createStatement();
 		 rs = st.executeQuery(sql);
