@@ -532,11 +532,16 @@ body{
 	left: 150px;
 	z-index: 450;
 }
+.footerBig{
+	z-index: 40000;
+	width: 100%;
+	height: 100px;
+}
 .footer{
 	text-align: center;
 	background-color: black;
 	opacity: 0.3;
-	height: 100px;
+	height: 100%;
 	position: relative;
 }
 .footer .fText{

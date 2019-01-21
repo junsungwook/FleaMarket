@@ -73,6 +73,7 @@ public class goodsDAO {
 		  }
 		  return arr;
 	}
+	//이미지 불러오는 놈
 	
 	
 	
