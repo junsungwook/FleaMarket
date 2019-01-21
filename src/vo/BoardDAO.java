@@ -194,7 +194,7 @@ public class BoardDAO {
 	   String sql="";
 	   try {
 	     con = getConnection();
-	     sql = "select * from (select rownum rn,aa.* from (select * from board order by board_re_ref desc,board_re_seq asc)aa) where rn>="+startRow+" and rn<="+endRow;
+	     sql = "select * from (select rownum rn,aa.* from (select * from board order by board_re_ref desc,board_re_seq asc)aa) where rn>="+startRow+" and rn<="+endRow+" and board_pass!='master'";
 		 st = con.createStatement();
 		 rs = st.executeQuery(sql);
 		 while(rs.next()) {
@@ -217,6 +217,38 @@ public class BoardDAO {
 	  }
 	  return arr;
 	}
+	//noticelist
+	public ArrayList<BoardVO> noticeList() {
+		   Connection con= null;
+		   Statement st = null;
+		   ResultSet rs = null; 
+		   ArrayList<BoardVO> arr = new ArrayList<>();
+		   String sql="";
+		   try {
+		     con = getConnection();
+		     sql = "select * from board where board_pass='master'";
+			 st = con.createStatement();
+			 rs = st.executeQuery(sql);
+			 while(rs.next()) {
+				 BoardVO b = new BoardVO();
+				 b.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				 b.setBOARD_NAME(rs.getString("BOARD_NAME"));
+				 b.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				 b.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				 b.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT")); 
+				 b.setBOARD_RE_REF(rs.getInt("BOARD_RE_REF"));
+				 b.setBOARD_RE_LEV(rs.getInt("BOARD_RE_LEV"));
+				 b.setBOARD_RE_SEQ(rs.getInt("BOARD_RE_SEQ"));
+				 b.setBOARD_OPEN(rs.getString("BOARD_OPEN"));
+				 arr.add(b);
+		     }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+		     closeCon(con,st,rs);
+		  }
+		  return arr;
+		}
 	//board view
 	public BoardVO boardView(int num) {
 		   Connection con= null;
