@@ -6,14 +6,24 @@ html {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	text-align: center;
 	font-family: "Nanum Gothic", sans-serif;
 }
 
+/* 로고 */
+.logo{
+	text-align: center;
+	height: 100px;
+	z-index: 1;
+}
+.logo img{
+	margin:0 auto;
+}
+/* 메뉴컨트롤 */
 #menu {
 	height: 100%;
 	position: fixed;
 	background-color:#8B8067;
-
 	width: 286.1px;
 	transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
 	transform: translateX(-100%);
@@ -300,32 +310,32 @@ a:link {
 }
 .cate1{
 	position: absolute;
-	top: 200px;
-	left: 370px;
+	top: 50px;
+	left: 270px;
 	z-index: 11111;
 }
 .cate2{
 	position: absolute;
-	top: 400px;
-	left: 970px;
+	top: 150px;
+	left: 870px;
 	z-index: 11111;
 }
 .cate3{
 	position: absolute;
-	top: 600px;
-	left: 370px;
+	top: 400px;
+	left: 270px;
 	z-index: 11111;
 }
 .cate4{
 	position: absolute;
-	top: 800px;
-	left: 970px;
+	top: 500px;
+	left: 870px;
 	z-index: 11111;
 }
 .cate5{
 	position: absolute;
-	top: 900px;
-	left: 370px;
+	top: 700px;
+	left: 270px;
 	z-index: 11111;
 }
 a:visited{
@@ -445,19 +455,6 @@ figure.snip1384.hover i {
   transform: translate(0px, 0px);
   opacity: 1;
 }
-body{
-	width: 100%;
-	text-align: center;
-}
-#logo{
-	padding-top: 150px;
-	align-content: center;
-	padding-bottom: 130px;
-}
-#logo img{
-	width: 491px;
-	height: 79px;
-}
 #mainimage{
 	width: 100%;
 }
@@ -533,32 +530,23 @@ body{
 	z-index: 450;
 }
 .footerBig{
-	z-index: 40000;
+	z-index: 200;
 	width: 100%;
 	height: 100px;
-}
-.footer{
 	text-align: center;
 	background-color: black;
 	opacity: 0.3;
-	height: 100%;
 	position: relative;
 }
-.footer .fText{
+.footerBig .fText{
 	position: absolute;
 	bottom: 42px;
 	left: 40%;
 }
-.footer .fText p{
+.footerBig .fText p{
 	color: white;
 }
-.logo{
-	text-align: center;
-	height: 70px;
-	z-index: 50000;
-	width: 600px;
-	margin: 0 auto;
-}
+
 .store{
 	height:auto;
 	width:400px;

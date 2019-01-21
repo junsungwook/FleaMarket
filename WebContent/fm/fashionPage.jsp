@@ -11,7 +11,7 @@
  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
- <script type="text/javascript" src="../fm/script.js"></script>
+ <script type="text/javascript" src="../fm/script.js"></script>	
  <style>
  	.mainImage{
  		position:relative;
@@ -52,9 +52,9 @@
  		z-index: 4;
  		font-size: 13pt;
  	}
+ 	
  	.goodsList{
  		width: 100%;
- 		height: 100%;
  		padding-left: 143px;
  		padding-top: 20px;
  	}
@@ -65,6 +65,7 @@
  		margin-right: 45.5px;
  		margin-bottom: 57.8px;
  		border: 1px solid #CBCACA;
+ 		display: inline-block;
  	}
  	.goodsDiv:hover{
  		border: 2px solid #7F7F7F;
@@ -84,9 +85,24 @@
  		margin: 0 auto;
 
  	}
- 	.goodsDiv .goodsText{
- 	
+ 	.goodsListBox:after {
+ 		 content:""; 
+ 		 clear:both; 
+ 		 display:block; 
  	}
+ 	.pricingContent ul{
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+	}
+	.pricingContent ul li{
+	    border-bottom:1px solid #ededed;
+	    color: #9999A5;
+	    padding: 10px 0 ;
+	}
+	.pricingContent ul li:first-child {
+	    border-top:1px solid #ededed;
+	}
  </style>
 </head>
 <body>
@@ -103,15 +119,17 @@
 	<div class="goodsList">
 		<div class="goodsListBox">
 			<c:forEach items="${lists }" var="list">
-				<div class="goodsDiv">
+				<div class="goodsDiv" onclick="location.href='goodsView.do?num=${list.num}'">
 					<div class="imageBox">
 						<img alt="상품사진" src="../upload/${list.mainpic}">
 					</div>
-					<div class="goodsText">
-						${list.title }<br>
-						${list.price }<br>
-						${list.userid }
-					</div>
+					<div class="pricingContent">
+	                    <ul>
+	                        <li><b>제목 :</b> ${list.title }</li>
+	                        <li><b>PRICE :</b> ${list.price }</li>
+	                        <li><b>판매자 :</b> ${list.userid }</li>
+	                    </ul>
+                    </div>
 				</div>
 			</c:forEach>
 		</div>
