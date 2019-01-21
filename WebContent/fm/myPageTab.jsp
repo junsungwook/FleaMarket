@@ -143,7 +143,7 @@
             <p>내등급</p>
             </a></li>
           <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"><i class="fa fa-clipboard" aria-hidden="true"></i>
-            <p>뭐하지이거는</p>
+            <p>쪽지함</p>
             </a></li>
         </ul>
         <!-- end design process steps--> 
@@ -204,8 +204,10 @@
           </div>
           <div role="tabpanel" class="tab-pane" id="reporting">
             <div class="design-process-content">
-              <h3>Reporting</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. </p>
+              <h3>받은쪽지</h3>
+              <table>
+              </table>
+              <h3>내가보낸쪽지</h3>
           </div>
         </div>
       </div>

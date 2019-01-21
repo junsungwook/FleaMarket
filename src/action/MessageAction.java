@@ -39,11 +39,10 @@ public class MessageAction extends HttpServlet {
 		m.setContent(request.getParameter("content"));
 		
 		
-		
 		MSGDAO dao = MSGDAO.getInstance();
 		dao.msgInsert(m);
 		PrintWriter out=response.getWriter();
-		out.println("<script>history.back();</script>");
+		out.println("<script>history.back(); </script>");
 		response.sendRedirect("boardList.bo");
 		
 	    

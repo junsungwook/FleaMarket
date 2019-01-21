@@ -29,12 +29,11 @@ public class MSGDAO {
 		PreparedStatement ps =  null;
 			try {
 				con = getConnection();
-				String sql = "Insert into fmmsg values (fmmsg_seq.nextval,?,?,?,?,0)";
+				String sql = "Insert into fmmsg values (fmmsg_seq.nextval,?,?,?,0)";
 				ps = con.prepareStatement(sql);
 				ps.setString(1,m.getUserid());
 				ps.setString(2, m.getSendid());
 				ps.setString(3, m.getContent());
-			
 				ps.executeUpdate();
 				System.out.println("userid : " + m.getUserid() );
 			} catch (Exception e) {
@@ -43,9 +42,10 @@ public class MSGDAO {
 			}finally {
 				closeCon(con,ps);
 			}
-			
 	}
-	
+	public void msgList() {
+		
+	}
 private void closeCon(Connection con, PreparedStatement ps){
 	
 	try {
