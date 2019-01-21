@@ -55,13 +55,13 @@ public class BoardDAO {
 	      String sql="";
 	      boolean b=false;
 	         try {
-	            	if(rs.getString("BOARD_PASS").equals(BOARD_PASS)) {
+	        	 		con=getConnection();
 	            		sql = "delete from fmboard where BOARD_NUM=?";
 		            	 PreparedStatement ps1 =con.prepareStatement(sql); 
 		            	 ps1.setInt(1, BOARD_NUM);
 		            	 ps1.executeUpdate();
 		            	 b = true;
-	            	}
+	        
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }finally {
@@ -318,7 +318,7 @@ public class BoardDAO {
 		  }
 		  return arr;
 	  }
-	//�ݾ��ִ� �͵�
+	//
 	private void closeCon(Connection con, PreparedStatement ps){
 	      try {
 	         if(con!=null)con.close();

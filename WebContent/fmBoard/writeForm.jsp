@@ -85,15 +85,13 @@ body{
 	<input type ="hidden" name="ref" value=<%=ref %>>
 	<input type ="hidden" name="re_seq" value=<%=re_seq %>>
 	<input type ="hidden" name="re_lev" value=<%=re_lev %>>
+		<input type="hidden" name="board_pass" id="board_pass" value="${sessionScope.id }">
 		<table id="blueone">
 			<tr>
 					<th  class="td_left"><label for="board_name">글쓴이</label></th>
-					<th class="td_right"><input type="text" name="board_name" id="board_name" class="form-control"></th>
+					<th class="td_right"><input type="text" name="board_name" id="board_name" class="form-control" value="${sessionScope.name }"></th>
 			</tr>
-			<tr>
-				<td class="td_left"><label for="board_pass">비밀번호</label></td>
-				<td class="td_right"><input type="text"  name="board_pass" type="password" id="board_pass" class="form-control"></td>
-			</tr>
+	
 			<tr>
 				<td class="td_left"><label for="board_subject">제 목</label></td>
 				<td class="td_right"><input type="text"  name="board_subject" type="text" id="board_subject" class="form-control"></td>

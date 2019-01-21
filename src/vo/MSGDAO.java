@@ -43,8 +43,27 @@ public class MSGDAO {
 				closeCon(con,ps);
 			}
 	}
-	public void msgList() {
-		
+	public ArrayList<MSGVO> msgList(String userid) {
+		 Connection con= null;
+		   Statement st = null;
+		   ResultSet rs = null; 
+		   ArrayList<MSGVO> arr = new ArrayList<>();
+		   String sql="";
+		   try {
+		     con = getConnection();
+		     sql = "select * from fmmsg where sendid='"+userid+"'";
+			 st = con.createStatement();
+			 rs = st.executeQuery(sql);
+			 while(rs.next()) {
+				 MSGVO b = new MSGVO();
+				 b.setUserid(rs.getString("userid"));
+		     }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+			  closeCon(con,st,rs);
+		  }
+		  return arr;
 	}
 private void closeCon(Connection con, PreparedStatement ps){
 	
@@ -56,6 +75,17 @@ private void closeCon(Connection con, PreparedStatement ps){
 		e.printStackTrace();
 	}
 
+}
+private void closeCon(Connection con,Statement st, ResultSet rs){
+	
+	try {
+		if(con!=null)con.close();
+		if(st!=null)st.close();
+		if(rs!=null)rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 	private void closeCon(Connection con,PreparedStatement ps, ResultSet rs){
 		

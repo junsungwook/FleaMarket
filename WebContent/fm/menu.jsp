@@ -35,6 +35,9 @@
 	        <li><a href="../fmBoard/boardList.bo">커뮤니티</a></li>
 	        <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
 	        <li><a href="../fm/main.jsp">메인화면</a></li>
+	        <c:if test="${sessionScope!=null }">
+	        <li><a href="#">쪽지함<span id="newmsg">❣️</span></a></li>
+	        </c:if>
 	    </ul>
 	</div>
 	<svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

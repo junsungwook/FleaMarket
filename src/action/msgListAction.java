@@ -1,28 +1,29 @@
 package action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import vo.BoardDAO;
+import vo.MSGDAO;
 
 /**
- * Servlet implementation class DeleteAction
+ * Servlet implementation class msgListAction
  */
-@WebServlet("/fmBoard/delete")
-public class DeleteAction extends HttpServlet {
+@WebServlet("/fmMember/msgListAction")
+public class msgListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteAction() {
+    public msgListAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,25 +32,18 @@ public class DeleteAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-				request.setCharacterEncoding("utf-8");
-				int BOARD_NUM = Integer.parseInt(request.getParameter("BOARD_NUM"));
-				String BOARD_PASS = request.getParameter("BOARD_PASS");
-				BoardDAO dao  = BoardDAO.getInstance();
-				dao.delBoard(BOARD_NUM,BOARD_PASS);
-				
-					response.setContentType("text/html; charset=UTF-8");
-					
-					response.sendRedirect("boardList.bo");
-			
-				
-			}
+		MSGDAO dao=MSGDAO.getInstance();
+		HttpSession session = request.getSession();
+
+		ArrayList<MSGDAO> arr= dao.msgList();
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request,response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
