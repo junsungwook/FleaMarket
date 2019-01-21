@@ -122,6 +122,7 @@ function getData(pageNum){
 			<c:if test="${endpage<totpage }">
 				<a href="javascript:getData(${endpage+1 })">[다음]</a>
 			</c:if>
+			 <input type="button" value="글등록" class="btn btn-default" onclick="location.href='writeForm.jsp'">
 			</div>
 		</div>	
 	</body>
