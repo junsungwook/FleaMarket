@@ -1,29 +1,25 @@
-package action;
+package com.cart.action;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import vo.MSGDAO;
+import vo.goodsDAO;
 
 /**
- * Servlet implementation class msgListAction
+ * Servlet implementation class GoodsCart
  */
-@WebServlet("/fmMember/msgListAction")
-public class msgListAction extends HttpServlet {
+@WebServlet({ "/CartDelete", "/fm/goodsCartdel.do" })
+public class CartDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public msgListAction() {
+    public CartDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +28,15 @@ public class msgListAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MSGDAO dao=MSGDAO.getInstance();
-		HttpSession session = request.getSession();
-
-		//ArrayList<MSGDAO> arr= dao.msgList();
+		// TODO Auto-generated method stub
+		int num = Integer.parseInt(request.getParameter("num"));
+		String id = request.getParameter("id");
+		goodsDAO dao = goodsDAO.getInstance();
+		System.out.println("까꿍 장바구니 " + num+id);
+	
+		dao.goodsCartDelete(id, num);
+		
+		response.sendRedirect("../fm/goodsView.do?num="+num+"&cart=ok");
 	}
 
 	/**

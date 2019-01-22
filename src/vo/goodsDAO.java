@@ -1,9 +1,6 @@
 package vo;
 
 import java.sql.Connection;
-
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -202,7 +199,117 @@ public class goodsDAO {
 	  }
 	  return g;
 	}
+	public ArrayList<goodsDTO> get_info(String id){
+		ArrayList<goodsDTO> arr = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select title,price from goods where userid=?";
+		
+		try {
+			con =getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				goodsDTO dto = new goodsDTO();
+				dto.setTitle(rs.getString("title"));
+				dto.setPrice(rs.getInt("price"));
+				arr.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
+	}
+	public String select_string_data(String field,String id) {
+		// TODO Auto-generated method stub
+		String str = null;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "select "+ field +" from goods where userid =?"; 
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				str = rs.getString(1);
+			}
+			System.out.println(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return str;
+	}
 	
+	public void goodsCartInsert(String id, int num) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "insert into fmcart values(cart_seq.nextval,?,?)";
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setInt(2, num);
+			ps.executeQuery();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void goodsCartDelete(String id, int num) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "delete from fmcart where goods_num=? and id=?";
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(2, id);
+			ps.setInt(1, num);
+			ps.executeQuery();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
+	public ArrayList<goodsDTO> cartlist (String id){
+		ArrayList<goodsDTO> arr = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from goods where num IN (select goods_num from fmcart where id=?)";
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				goodsDTO dto = new goodsDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setUserid(rs.getString("userid"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPrice(rs.getInt("price"));
+				arr.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arr;
+	}
 	
 	
 	
@@ -236,5 +343,8 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
 
 }

@@ -12,6 +12,8 @@
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  <script type="text/javascript" src="../fm/script.js"></script>
+ 
+ 
 <style>
 	.viewbody{
 		padding:30px;
@@ -53,6 +55,7 @@
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
+
 <%@include file="menu.jsp"%>
 <%@include file="logo.jsp"%>
 <div class="viewbody">
@@ -64,20 +67,26 @@
 	          <ul>
 	              <li><b>제목 :</b> ${goods.title }</li>
 	              <li><b>PRICE :</b> ${goods.price }</li>
-	              <li><b>판매자 :</b><a href="#"> ${goods.userid }</a></li>
+	              <li><b>판매자 :</b><a href="memberView.do?id=${goods.userid }" onclick="window.open(this.href,'','width=500,height=500'); return false;"> ${goods.userid }</a></li>
 	          </ul>
-	          
         </div>
         <div class="note">
         	<br><br>
         	<b>글 내용</b><br><br><br>
         	${goods.summernote }
         </div>
+        <div class="pBtn">
+        <c:if test="${sessionScope.id!=goods.userid and sessionScope.id !=null and cart ==null}" >
+			<input type="button" class="btn btn-default" onclick="location.href='goodsCartin.do?num=${goods.num}&id=${sessionScope.id }'"  value="장바구니 담기">
+		</c:if>
+		</div>
+		
 	</div>
 	<div class="pBtn">
 		<c:if test="${sessionScope.id==goods.userid}">
 		 <input type="button" class="btn btn-default" onclick="location.href='goodsUpdate.do?num=${goods.num}'" value="수정">
 		 <input type="button" class="btn btn-default" onclick="location.href='goodsDelete.do?num=${goods.num}'" value="삭제">
+		 <input type="button" class="btn btn-default" onclick="#" value="판매완료">
 		</c:if>
 	</div>
 </div>
