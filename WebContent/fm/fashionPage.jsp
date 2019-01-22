@@ -134,6 +134,9 @@
 			</c:forEach>
 		</div>
 	</div>
+	<c:if test="${sessionScope.id!=null }">
+	 	<input type="button" class="btn btn-default" onclick="location.href='../fm/goodsInsert.jsp'" value="상품등록">
+	</c:if>
 	<%@include file="../fm/footer.jsp"%>
 </body>
 </html>
