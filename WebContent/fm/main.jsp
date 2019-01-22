@@ -55,9 +55,6 @@
 					  </figcaption>
 					  <a href="../fm/shop.jsp"></a>
 					</figure>
-					
-					
-					
 				</td>
 				<td>
 					<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />

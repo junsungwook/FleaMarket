@@ -19,6 +19,8 @@ import vo.goodsDTO;
  */
 @WebServlet("/fm/CaList.do")
 public class CategoryList extends HttpServlet {
+	String word;
+	String field;
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -34,11 +36,51 @@ public class CategoryList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		goodsDAO dao = goodsDAO.getInstance();
+		
 		String category = request.getParameter("category");
-		ArrayList<goodsDTO> arr = dao.goodsList(category);
+		String pageNum = request.getParameter("pageNum")==null?"1":request.getParameter("pageNum");
+		if(request.getParameter("word")!=null){
+			word=request.getParameter("word");
+			field=request.getParameter("field");
+		}
+		else {
+			word="";
+			field="";
+		}
+		System.out.println(category);
+		System.out.println(pageNum);
+		System.out.println(word);
+		System.out.println(field);
+		int currentPage = Integer.parseInt(pageNum);
+		int pageSize = 6;
+		int startRow = (currentPage-1)*pageSize+1; //2page -> 6번댓글부터
+		int endRow = currentPage*pageSize;
+		
+		goodsDAO dao = goodsDAO.getInstance();
+		ArrayList<goodsDTO> arr = dao.goodsList(field,word,startRow,endRow,category);
+		int count = dao.goodsCount(field,word,category);
+		//총페이지수
+		int totpage = count/pageSize+(count%pageSize==0?0:1);
+		int blockpage =3; //[이전] 456 [다음]
+		int startpage=((currentPage-1)/blockpage)*blockpage+1;
+		int endpage=startpage+blockpage-1;
+		
+		if(endpage > totpage) endpage=totpage;
+		
+		int number=count-(currentPage-1)*pageSize;
+		request.setAttribute("totpage", totpage);
+		request.setAttribute("startpage", startpage);
+		request.setAttribute("endpage", endpage);
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("blockpage", blockpage);
+		request.setAttribute("number", number);
+		request.setAttribute("lists", arr);
+		request.setAttribute("count", count);
 		request.setAttribute("lists", arr);
 		response.setContentType("text/html; charset=UTF-8");
+		
+		
+		
 		
 		if(category.equals("fashion")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/fashionPage.jsp");
