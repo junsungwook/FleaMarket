@@ -25,7 +25,7 @@
 			      <h4>formal dress</h4>
 			    </div>
 			  </figcaption>
-			  <a href="#"></a>
+			  <a href="StList.do?category=store1"></a>
 			</figure>
 			<figure class="snip1445 store2 store">
 			  <img src="../images/store2.jpg" alt="store2" />
@@ -34,7 +34,7 @@
 			      <h4>Aesop</h4>
 			    </div>
 			  </figcaption>
-			  <a href="#"></a>
+			  <a href="StList.do?category=store2"></a>
 			</figure>
 			<figure class="snip1445 store3 store">
 			  <img src="../images/store3.jpg" alt="store3" />
@@ -43,7 +43,7 @@
 			      <h4>The little green shop</h4>
 			    </div>
 			  </figcaption>
-			  <a href="#"></a>
+			  <a href="StList.do?category=store3"></a>
 			</figure>
 			<figure class="snip1445 store4 store">
 			  <img src="../images/store4.jpg" alt="store4" />
@@ -52,7 +52,7 @@
 			      <h4>P.P flower</h4>
 			    </div>
 			  </figcaption>
-			  <a href="#"></a>
+			  <a href="StList.do?category=store4"></a>
 			</figure>
 		</div>
     </div>
