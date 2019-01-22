@@ -50,7 +50,7 @@ public class InsertAction extends HttpServlet {
 			Enumeration files = multi.getFileNames();
 			String file = (String)files.nextElement(); 
 			
-			String username=multi.getParameter("name");
+			String username=multi.getParameter("username");
 			String email=multi.getParameter("email");
 			String summernote=multi.getParameter("summernote");
 			String userid = multi.getParameter("userid");

@@ -25,10 +25,12 @@
 	        </li>
 	        <li><a href="../fm/store.jsp">스토어</a></li>
 	        <li><a href="../fmBoard/boardList.bo">커뮤니티</a></li>
-	        <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
+	       
 	        <li><a href="../fm/main.jsp">메인화면</a></li>
-	        <c:if test="${sessionScope!=null }">
+	        <c:if test="${sessionScope.id !=null }">
+	         <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
 	        <li><a href="#">쪽지함<span id="newmsg">❣️</span></a></li>
+	        <li><a href="cartList.do?id=${sessionScope.id }">장바구니</a></li>
 	        </c:if>
 	    </ul>
 	</div>
