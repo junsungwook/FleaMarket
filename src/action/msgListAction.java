@@ -35,7 +35,7 @@ public class msgListAction extends HttpServlet {
 		MSGDAO dao=MSGDAO.getInstance();
 		HttpSession session = request.getSession();
 
-		ArrayList<MSGDAO> arr= dao.msgList();
+		//ArrayList<MSGDAO> arr= dao.msgList();
 	}
 
 	/**
