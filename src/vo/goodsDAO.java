@@ -25,6 +25,35 @@ public class goodsDAO {
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/board");
 		return ds.getConnection();
 	}
+	//카운트조회
+	public int goodsCount(String field,String word,String category) {
+	      Connection con =null;
+	      Statement st = null;
+	      ResultSet rs = null;
+	      String sql="";
+	      int cnt =0;
+	         try {
+	         con = getConnection();
+	         if(field.equals("")) {
+	        	 sql = "select count(*) from goods where category='"+category+"'";
+	         }else {
+	             sql="select count(*) from "+
+	                 "(select * from goods where "+field+" like '%"+word+"%') "+
+	            	 "where category='"+category+"'";
+	         }
+	            st = con.createStatement();
+	            rs = st.executeQuery(sql);
+	            if (rs.next()) {
+	               cnt=rs.getInt(1);
+	            }
+	         } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	         }finally {
+	            closeCon(con,st,rs);
+	         }
+	      return cnt;
+	   }
 	//insert(goods)
 	public void goodsInsert(goodsDTO g) {
 		Connection con = null;
@@ -108,7 +137,7 @@ public class goodsDAO {
 	         }
 	   }
 	//goodsList뽑아내기
-	public ArrayList<goodsDTO> goodsList(String category){
+	public ArrayList<goodsDTO> goodsList(String field, String word, int startRow, int endRow, String category){
 		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
 		Connection con = null;
 		Statement st = null;
@@ -116,7 +145,11 @@ public class goodsDAO {
 		String sql="";
 		 try {
 		     con = getConnection();
-	    	 sql = "select * from goods where category='"+category+"'";
+		     if(word.equals("")) {
+		    	 sql = "select * from (select rownum rn,aa.* from (select * from goods where category='"+category+"' order by num desc)aa) where rn>="+startRow+" and rn<="+endRow;
+		     }else {
+		    	 sql = "select * from (select rownum rn,aa.* from (select * from goods where "+field+" like '%"+word+"%' and category='"+category+"' order by num desc)aa) where rn>="+startRow+" and rn<="+endRow;
+		     }
 	    	 st = con.createStatement();
 	    	 rs = st.executeQuery(sql);
 	    	 while(rs.next()) {
