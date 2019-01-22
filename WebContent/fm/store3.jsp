@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- 리빙 조회 된 페이지 -->
+<!-- store3 조회 된 페이지 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -112,7 +112,7 @@
  </style>
  <script>
  function getData(pageNum){
-	$("#results").load("CaList.do",{"pageNum":pageNum,"field":$("#field option:selected").val(),"word":$("#word").val(),"category":"living"},function(data){
+	$("#results").load("StList.do",{"pageNum":pageNum,"field":$("#field option:selected").val(),"word":$("#word").val(),"category":"store3"},function(data){
 		$("#results").html(data);
 	})
 }
@@ -121,18 +121,18 @@
 <body id="results">
 	<%@include file="../fm/menu.jsp"%>
 	<div class="mainImage">
-		<p class="fb_text">living</p>
+		<p class="fb_text">store3</p>
 		<p class="fb_smallText">
-			살아가면서 한번은 스쳐지나가는 물건들<br>
-			가장 가까이 있던 추억마저 파는 플리마켓 living 카테고리
+			사이트와 계약한 매장 3<br>
+			가장 가까이 있던 추억마저 파는 매장3
 		</p>
 		<div class="block"></div>
-		<img alt="리빙메인" src="../images/living.png" class="faImage">
+		<img alt="메인" src="../images/store33.jpg" class="faImage">
 	</div>
 	<div class="goodsList">
 		<div class="goodsListBox">
 			<c:forEach items="${lists }" var="list">
-				<div class="goodsDiv" onclick="location.href='goodsView.do?num=${list.num}'">
+				<div class="goodsDiv" onclick="location.href='storeView.do?num=${list.num}'">
 					<div class="imageBox">
 						<img alt="상품사진" src="../upload/${list.mainpic}">
 					</div>
@@ -167,8 +167,8 @@
 		</c:if>
 		<br><br><br>
 	</div>
-	<c:if test="${sessionScope.id!=null }">
-	 	<input type="button" class="btn btn-default" onclick="location.href='../fm/goodsInsert.jsp'" value="상품등록">
+	<c:if test="${sessionScope.id=='store3'}">
+	 	<input type="button" class="btn btn-default" onclick="location.href='../fm/storeInsert.jsp'" value="상품등록">
 	</c:if>
 	<div class="searchBox">
 		<div class="col-xs-2" id="sele">

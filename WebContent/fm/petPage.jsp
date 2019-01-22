@@ -103,9 +103,22 @@
 	.pricingContent ul li:first-child {
 	    border-top:1px solid #ededed;
 	}
+	.searchBox{
+		width: 60%;
+		margin: 0 auto;
+		padding-left: 100px;
+		padding-bottom: 50px;
+	}
  </style>
+ <script>
+ function getData(pageNum){
+	$("#results").load("CaList.do",{"pageNum":pageNum,"field":$("#field option:selected").val(),"word":$("#word").val(),"category":"pet"},function(data){
+		$("#results").html(data);
+	})
+}
+ </script>
 </head>
-<body>
+<body id="results">
 	<%@include file="../fm/menu.jsp"%>
 	<div class="mainImage">
 		<p class="fb_text">pet</p>
@@ -133,6 +146,41 @@
 				</div>
 			</c:forEach>
 		</div>
+	</div>
+	<div align="center">
+		<!-- 이전 -->
+		<c:if test="${startpage>blockpage }">
+			<a href="javascript:getData(${startpage-blockpage })">[이전]</a>
+		</c:if>
+		<!-- 페이지출력 -->
+		<c:forEach begin="${startpage }" end="${endpage }" var="i">
+			<c:if test="${currentPage eq i}" >
+				${i }
+			</c:if>
+			<c:if test="${currentPage ne i}" >
+				<a href="javascript:getData(${i })">${i }</a>
+			</c:if>
+		</c:forEach>
+		<!-- 다음 -->
+		<c:if test="${endpage<totpage }">
+			<a href="javascript:getData(${endpage+1 })">[다음]</a>
+		</c:if>
+		<br><br><br>
+	</div>
+	<c:if test="${sessionScope.id!=null }">
+	 	<input type="button" class="btn btn-default" onclick="location.href='../fm/goodsInsert.jsp'" value="상품등록">
+	</c:if>
+	<div class="searchBox">
+		<div class="col-xs-2" id="sele">
+		   <select id="field" class="form-control" name="field">
+		      <option value="title"> 제목
+		      <option value="userid"> 작성자
+		   </select>
+		</div>
+		<div class="col-xs-6">
+		   <input type='text' id='word' name='word' class="form-control" placeholder="검색어입력">
+		</div>
+		   <input type='button' class="btn btn-default" value="검색" onclick="javascript:getData(1)">
 	</div>
 	<%@include file="../fm/footer.jsp"%>
 </body>

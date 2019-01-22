@@ -1,4 +1,4 @@
-package goodsAction;
+package storeAction;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,14 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import vo.StoreDAO;
+import vo.StoreDTO;
 import vo.goodsDAO;
 import vo.goodsDTO;
 
 /**
  * Servlet implementation class FashionList
  */
-@WebServlet("/fm/CaList.do")
-public class CategoryList extends HttpServlet {
+@WebServlet("/fm/StList.do")
+public class StoreCategoryList extends HttpServlet {
 	String word;
 	String field;
 	private static final long serialVersionUID = 1L;
@@ -26,7 +28,7 @@ public class CategoryList extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CategoryList() {
+    public StoreCategoryList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -56,9 +58,9 @@ public class CategoryList extends HttpServlet {
 		int startRow = (currentPage-1)*pageSize+1; //2page -> 6번댓글부터
 		int endRow = currentPage*pageSize;
 		
-		goodsDAO dao = goodsDAO.getInstance();
-		ArrayList<goodsDTO> arr = dao.goodsList(field,word,startRow,endRow,category);
-		int count = dao.goodsCount(field,word,category);
+		StoreDAO dao = StoreDAO.getInstance();
+		ArrayList<StoreDTO> arr = dao.StoreList(field,word,startRow,endRow,category);
+		int count = dao.StoreCount(field,word,category);
 		//총페이지수
 		int totpage = count/pageSize+(count%pageSize==0?0:1);
 		int blockpage =3; //[이전] 456 [다음]
@@ -76,30 +78,27 @@ public class CategoryList extends HttpServlet {
 		request.setAttribute("number", number);
 		request.setAttribute("lists", arr);
 		request.setAttribute("count", count);
+		
 		request.setAttribute("lists", arr);
 		response.setContentType("text/html; charset=UTF-8");
 		
 		
 		
 		
-		if(category.equals("fashion")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/fashionPage.jsp");
+		if(category.equals("store1")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/store1.jsp");
 			dispatcher.forward(request, response);
 		}
-		else if(category.equals("living")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/livingPage.jsp");
+		else if(category.equals("store2")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/store2.jsp");
 			dispatcher.forward(request, response);
 		}
-		else if(category.equals("hobby")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/hobbyPage.jsp");
+		else if(category.equals("store3")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/store3.jsp");
 			dispatcher.forward(request, response);
 		}
-		else if(category.equals("food")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/foodPage.jsp");
-			dispatcher.forward(request, response);
-		}
-		else if(category.equals("pet")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/petPage.jsp");
+		else if(category.equals("store4")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/store4.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
