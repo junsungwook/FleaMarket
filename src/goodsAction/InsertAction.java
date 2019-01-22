@@ -50,14 +50,15 @@ public class InsertAction extends HttpServlet {
 			Enumeration files = multi.getFileNames();
 			String file = (String)files.nextElement(); 
 			
-			
+			String username=multi.getParameter("name");
+			String email=multi.getParameter("email");
 			String summernote=multi.getParameter("summernote");
 			String userid = multi.getParameter("userid");
 			String title = multi.getParameter("title");
 			String category = multi.getParameter("category");
 			String mainpic = multi.getFilesystemName("mainpic");
 			int price = Integer.parseInt(multi.getParameter("price"));
-		
+			
 			goodsDTO goods = new goodsDTO();
 			goods.setUserid(userid);
 			goods.setTitle(title);
@@ -67,7 +68,15 @@ public class InsertAction extends HttpServlet {
 			goods.setPrice(price);
 			goodsDAO dao = goodsDAO.getInstance();
 			response.setContentType("text/html; charset=UTF-8");
-			dao.goodsInsert(goods);
+			if(email.equals(null)) {
+				dao.goodsInsert(goods);
+			}
+			else {
+				dao.goodsInsert(goods,username,email);
+			}
+			
+			
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}

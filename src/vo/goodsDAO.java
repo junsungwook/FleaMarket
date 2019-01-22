@@ -31,7 +31,7 @@ public class goodsDAO {
 		PreparedStatement ps = null;
 		try {
 			con = getConnection();
-			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?,?,?)";
+			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?,?,?,null,null)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, g.getUserid());
 			ps.setString(2, g.getTitle());
@@ -40,7 +40,26 @@ public class goodsDAO {
 			ps.setString(5, g.getMainpic());
 			ps.setInt(6, g.getPrice());
 			ps.executeUpdate();
-			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void goodsInsert(goodsDTO g,String username,String email) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = getConnection();
+			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?,?,?,?,?)";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, g.getUserid());
+			ps.setString(2, g.getTitle());
+			ps.setString(3, g.getCategory());
+			ps.setString(4, g.getSummernote());
+			ps.setString(5, g.getMainpic());
+			ps.setInt(6, g.getPrice());
+			ps.setString(7, username);
+			ps.setString(8, email);
+			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -69,7 +88,25 @@ public class goodsDAO {
          }finally {
             closeCon(con,ps,rs);
          }
-   }
+    }
+	//goods삭제하기
+	public void goodsDelete(int num) {
+	      Connection con =null;
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      Statement st = null;
+	      String sql="";
+	         try {
+	        	con=getConnection();
+	    		sql = "delete from goods where num="+num;
+	    		st = con.createStatement();
+				st.executeUpdate(sql);
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }finally {
+	            closeCon(con,ps,rs);
+	         }
+	   }
 	//goodsList뽑아내기
 	public ArrayList<goodsDTO> goodsList(String category){
 		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
@@ -123,6 +160,7 @@ public class goodsDAO {
 			 g.setSummernote(rs.getString("summernote")); 
 			 g.setMainpic(rs.getString("mainpic")); 
 			 g.setPrice(rs.getInt("price"));
+			 
 	     }
 	  } catch (Exception e) {
 	    e.printStackTrace();
