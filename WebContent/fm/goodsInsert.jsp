@@ -11,6 +11,8 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src = "upload1.js"></script>
+<link rel="stylesheet" href="../fm/style.css" type="text/css">
+<script type="text/javascript" src="../fm/script.js"></script>
 <script>
 $(document).ready(function() {
     $('#summernote').summernote({
@@ -43,6 +45,7 @@ function sendFile(files,editor,welEditable){
 	}
 </script>
 <style>
+
 .insertForm{
 	width:75%;
 	margin:0 auto;
@@ -58,14 +61,18 @@ function sendFile(files,editor,welEditable){
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
-<div class="cantainer">
+<%@include file="../fm/menu.jsp"%>
+<%@include file="logo.jsp"%>
+<div class="container">
 <form action="uploadAction.re" enctype="multipart/form-data" id ="frm" name="frm" method="post">
 	<div class="insertForm">
 		<div class="form-group">
-			<input type="hidden" id="userid2" name="userid" value="${userid }">
-			<input type="text" class="form-control" id="userid" name="userid" value="${userid }" disabled="disabled">
+			<b>작성자</b>
+			<input type="hidden" id="userid2" name="userid" value="${sessionScope.name }">
+			<input type="text" class="form-control" id="userid" name="userid" value="${sessionScope.name }" disabled="disabled">
 		</div>
 		<div class="form-group">
+			<b>제목</b>
 			<input type="text" class="form-control" id="title" name ="title" placeholder="제목">
 		</div>
 		<div class="form-group">

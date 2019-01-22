@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div id="menu">
 	<div class="hamburger">
 	    <div class="line"></div>
@@ -10,24 +11,14 @@
 	<div class="menu-inner">  
 	    <ul>
 	    	<li></li>
-	    	  <c:if test="${sessionScope.id==null}">
-	    	<li><a href="../fmMember/naverlogin.jsp">로그인</a></li>
-	    	<li><a href="../fmMember/joinForm.jsp">회원가입</a></li>
+	    	<c:if test="${sessionScope.id==null}">
+		    <li><a href="../fmMember/naverlogin.jsp">로그인</a></li>
+		    <li><a href="../fmMember/joinForm.jsp">회원가입</a></li>
 	    	</c:if>
-	    	   	<c:if test = "${sessionScope.id!=null }">
-	    	  	<li><a href="logout.do">로그아웃</a></li>
+	    	<c:if test = "${sessionScope.id!=null }">
+	    	<li><a href="logout.do">로그아웃</a></li>
 	    	</c:if>
-	        <li><a href="../fm/shop.jsp">플리마켓</a>
-	 		<!--  
-	 			<ul>	
-	 				<li><a href="#">패션/뷰티</a></li>
-	 				<li><a href="#">리빙</a></li>
-	 				<li><a href="#">취미</a></li>
-	 				<li><a href="#">패션/뷰티</a></li>
-	 				<li><a href="#">펫</a></li>
-	 			</ul>       
-	 		-->	
-	        </li>
+	        <li><a href="../fm/shop.jsp">플리마켓</a></li>
 	        <li><a href="../fm/store.jsp">스토어</a></li>
 	        <li><a href="../fm/writeForm">커뮤니티</a></li>
 	        <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
