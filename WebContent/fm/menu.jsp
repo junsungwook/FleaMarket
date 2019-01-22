@@ -18,11 +18,18 @@
 	    	<c:if test = "${sessionScope.id!=null }">
 	    	<li><a href="logout.do">로그아웃</a></li>
 	    	</c:if>
-	        <li><a href="../fm/shop.jsp">플리마켓</a></li>
+	    	<c:if test="${sessionScope.id=='master'}">
+	    	<li><a href="../fmBoard/noticeWrite.jsp">공지사항</a></li>
+	    	</c:if>
+	        <li><a href="../fm/shop.jsp">플리마켓</a>
+	        </li>
 	        <li><a href="../fm/store.jsp">스토어</a></li>
-	        <li><a href="../fm/writeForm">커뮤니티</a></li>
+	        <li><a href="../fmBoard/boardList.bo">커뮤니티</a></li>
 	        <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
 	        <li><a href="../fm/main.jsp">메인화면</a></li>
+	        <c:if test="${sessionScope!=null }">
+	        <li><a href="#">쪽지함<span id="newmsg">❣️</span></a></li>
+	        </c:if>
 	    </ul>
 	</div>
 	<svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

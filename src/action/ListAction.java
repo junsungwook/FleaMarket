@@ -38,16 +38,16 @@ public class ListAction extends HttpServlet {
 		String pageNum = request.getParameter("pageNum")==null?"1":request.getParameter("pageNum");
 		int currentPage = Integer.parseInt(pageNum);
 		int pageSize = 5;
-		int startRow = (currentPage-1)*pageSize+1; //2page -> 6¹ø´ñ±ÛºÎÅÍ
+		int startRow = (currentPage-1)*pageSize+1; //2page -> 6ï¿½ï¿½ï¿½ï¿½Ûºï¿½ï¿½ï¿½
 		int endRow = currentPage*pageSize;
 		int count = dao.boardCount();
 		
 		ArrayList<BoardVO> arr = dao.boardList(startRow,endRow);
+		ArrayList<BoardVO> arrn=dao.noticeList();
 		
-		
-		//ÃÑÆäÀÌÁö¼ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int totpage = count/pageSize+(count%pageSize==0?0:1);
-		int blockpage =3; //[ÀÌÀü] 456 [´ÙÀ½]
+		int blockpage =3; //[ï¿½ï¿½ï¿½ï¿½] 456 [ï¿½ï¿½ï¿½ï¿½]
 		int startpage=((currentPage-1)/blockpage)*blockpage+1;
 		int endpage=startpage+blockpage-1;
 		
@@ -62,6 +62,7 @@ public class ListAction extends HttpServlet {
 		int number=count-(currentPage-1)*pageSize;
 		request.setAttribute("number",number);
 		request.setAttribute("lists", arr);
+		request.setAttribute("noticelists", arrn);
 		request.setAttribute("count", count);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("boardList.jsp");
 		dispatcher.forward(request, response);

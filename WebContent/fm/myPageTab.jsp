@@ -142,9 +142,6 @@
           <li role="presentation"><a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o" aria-hidden="true"></i>
             <p>내등급</p>
             </a></li>
-          <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"><i class="fa fa-clipboard" aria-hidden="true"></i>
-            <p>뭐하지이거는</p>
-            </a></li>
         </ul>
         <!-- end design process steps--> 
         <!-- Tab panes -->
@@ -187,8 +184,13 @@
           </div>
           <div role="tabpanel" class="tab-pane" id="optimization">
             <div class="design-process-content">
-              <h3 class="semi-bold">Optimization</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
+              <h3 class="semi-bold">장바구니</h3>
+              <table>
+              	<tr>
+              		<th>상품이름</th>
+              		<th>옵션</th>
+              	</tr>
+              </table>
                </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="content">
@@ -197,12 +199,7 @@
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>              
               </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="reporting">
-            <div class="design-process-content">
-              <h3>Reporting</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. </p>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
