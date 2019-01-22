@@ -73,6 +73,7 @@ public class GoodsUpdate extends HttpServlet {
 			String category = multi.getParameter("category");
 			String mainpic = multi.getFilesystemName("mainpic");
 			int price = Integer.parseInt(multi.getParameter("price"));
+			System.out.println(summernote.length());
 		
 			goodsDTO goods = new goodsDTO();
 			goods.setNum(num);

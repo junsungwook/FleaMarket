@@ -54,11 +54,15 @@ public class goodsDAO {
       String sql="";
          try {
         	con=getConnection();
-    		sql = "update goods set title='"+goods.getTitle()+"',category='"+goods.getCategory()+
-    			  "',summernote='"+goods.getSummernote()+"',mainpic='"+goods.getMainpic()+
-    			  "',price="+goods.getPrice()+" where num="+goods.getNum();
-    		st = con.createStatement();
-            st.executeUpdate(sql);
+    		sql = "update goods set title=?,category=?,summernote=?,mainpic=?,price=? where num=?";
+    		ps = con.prepareStatement(sql);
+			ps.setString(1, goods.getTitle());
+			ps.setString(2, goods.getCategory());
+			ps.setString(3, goods.getSummernote());
+			ps.setString(4, goods.getMainpic());
+			ps.setInt(5, goods.getPrice());
+			ps.setInt(6, goods.getNum());
+			ps.executeUpdate();
             System.out.println(sql);
          } catch (Exception e) {
             e.printStackTrace();
