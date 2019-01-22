@@ -33,6 +33,9 @@
 		.viewText .pricingContent{
 			margin: 0 auto;
 		}
+	.pBtn{
+		text-align: right;
+	}
 	.pricingContent ul{
 	    list-style: none;
 	    padding: 0;
@@ -48,7 +51,6 @@
 	}
 </style>
 <title>여기에 제목을 입력하십시오</title>
-
 </head>
 <body>
 <%@include file="menu.jsp"%>
@@ -62,7 +64,7 @@
 	          <ul>
 	              <li><b>제목 :</b> ${goods.title }</li>
 	              <li><b>PRICE :</b> ${goods.price }</li>
-	              <li><b>판매자 :</b> ${goods.userid }</li>
+	              <li><b>판매자 :</b><a href="#"> ${goods.userid }</a></li>
 	          </ul>
 	          
         </div>
@@ -72,7 +74,14 @@
         	${goods.summernote }
         </div>
 	</div>
+	<div class="pBtn">
+		<c:if test="${sessionScope.id==goods.userid}">
+		 <input type="button" class="btn btn-default" onclick="location.href='goodsUpdate.do?num=${goods.num}'" value="수정">
+		 <input type="button" class="btn btn-default" onclick="location.href='goodsDelete.do?num=${goods.num}'" value="삭제">
+		</c:if>
+	</div>
 </div>
+
 <%@include file="footer.jsp"%> 
 </body>
 </html>
