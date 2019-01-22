@@ -2,6 +2,8 @@ package vo;
 
 import java.sql.Connection;
 
+
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,7 +33,7 @@ public class goodsDAO {
 			con = getConnection();
 			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "sungwook");
+			ps.setString(1, g.getUserid());
 			ps.setString(2, g.getTitle());
 			ps.setString(3, g.getCategory());
 			ps.setString(4, g.getSummernote());
@@ -43,8 +45,29 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
-	//goodsList(fashion)
-	public ArrayList<goodsDTO> goodsList(){
+	//goods수정하기
+	public void goodsUpdate(goodsDTO goods) {
+      Connection con =null;
+      PreparedStatement ps = null;
+      ResultSet rs = null;
+      Statement st = null;
+      String sql="";
+         try {
+        	con=getConnection();
+    		sql = "update goods set title='"+goods.getTitle()+"',category='"+goods.getCategory()+
+    			  "',summernote='"+goods.getSummernote()+"',mainpic='"+goods.getMainpic()+
+    			  "',price="+goods.getPrice()+" where num="+goods.getNum();
+    		st = con.createStatement();
+            st.executeUpdate(sql);
+            System.out.println(sql);
+         } catch (Exception e) {
+            e.printStackTrace();
+         }finally {
+            closeCon(con,ps,rs);
+         }
+   }
+	//goodsList뽑아내기
+	public ArrayList<goodsDTO> goodsList(String category){
 		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
 		Connection con = null;
 		Statement st = null;
@@ -52,7 +75,7 @@ public class goodsDAO {
 		String sql="";
 		 try {
 		     con = getConnection();
-	    	 sql = "select * from goods";
+	    	 sql = "select * from goods where category='"+category+"'";
 	    	 st = con.createStatement();
 	    	 rs = st.executeQuery(sql);
 	    	 while(rs.next()) {
@@ -73,7 +96,38 @@ public class goodsDAO {
 		  }
 		  return arr;
 	}
-	//이미지 불러오는 놈
+	//제품 상세보기
+	public goodsDTO goodsView(int num) {
+	   Connection con= null;
+	   Statement st = null;
+	   ResultSet rs = null;
+	   goodsDTO g = null;
+	   String sql="";
+	   try {
+	     con = getConnection();
+	     sql = "select * "+
+	    	   "from goods "+
+	    	   "where num="+num;
+		 st = con.createStatement();
+		 rs = st.executeQuery(sql);
+		 if(rs.next()) {
+			 g = new goodsDTO();
+			 g.setNum(rs.getInt("num"));
+			 g.setUserid(rs.getString("userid"));
+			 g.setTitle(rs.getString("title"));
+			 g.setCategory(rs.getString("category"));
+			 g.setSummernote(rs.getString("summernote")); 
+			 g.setMainpic(rs.getString("mainpic")); 
+			 g.setPrice(rs.getInt("price"));
+	     }
+	  } catch (Exception e) {
+	    e.printStackTrace();
+	  }finally {
+	     closeCon(con,st,rs);
+	  }
+	  return g;
+	}
+	
 	
 	
 	

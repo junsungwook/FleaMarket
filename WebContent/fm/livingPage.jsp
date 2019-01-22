@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- 패션 조회 된 페이지 -->
+<!-- 리빙 조회 된 페이지 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -108,13 +108,13 @@
 <body>
 	<%@include file="../fm/menu.jsp"%>
 	<div class="mainImage">
-		<p class="fb_text">fashion & beauty</p>
+		<p class="fb_text">living</p>
 		<p class="fb_smallText">
-			패션은 따라 할 수 있지만 , 그 안에 담긴 추억은 흉내낼 수 없다.<br>
-			가장 가까이 있던 추억마저 파는 플리마켓 fashion & beauty 카테고리
+			살아가면서 한번은 스쳐지나가는 물건들<br>
+			가장 가까이 있던 추억마저 파는 플리마켓 living 카테고리
 		</p>
 		<div class="block"></div>
-		<img alt="패션메인" src="../images/feshion.png" class="faImage">
+		<img alt="리빙메인" src="../images/living.png" class="faImage">
 	</div>
 	<div class="goodsList">
 		<div class="goodsListBox">
@@ -134,9 +134,6 @@
 			</c:forEach>
 		</div>
 	</div>
-	<c:if test="${sessionScope.id!=null }">
-	 	<input type="button" class="btn btn-default" onclick="location.href='../fm/goodsInsert.jsp'" value="상품등록">
-	</c:if>
 	<%@include file="../fm/footer.jsp"%>
 </body>
 </html>

@@ -1,10 +1,8 @@
 package goodsAction;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,16 +13,16 @@ import vo.goodsDAO;
 import vo.goodsDTO;
 
 /**
- * Servlet implementation class FashionList
+ * Servlet implementation class GoodsView
  */
-@WebServlet("/fm/fashionList.do")
-public class FashionList extends HttpServlet {
+@WebServlet("/fm/goodsView.do")
+public class GoodsView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FashionList() {
+    public GoodsView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +32,13 @@ public class FashionList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		int num = Integer.parseInt(request.getParameter("num"));
 		goodsDAO dao = goodsDAO.getInstance();
-		ArrayList<goodsDTO> arr = dao.goodsList();
-		//request.setAttribute("", "");
-		request.setAttribute("lists", arr);
+		goodsDTO g = dao.goodsView(num);
+		request.setAttribute("goods", g);
 		response.setContentType("text/html; charset=UTF-8");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/fashionPage.jsp");
-		dispatcher.forward(request, response);
+		RequestDispatcher rd =request.getRequestDispatcher("goodsViewPage.jsp");
+	    rd.forward(request, response);
 	}
 
 	/**

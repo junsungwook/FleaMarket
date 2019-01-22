@@ -34,7 +34,7 @@ function sendFile(files,editor,welEditable){
 	    $.ajax({ // ajax를 통해 파일 업로드 처리
 	        data :data,
 	        type :"POST",
-	        url :"uploadAction.re",
+	        url :"goodsUpdate.do",
 	        cache : false,
 	        contentType : false,
 	        processData : false,
@@ -64,16 +64,17 @@ function sendFile(files,editor,welEditable){
 <%@include file="../fm/menu.jsp"%>
 <%@include file="logo.jsp"%>
 <div class="container">
-<form action="uploadAction.re" enctype="multipart/form-data" id ="frm" name="frm" method="post">
+<form action="goodsUpdate.do" enctype="multipart/form-data" id ="frm" name="frm" method="post">
 	<div class="insertForm">
 		<div class="form-group">
 			<b>작성자</b>
+			<input type="hidden" id="num" name="num" value="${goods.num }">
 			<input type="hidden" id="userid2" name="userid" value="${sessionScope.name }">
 			<input type="text" class="form-control" id="userid" name="userid" value="${sessionScope.name }" disabled="disabled">
 		</div>
 		<div class="form-group">
 			<b>제목</b>
-			<input type="text" class="form-control" id="title" name ="title" placeholder="제목">
+			<input type="text" class="form-control" id="title" name ="title" value="${goods.title }">
 		</div>
 		<div class="form-group">
 			<label for="noticeContent"><b>카테고리</b></label>
@@ -87,7 +88,7 @@ function sendFile(files,editor,welEditable){
 		</div>
 		<div class="form-group">
 			<b>가격을 입력</b>
-			<input type="text" class="form-control" id="price" name ="price" placeholder="가격">
+			<input type="text" class="form-control" id="price" name ="price" value="${goods.price }">
 		</div>
 	    <div class="form-group">
 			<textarea name="summernote" id="summernote" value=""></textarea>

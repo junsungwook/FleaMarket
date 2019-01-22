@@ -6,14 +6,24 @@ html {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	text-align: center;
 	font-family: "Nanum Gothic", sans-serif;
 }
 
+/* 로고 */
+.logo{
+	text-align: center;
+	height: 100px;
+	z-index: 1;
+}
+.logo img{
+	margin:0 auto;
+}
+/* 메뉴컨트롤 */
 #menu {
 	height: 100%;
 	position: fixed;
 	background-color:#8B8067;
-
 	width: 286.1px;
 	transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
 	transform: translateX(-100%);
@@ -105,7 +115,12 @@ a:link {
 .menu-inner a:hover{
   color:#fff;
 }
-/* 호버 했을 때 위아래로 뜨는 바 */
+/* 메뉴 끝 */
+
+
+
+
+/* 호버 했을 때 위아래로 뜨는 바 애니메이션 */
 .menu-inner a:before,.menu-inner a:after{
   content:'';
   position:absolute;
@@ -126,6 +141,10 @@ a:link {
   width:100%;
   transition:800ms ease all;
 }
+
+
+
+/* 카테고리 사각형 & 그림들 */
 .cat{
 	z-index: 2;
 	width: 100%;
@@ -162,6 +181,10 @@ a:link {
 	opacity:0.3;
 	z-index: 50;
 }
+
+
+
+
 /* 메인화면 로그인버튼 */
 .login{
 	margin:40px;
@@ -178,12 +201,18 @@ a:link {
 .login a:hover{
 	color:black;
 }
-/* 마우스오버 효과 css */
+
+
+
+
+
+
+/* 스토어 박스들 마우스오버 효과 css */
 .snip1445 {
   position: relative;
   overflow: hidden;
   margin: 10px;
-  min-width: 230px;
+  min-width: 200px;
   max-width: 550px;
   width: 100%;
   color: #ffffff;
@@ -250,7 +279,6 @@ a:link {
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
 }
-
 .snip1445 h2,
 .snip1445 h4 {
   margin: 0;
@@ -298,39 +326,61 @@ a:link {
   -webkit-transition-delay: 0.15s;
   transition-delay: 0.15s;
 }
+
+
+/* 스토어 박스들 컨트롤 */
+.storeDiv{
+	width: 70%;
+	height: 80%;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+.store{
+	width:300px;
+	z-index: 500;
+	float: left;
+	margin: 15px;
+}
+
+
+
+/* 카테고리 박스들 */ 
 .cate1{
 	position: absolute;
-	top: 200px;
-	left: 370px;
+	top: 50px;
+	left: 270px;
 	z-index: 11111;
 }
 .cate2{
 	position: absolute;
-	top: 400px;
-	left: 970px;
+	top: 150px;
+	left: 870px;
 	z-index: 11111;
 }
 .cate3{
 	position: absolute;
-	top: 600px;
-	left: 370px;
+	top: 400px;
+	left: 270px;
 	z-index: 11111;
 }
 .cate4{
 	position: absolute;
-	top: 800px;
-	left: 970px;
+	top: 500px;
+	left: 870px;
 	z-index: 11111;
 }
 .cate5{
 	position: absolute;
-	top: 900px;
-	left: 370px;
+	top: 700px;
+	left: 270px;
 	z-index: 11111;
 }
 a:visited{
 	text-decoration: none;
 }
+
+
+
 #btnImage{
 	align-items: center;
 }
@@ -445,19 +495,6 @@ figure.snip1384.hover i {
   transform: translate(0px, 0px);
   opacity: 1;
 }
-body{
-	width: 100%;
-	text-align: center;
-}
-#logo{
-	padding-top: 150px;
-	align-content: center;
-	padding-bottom: 130px;
-}
-#logo img{
-	width: 491px;
-	height: 79px;
-}
 #mainimage{
 	width: 100%;
 }
@@ -532,53 +569,25 @@ body{
 	left: 150px;
 	z-index: 450;
 }
+
+
+
+/* footer */
 .footerBig{
-	z-index: 40000;
+	z-index: 200;
 	width: 100%;
 	height: 100px;
-}
-.footer{
 	text-align: center;
 	background-color: black;
 	opacity: 0.3;
-	height: 100%;
 	position: relative;
 }
-.footer .fText{
+.footerBig .fText{
 	position: absolute;
 	bottom: 42px;
 	left: 40%;
 }
-.footer .fText p{
+.footerBig .fText p{
 	color: white;
 }
-.logo{
-	text-align: center;
-	height: 70px;
-	z-index: 50000;
-	width: 600px;
-	margin: 0 auto;
-}
-.store{
-	height:auto;
-	width:400px;
-	position: absolute;
-	top: 120px;
-	z-index: 500;
-}
-.store1{
-	top: 230px;
-	left: 100px;
-}
-.store2{
-		top: 230px;
-	left: 540px;
-}
-.store3{
-		top: 230px;
-	left: 1040px;
-}
-.store4{
-		top: 230px;
-	left: 1500px;
-}
+

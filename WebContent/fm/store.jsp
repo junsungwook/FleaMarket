@@ -17,42 +17,44 @@
     	<div class="squ1"></div>
 		<div class="squ2"></div>
 		<div class="squ3"></div>
-		<figure class="snip1445 store1 store">
-		  <img src="../images/store1.jpg" alt="store1" />
-		  <figcaption>
-		    <div>
-		      <h4>formal dress</h4>
-		    </div>
-		  </figcaption>
-		  <a href="#"></a>
-		</figure>
-		<figure class="snip1445 store2 store">
-		  <img src="../images/store2.jpg" alt="store2" />
-		  <figcaption>
-		    <div>
-		      <h4>Aesop</h4>
-		    </div>
-		  </figcaption>
-		  <a href="#"></a>
-		</figure>
-		<figure class="snip1445 store3 store">
-		  <img src="../images/store3.jpg" alt="store3" />
-		  <figcaption>
-		    <div>
-		      <h4>The little green shop</h4>
-		    </div>
-		  </figcaption>
-		  <a href="#"></a>
-		</figure>
-		<figure class="snip1445 store4 store">
-		  <img src="../images/store4.jpg" alt="store4" />
-		  <figcaption>
-		    <div>
-		      <h4>P.P flower</h4>
-		    </div>
-		  </figcaption>
-		  <a href="#"></a>
-		</figure>
+		<div class="storeDiv">
+			<figure class="snip1445 store1 store">
+			  <img src="../images/store1.jpg" alt="store1" />
+			  <figcaption>
+			    <div>
+			      <h4>formal dress</h4>
+			    </div>
+			  </figcaption>
+			  <a href="#"></a>
+			</figure>
+			<figure class="snip1445 store2 store">
+			  <img src="../images/store2.jpg" alt="store2" />
+			  <figcaption>
+			    <div>
+			      <h4>Aesop</h4>
+			    </div>
+			  </figcaption>
+			  <a href="#"></a>
+			</figure>
+			<figure class="snip1445 store3 store">
+			  <img src="../images/store3.jpg" alt="store3" />
+			  <figcaption>
+			    <div>
+			      <h4>The little green shop</h4>
+			    </div>
+			  </figcaption>
+			  <a href="#"></a>
+			</figure>
+			<figure class="snip1445 store4 store">
+			  <img src="../images/store4.jpg" alt="store4" />
+			  <figcaption>
+			    <div>
+			      <h4>P.P flower</h4>
+			    </div>
+			  </figcaption>
+			  <a href="#"></a>
+			</figure>
+		</div>
     </div>
 <%@include file="footer.jsp"%>
 </body>
