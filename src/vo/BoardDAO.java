@@ -25,8 +25,8 @@ public class BoardDAO {
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/board");
 		return ds.getConnection();
 	}
-	//boolean retrun
-	   public boolean updateBoard(int BOARD_NUM,String BOARD_PASS,String BOARD_SUBJECT,String BOARD_CONTENT) {
+	//updateboard
+	   public void updateBoard(int BOARD_NUM,String BOARD_PASS,String BOARD_SUBJECT,String BOARD_CONTENT) {
 	      Connection con =null;
 	      PreparedStatement ps = null;
 	      ResultSet rs = null;
@@ -34,61 +34,46 @@ public class BoardDAO {
 	      String sql="";
 	      boolean b=false;
 	         try {
-	        	 con=getConnection();
-		            sql = "select BOARD_PASS from board where BOARD_NUM=?";
-		            ps = con.prepareStatement(sql);
-		            ps.setInt(1, BOARD_NUM);
-		            rs = ps.executeQuery();
-		            if(rs.next()) {
-		            	if(rs.getString("BOARD_PASS").equals(BOARD_PASS)) {
-		            		sql = "update board set BOARD_SUBJECT='"+BOARD_SUBJECT+"',BOARD_CONTENT='"+BOARD_CONTENT+"' where BOARD_NUM="+BOARD_NUM;
-		            		st = con.createStatement();
-		                    st.executeQuery(sql);
-			            	b = true;
-	            	}	 
+		            if(rs.getString("BOARD_PASS").equals(BOARD_PASS)) {
+		         		sql = "update fmboard set BOARD_SUBJECT='"+BOARD_SUBJECT+"',BOARD_CONTENT='"+BOARD_CONTENT+"' where BOARD_NUM="+BOARD_NUM;
+		         		st = con.createStatement();
+		                 st.executeQuery(sql);
+			         	b = true;
 	            }
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }finally {
 	            closeCon(con,ps,rs);
 	         }
-			return b;
+		
 	   }
 	//delboard
-	public boolean delBoard(int BOARD_NUM,String BOARD_PASS) {
+	public void delBoard(int BOARD_NUM,String BOARD_PASS) {
 	      Connection con =null;
 	      PreparedStatement ps = null;
 	      ResultSet rs = null;
 	      String sql="";
 	      boolean b=false;
 	         try {
-	        	con=getConnection();
-	            sql = "select BOARD_PASS from board where BOARD_NUM=?";
-	            ps = con.prepareStatement(sql);
-	            ps.setInt(1, BOARD_NUM);
-	            rs = ps.executeQuery();
-	            if(rs.next()) {
-	            	if(rs.getString("BOARD_PASS").equals(BOARD_PASS)) {
-	            		sql = "delete from board where BOARD_NUM=?";
+	        	 		con=getConnection();
+	            		sql = "delete from fmboard where BOARD_NUM=?";
 		            	 PreparedStatement ps1 =con.prepareStatement(sql); 
 		            	 ps1.setInt(1, BOARD_NUM);
 		            	 ps1.executeUpdate();
 		            	 b = true;
-	            	}	 
-	            }
+	        
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }finally {
 	            closeCon(con,ps,rs);
 	         }
-			return b;
 	   }
 //read count
 	   public void updateReadCount(int board_num){
 		    Connection con= null;
 			PreparedStatement ps = null;
 			int updateCount = 0;
-			String sql="update board set BOARD_READCOUNT = "+
+			String sql="update fmboard set BOARD_READCOUNT = "+
 					"BOARD_READCOUNT+1 where BOARD_NUM = "+board_num;
 			try{
 				con = getConnection();
@@ -111,7 +96,7 @@ public class BoardDAO {
 		try {
 			con = getConnection();
 			st = con.createStatement();
-			String sql = "select count(*) from board";
+			String sql = "select count(*) from fmboard";
 			rs = st.executeQuery(sql);
 			if(rs.next())
 			count = rs.getInt(1);
@@ -131,7 +116,7 @@ public class BoardDAO {
         int number=1;
            try {
 					con = getConnection();
-					ps=con.prepareStatement("select max(board_re_seq) from board where board_re_ref="+bv.getBOARD_RE_REF());
+					ps=con.prepareStatement("select max(board_re_seq) from fmboard where board_re_ref="+bv.getBOARD_RE_REF());
 					rs=ps.executeQuery();
 					if(rs.next()) {
 						number =rs.getInt(1)+1;
@@ -142,7 +127,7 @@ public class BoardDAO {
 						re_seq=re_seq+1;
 						re_level=re_level+1;
 					    //insert
-						sql = "insert into board values(board_seq.nextval,?,?,?,?,?,?,?,?,0,sysdate)";
+						sql = "insert into fmboard values(board_seq.nextval,?,?,?,?,?,?,?,?,0,sysdate)";
 			            ps = con.prepareStatement(sql);
 			              System.out.println(sql);
 			              ps.setString(1, bv.getBOARD_NAME());
@@ -169,7 +154,7 @@ public class BoardDAO {
         String sql="";
            try {
               con = getConnection();
-              sql = "insert into board values(board_seq.nextval,?,?,?,?,?,board_seq.nextval,0,0,0,sysdate)";
+              sql = "insert into fmboard values(board_seq.nextval,?,?,?,?,?,board_seq.nextval,0,0,0,sysdate)";
               ps = con.prepareStatement(sql);
               System.out.println(sql);
               ps.setString(1, bv.getBOARD_NAME());
@@ -194,7 +179,7 @@ public class BoardDAO {
 	   String sql="";
 	   try {
 	     con = getConnection();
-	     sql = "select * from (select rownum rn,aa.* from (select * from board order by board_re_ref desc,board_re_seq asc)aa) where rn>="+startRow+" and rn<="+endRow;
+	     sql = "select * from (select rownum rn,aa.* from (select * from fmboard order by board_re_ref desc,board_re_seq asc)aa) where rn>="+startRow+" and rn<="+endRow+" and board_pass!='master'";
 		 st = con.createStatement();
 		 rs = st.executeQuery(sql);
 		 while(rs.next()) {
@@ -217,6 +202,38 @@ public class BoardDAO {
 	  }
 	  return arr;
 	}
+	//noticelist
+	public ArrayList<BoardVO> noticeList() {
+		   Connection con= null;
+		   Statement st = null;
+		   ResultSet rs = null; 
+		   ArrayList<BoardVO> arr = new ArrayList<>();
+		   String sql="";
+		   try {
+		     con = getConnection();
+		     sql = "select * from fmboard where board_pass='master'";
+			 st = con.createStatement();
+			 rs = st.executeQuery(sql);
+			 while(rs.next()) {
+				 BoardVO b = new BoardVO();
+				 b.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				 b.setBOARD_NAME(rs.getString("BOARD_NAME"));
+				 b.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				 b.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				 b.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT")); 
+				 b.setBOARD_RE_REF(rs.getInt("BOARD_RE_REF"));
+				 b.setBOARD_RE_LEV(rs.getInt("BOARD_RE_LEV"));
+				 b.setBOARD_RE_SEQ(rs.getInt("BOARD_RE_SEQ"));
+				 b.setBOARD_OPEN(rs.getString("BOARD_OPEN"));
+				 arr.add(b);
+		     }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+		     closeCon(con,st,rs);
+		  }
+		  return arr;
+		}
 	//board view
 	public BoardVO boardView(int num) {
 		   Connection con= null;
@@ -226,7 +243,7 @@ public class BoardDAO {
 		   String sql="";
 		   try {
 		     con = getConnection();
-		     sql = "select * from board where BOARD_NUM="+num;
+		     sql = "select * from fmboard where BOARD_NUM="+num;
 			 st = con.createStatement();
 			 rs = st.executeQuery(sql);
 			 if(rs.next()) {
@@ -234,6 +251,7 @@ public class BoardDAO {
 				 b.setBOARD_NUM(rs.getInt("BOARD_NUM"));
 				 b.setBOARD_NAME(rs.getString("BOARD_NAME"));
 				 b.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				 b.setBOARD_PASS(rs.getString("BOARD_PASS")); 
 				 b.setBOARD_DATE(rs.getDate("BOARD_DATE"));
 				 b.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
 				 b.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
@@ -258,7 +276,7 @@ public class BoardDAO {
 	       String sql="";
 	          try {
 	             con = getConnection();
-	             sql = "insert into commentboard (cnum,userid,regdate,msg,bnum) values(commentboard_seq.nextval,?,sysdate,?,?)";
+	             sql = "insert into fmcommentboard (cnum,userid,regdate,msg,bnum) values(commentboard_seq.nextval,?,sysdate,?,?)";
 	             System.out.println(sql);
 	             ps = con.prepareStatement(sql);
 	             ps.setString(1, "ID");
@@ -280,7 +298,7 @@ public class BoardDAO {
 		   String sql="";
 		   try {
 		     con = getConnection();
-		     sql = "select * from commentboard where bnum="+bnum;
+		     sql = "select * from fmcommentboard where bnum="+bnum;
 		     System.out.println(sql);
 			 st = con.createStatement();
 			 rs = st.executeQuery(sql);
@@ -300,7 +318,7 @@ public class BoardDAO {
 		  }
 		  return arr;
 	  }
-	//�ݾ��ִ� �͵�
+	//
 	private void closeCon(Connection con, PreparedStatement ps){
 	      try {
 	         if(con!=null)con.close();
