@@ -131,6 +131,28 @@ public class goodsDAO {
 	  }
 	  return g;
 	}
+	public ArrayList<goodsDTO> get_info(String id){
+		ArrayList<goodsDTO> arr = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from goods where userid=?";
+		
+		try {
+			con =getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
+	}
 	
 	
 	

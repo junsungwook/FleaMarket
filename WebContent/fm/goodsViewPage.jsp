@@ -12,6 +12,8 @@
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  <script type="text/javascript" src="../fm/script.js"></script>
+ 
+ 
 <style>
 	.viewbody{
 		padding:30px;
@@ -53,6 +55,12 @@
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
+<script>
+ $(document).ready(function(){
+	 $("#")
+ })
+</script>
+ 
 <%@include file="menu.jsp"%>
 <%@include file="logo.jsp"%>
 <div class="viewbody">
@@ -64,7 +72,7 @@
 	          <ul>
 	              <li><b>제목 :</b> ${goods.title }</li>
 	              <li><b>PRICE :</b> ${goods.price }</li>
-	              <li><b>판매자 :</b><a href="#"> ${goods.userid }</a></li>
+	              <li><b>판매자 :</b><a href="memberView.do?id=${goods.userid }" onclick="window.open(this.href,'','width=500,height=500'); return false;"> ${goods.userid }</a></li>
 	          </ul>
 	          
         </div>
