@@ -129,7 +129,7 @@
 		<div class="block"></div>
 		<img alt="패션메인" src="../images/feshion.png" class="faImage">
 	</div>
-	<div class="goodsList" id="results">
+	<div class="goodsList">
 		<div class="goodsListBox">
 			<c:forEach items="${lists }" var="list">
 				<div class="goodsDiv" onclick="location.href='goodsView.do?num=${list.num}'">
