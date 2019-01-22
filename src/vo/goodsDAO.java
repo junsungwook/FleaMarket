@@ -3,6 +3,7 @@ package vo;
 import java.sql.Connection;
 
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +33,7 @@ public class goodsDAO {
 			con = getConnection();
 			String sql = "insert into goods values(goods_seq.nextval,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "sungwook");
+			ps.setString(1, g.getUserid());
 			ps.setString(2, g.getTitle());
 			ps.setString(3, g.getCategory());
 			ps.setString(4, g.getSummernote());
@@ -44,7 +45,28 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
-	//goodsList
+	//goods수정하기
+	public void goodsUpdate(goodsDTO goods) {
+      Connection con =null;
+      PreparedStatement ps = null;
+      ResultSet rs = null;
+      Statement st = null;
+      String sql="";
+         try {
+        	con=getConnection();
+    		sql = "update goods set title='"+goods.getTitle()+"',category='"+goods.getCategory()+
+    			  "',summernote='"+goods.getSummernote()+"',mainpic='"+goods.getMainpic()+
+    			  "',price="+goods.getPrice()+" where num="+goods.getNum();
+    		st = con.createStatement();
+            st.executeUpdate(sql);
+            System.out.println(sql);
+         } catch (Exception e) {
+            e.printStackTrace();
+         }finally {
+            closeCon(con,ps,rs);
+         }
+   }
+	//goodsList뽑아내기
 	public ArrayList<goodsDTO> goodsList(String category){
 		ArrayList<goodsDTO> arr = new ArrayList<goodsDTO>();
 		Connection con = null;
