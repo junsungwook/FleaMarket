@@ -68,8 +68,8 @@ function sendFile(files,editor,welEditable){
 	<div class="insertForm">
 		<div class="form-group">
 			<b>작성자</b>
-			<input type="hidden" id="userid2" name="userid" value="${sessionScope.name }">
-			<input type="text" class="form-control" id="userid" name="userid" value="${sessionScope.name }" disabled="disabled">
+			<input type="hidden" id="userid2" name="userid" value="${sessionScope.id }">
+			<input type="text" class="form-control" id="userid" name="userid" value="${sessionScope.id }" disabled="disabled">
 		</div>
 		<div class="form-group">
 			<b>제목</b>
