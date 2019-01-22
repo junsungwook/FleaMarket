@@ -91,7 +91,7 @@ function sendFile(files,editor,welEditable){
 			<input type="text" class="form-control" id="price" name ="price" value="${goods.price }">
 		</div>
 	    <div class="form-group">
-			<textarea name="summernote" id="summernote" value=""></textarea>
+			<textarea name="summernote" id="summernote"></textarea>
 		</div>
 		<div class="form-group">
 			<input type="file" class="form-control-file" id="mainpic" name="mainpic"><b>메인으로 등록할 사진을 올려주세요 10mb 이하만 가능합니다</b>
