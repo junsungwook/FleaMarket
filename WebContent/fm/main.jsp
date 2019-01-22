@@ -70,6 +70,7 @@
 				</td>
 			</tr>
 		</table>
+		
 	</div>
 </div>
 <div class="section">
