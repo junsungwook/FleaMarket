@@ -83,10 +83,9 @@
 		
 	</div>
 	<div class="pBtn">
-		<c:if test="${sessionScope.id==goods.userid}">
+		<c:if test="${sessionScope.id==goods.userid or sessionScope.id=='master'}">
 		 <input type="button" class="btn btn-default" onclick="location.href='goodsUpdate.do?num=${goods.num}'" value="수정">
 		 <input type="button" class="btn btn-default" onclick="location.href='goodsDelete.do?num=${goods.num}'" value="삭제">
-		 <input type="button" class="btn btn-default" onclick="#" value="판매완료">
 		</c:if>
 	</div>
 </div>

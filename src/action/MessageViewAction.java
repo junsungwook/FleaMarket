@@ -1,6 +1,7 @@
-package com.cart.action;
+package action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -9,21 +10,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import vo.goodsDAO;
-import vo.goodsDTO;
+import vo.MSGDAO;
+import vo.MSGVO;
 
 /**
- * Servlet implementation class CartList
+ * Servlet implementation class MessageViewAction
  */
-@WebServlet({ "/CartList", "/fm/cartList.do" })
-public class CartList extends HttpServlet {
+@WebServlet("/fm/msgView.do")
+public class MessageViewAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartList() {
+    public MessageViewAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +34,19 @@ public class CartList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("나오라고 시발");
-		String id = request.getParameter("id");
-		System.out.println("맞나:" + id);
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");//내아이디
+		String userid=request.getParameter("userid");//메세지 하는 대상
+	
+		MSGDAO dao = MSGDAO.getInstance();
+		ArrayList <MSGVO> arr = dao.msgList(userid,id);
+		request.setAttribute("userid",userid);
+		request.setAttribute("lists",arr);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../fmMSG/msgView.jsp");
+		dispatcher.forward(request, response);
 		
-		goodsDAO dao =goodsDAO.getInstance();
-		
-		ArrayList<goodsDTO> arr = dao.cartlist(id);
-
-		
-		if(arr.size() ==0) {
-			request.setAttribute("lists", "no");
-		}
-		else {
-			request.setAttribute("lists", arr);
-		}
-		RequestDispatcher rd = request.getRequestDispatcher("../fm/cart.jsp");
-		rd.forward(request, response);
-		
+	
 	}
 
 	/**

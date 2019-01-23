@@ -27,6 +27,7 @@ public class MSGDAO {
 	public void msgInsert(MSGVO m) {
 		Connection con= null;
 		PreparedStatement ps =  null;
+		
 			try {
 				con = getConnection();
 				String sql = "Insert into fmmsg values (fmmsg_seq.nextval,?,?,?,0)";
@@ -43,25 +44,58 @@ public class MSGDAO {
 				closeCon(con,ps);
 			}
 	}
-	public ArrayList<MSGVO> msgList(String userid) {
+	
+	public ArrayList<String> msgcheck(String sendid){
+		ArrayList<String> arr = new ArrayList<>();
+		Connection con= null;
+		   Statement  st = null;
+		   ResultSet rs = null; 
+		   String sql="";
+		   try {
+			   con = getConnection();
+			   st = con.createStatement();
+			   sql="select userid from fmmsg where sendid='"+sendid+"' group by userid";
+			   rs = st.executeQuery(sql);
+			 while(rs.next()) {
+				 System.out.println(rs.getString("userid"));
+				 String name = rs.getString("userid");
+				 arr.add(name);
+		     }
+			 
+		   	} catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+			  closeCon(con,st,rs);
+		  }
+		   System.out.println(arr.get(0));
+		  return arr;
+	}
+	public ArrayList<MSGVO> msgList(String userid , String sendid) {
 		 Connection con= null;
-		   Statement st = null;
+		   PreparedStatement  ps = null;
 		   ResultSet rs = null; 
 		   ArrayList<MSGVO> arr = new ArrayList<>();
 		   String sql="";
 		   try {
 		     con = getConnection();
-		     sql = "select * from fmmsg where sendid='"+userid+"'";
-			 st = con.createStatement();
-			 rs = st.executeQuery(sql);
+		     sql = "select * from (select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=? )order by num asc";
+			 ps = con.prepareStatement(sql);
+			 ps.setString(1,userid);
+			 ps.setString(2,sendid);
+			 ps.setString(3,sendid);
+			 ps.setString(4,userid);
+			 rs=ps.executeQuery();
 			 while(rs.next()) {
 				 MSGVO b = new MSGVO();
 				 b.setUserid(rs.getString("userid"));
-		     }
+				 b.setSendid(rs.getString("sendid"));
+				 b.setContent(rs.getString("content"));
+				 arr.add(b);
+				 }
 		  } catch (Exception e) {
 		    e.printStackTrace();
 		  }finally {
-			  closeCon(con,st,rs);
+			  closeCon(con,ps,rs);
 		  }
 		  return arr;
 	}

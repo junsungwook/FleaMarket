@@ -16,27 +16,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 글쓰기</title>
 
-<% 
-	request.setCharacterEncoding("utf-8");
-	int num=0;
-	int ref=1,re_seq=0,re_lev=0;
-
-	if(request.getParameter("num")!=null){
-			num=Integer.parseInt(request.getParameter("num"));
-			ref = Integer.parseInt(request.getParameter("ref"));
-			re_seq=Integer.parseInt(request.getParameter("re_seq"));
-			re_lev=Integer.parseInt(request.getParameter("re_lev"));
-	}
-%>
 <script>
-	function textCount(obj,target){
-		var len =obj.value.length;//입력한글자수
-		if(200<len){//글쓴이:20 내용:70
-			alert("글자수 초과!");
-			return;
-		}
-		$("#"+target).text(len);//target영역에 글자 수 출력
-	}
+
 </script>
 <style> 
 body{
