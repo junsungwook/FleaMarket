@@ -16,7 +16,7 @@ import vo.MSGVO;
 /**
  * Servlet implementation class MessageAction
  */
-@WebServlet("/fmMember/message.do")
+@WebServlet("/fm/message.do")
 public class MessageAction extends HttpServlet {
    private static final long serialVersionUID = 1L;
        
@@ -40,13 +40,13 @@ public class MessageAction extends HttpServlet {
       m.setUserid(id);
       m.setSendid(request.getParameter("userid"));
       m.setContent(request.getParameter("content"));
-      
-      
+      System.out.println(id);
+      System.out.println(request.getParameter("userid"));
       MSGDAO dao = MSGDAO.getInstance();
       dao.msgInsert(m);
       PrintWriter out=response.getWriter();
       out.println("<script>history.back(); </script>");
-      response.sendRedirect("boardList.bo");
+
       
        
    }
