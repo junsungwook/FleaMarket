@@ -2,9 +2,7 @@ package action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,44 +16,47 @@ import vo.MSGVO;
 /**
  * Servlet implementation class MessageAction
  */
-@WebServlet("/fm/msgList.do")
+@WebServlet("/fmMember/message.do")
 public class MessageAction extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MessageAction() {
-    	
+       
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
-		ArrayList<String> arr = new ArrayList<>();
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		System.out.println(id);
-		MSGDAO dao = MSGDAO.getInstance();
-		arr= dao.msgcheck(id);
-		request.setAttribute("lists",arr);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../fmMSG/msgList.jsp");
-		dispatcher.forward(request, response);
-		
-	    
-	}
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.setCharacterEncoding("utf-8");
+  	HttpSession session = request.getSession();
+	String id = (String) session.getAttribute("id");
+      MSGVO m = new MSGVO();
+      m.setUserid(id);
+      m.setSendid(request.getParameter("userid"));
+      m.setContent(request.getParameter("content"));
+      
+      
+      MSGDAO dao = MSGDAO.getInstance();
+      dao.msgInsert(m);
+      PrintWriter out=response.getWriter();
+      out.println("<script>history.back(); </script>");
+      response.sendRedirect("boardList.bo");
+      
+       
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      // TODO Auto-generated method stub
+      doGet(request, response);
+   }
 
 }

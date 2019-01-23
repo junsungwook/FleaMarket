@@ -78,13 +78,13 @@ public class MSGDAO {
 		   String sql="";
 		   try {
 		     con = getConnection();
-		     sql = "select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=? order by num asc";
+		     sql = "select * from (select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=? )order by num asc";
 			 ps = con.prepareStatement(sql);
-			 rs=ps.executeQuery();
 			 ps.setString(1,userid);
 			 ps.setString(2,sendid);
 			 ps.setString(3,sendid);
 			 ps.setString(4,userid);
+			 rs=ps.executeQuery();
 			 while(rs.next()) {
 				 MSGVO b = new MSGVO();
 				 b.setUserid(rs.getString("userid"));
