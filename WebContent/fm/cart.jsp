@@ -25,7 +25,7 @@
 		<td>${list.userid }</td>
 		<td>${list.title }</td>
 		<td>${list.price }</td>
-		<td><input type="button" value="삭제하기"></td>
+		<td><input type="button" value="삭제하기" onClick="location.href='goodsCartdel.do?id=${sessionScope.id}&goods=${list.num }'"></td>
 	</tr>
 	</c:forEach>
 	</table>

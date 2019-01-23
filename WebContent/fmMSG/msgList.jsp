@@ -6,26 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>쪽지함</title>
-       <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
-	 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
-      <link rel="stylesheet" href="../fm/style.css" type="text/css">
-     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../fm/script.js"></script>
-	<!-- Google Fonts -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
 <body>
-aa
-	<c:forEach items="${lists}" var="list" varStatus="i">
 <table border=1>
-	<tr>
-		<td>
-			<a href="msgView.jsp?num=${lists.num}">${lists.userid }님에게서 온 메세지</a>
-		</td>
-	<tr>
-</table>
+	<c:forEach items="${lists}" var="list">
+			<tr>
+				<td onclick ="window.open('msgView.do?userid=${list}','','top=300px, left=300px, height=450px, width=450px')"> ${list}님과의 쪽지
+				</td>
+			<tr>
 </c:forEach>
+</table>
 </body>
 </html>
