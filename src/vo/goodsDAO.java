@@ -343,8 +343,4 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-
 }

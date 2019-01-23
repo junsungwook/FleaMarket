@@ -13,42 +13,42 @@
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  <script type="text/javascript" src="../fm/script.js"></script>
 <style>
-	.viewbody{
-		padding:30px;
-		width: 65%;
-		border: 2px dotted gray;
-		margin: 0 auto;
-		margin-top:100px;
-	}
-		.viewImg{
-			width: 100%;
-		}
-			.viewImg img{
-				width: 30%;
-				height: auto;
-			}
-		.viewText{
-			width: 100%;
-		}
-		.viewText .pricingContent{
-			margin: 0 auto;
-		}
-	.pBtn{
-		text-align: right;
-	}
-	.pricingContent ul{
-	    list-style: none;
-	    padding: 0;
-	    margin-bottom: 0;
-	}
-	.pricingContent ul li{
-	    border-bottom:1px solid #ededed;
-	    color: #9999A5;
-	    padding: 10px 0 ;
-	}
-	.pricingContent ul li:first-child {
-	    border-top:1px solid #ededed;
-	}
+.viewbody{
+	padding:30px;
+	width: 65%;
+	border: 2px dotted gray;
+	margin: 0 auto;
+	margin-top:100px;
+}
+.viewImg{
+	width: 100%;
+}
+.viewImg img{
+	width: 30%;
+	height: auto;
+}
+.viewText{
+	width: 100%;
+}
+.viewText .pricingContent{
+	margin: 0 auto;
+}
+.pBtn{
+	text-align: right;
+}
+.pricingContent ul{
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+.pricingContent ul li{
+    border-bottom:1px solid #ededed;
+    color: #9999A5;
+    padding: 10px 0 ;
+}
+.pricingContent ul li:first-child {
+    border-top:1px solid #ededed;
+}
 </style>
 <title>여기에 제목을 입력하십시오</title>
 </head>
@@ -75,7 +75,7 @@
         </div>
 	</div>
 	<div class="pBtn">
-		<c:if test="${sessionScope.id==goods.userid}">
+		<c:if test="${sessionScope.id==goods.userid or sessionScope.id=='master'}">
 		 <input type="button" class="btn btn-default" onclick="location.href='goodsUpdate.do?num=${goods.num}'" value="수정">
 		 <input type="button" class="btn btn-default" onclick="location.href='goodsDelete.do?num=${goods.num}'" value="삭제">
 		</c:if>

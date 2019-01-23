@@ -35,59 +35,59 @@ html {
 	transform: translateX(0%);
 	left: 0px;
 }
-  .menu-inner {
-    width: 100%;
+.menu-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#blob {
+    top: 0;
+    z-index: -1;
+    right: 60px;
+    transform: translateX(100%);
     height: 100%;
-    position: relative;
-  }
+    position: absolute;
+}
 
-  #blob {
-      top: 0;
-      z-index: -1;
-      right: 60px;
-      transform: translateX(100%);
-      height: 100%;
-      position: absolute;
-  }
+#blob-path {
+    height: 100%;
+    fill:#8B8067;
+}
 
-  #blob-path {
-      height: 100%;
-      fill:#8B8067;
-  }
+.hamburger {
+    right: 20px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;  
+}
+/* 스위치부분 */
+.hamburger .line {
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    position: absolute;
+}
 
-  .hamburger {
-      right: 20px;
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      margin-top: -10px;  
-  }
-	/* 스위치부분 */
-  .hamburger .line {
-      width: 100%;
-      height: 4px;
-      background-color: #fff;
-      position: absolute;
-  }
+.hamburger .line:nth-child(2) {
+    top: 50%;
+    margin-top: -2px;
+}
 
-  .hamburger .line:nth-child(2) {
-      top: 50%;
-      margin-top: -2px;
-  }
-
-  .hamburger .line:nth-child(3) {
-      bottom: 0;
-  }
+.hamburger .line:nth-child(3) {
+    bottom: 0;
+}
 
 
-  .menu-inner ul {
-      padding: 0;
-      list-style: none;
-      width: 80%;
-      margin-left: 10%;
-      position: absolute;
-      top: 10px;
-  }
+.menu-inner ul {
+    padding: 0;
+    list-style: none;
+    width: 80%;
+    margin-left: 10%;
+    position: absolute;
+    top: 10px;
+}
 
 .menu-inner ul li {
     color: #aaa;
@@ -568,6 +568,102 @@ figure.snip1384.hover i {
 	bottom: 250px;
 	left: 150px;
 	z-index: 450;
+}
+
+/* 카테고리 조회한 페이지 컨트롤 */
+.mainImage{
+	position:relative;
+	width: 100%;
+	height: 100%; 
+	text-align: center;
+}
+.block{
+	position: absolute;
+	background-color: black;
+	opacity: 0.3;
+	top: 0px;
+	left: 0px;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
+}
+.faImage{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+}
+.fb_text{
+	color: white;
+	z-index: 99;
+	font-size: 60pt;
+	position:relative;
+	padding-top: 22%;
+}
+.fb_smallText{
+	color: white;
+	z-index: 99;
+	font-size: 13pt;
+	position:relative;
+	padding-top: 50px;
+}
+.goodsList{
+	width: 100%;
+	padding-left: 143px;
+	padding-top: 20px;
+}
+.goodsDiv{
+	width: 320.5px;
+	height: 450px;
+	float: left;
+	margin-right: 45.5px;
+	margin-bottom: 57.8px;
+	border: 1px solid #CBCACA;
+	display: inline-block;
+}
+.goodsDiv:hover{
+	border: 2px solid #7F7F7F;
+}
+.goodsListBox{
+	width: 75%;
+	margin: 0 auto;
+}
+.goodsDiv .imageBox{
+	height: 70%;
+	overflow: hidden;
+}
+.goodsDiv img{
+	height: 100%;
+	width: auto;
+	display: block;
+	margin: 0 auto;
+
+}
+.goodsListBox:after {
+	 content:""; 
+	 clear:both; 
+	 display:block; 
+}
+.pricingContent ul{
+   list-style: none;
+   padding: 0;
+   margin-bottom: 0;
+}
+.pricingContent ul li{
+    border-bottom:1px solid #ededed;
+    color: #9999A5;
+    padding: 10px 0 ;
+}
+.pricingContent ul li:first-child {
+    border-top:1px solid #ededed;
+}
+.searchBox{
+	width: 60%;
+	margin: 0 auto;
+	padding-left: 100px;
+	padding-bottom: 50px;
 }
 
 
