@@ -29,6 +29,7 @@ function textCount(obj,target){
 $(document).ready(function(){
 	$("#msg").click(function(){
 			$('#frm').submit();
+			
 	});
 });
 </script>
@@ -161,6 +162,7 @@ $(document).ready(function(){
 </div>
 <hr>
 <form  action="message.do" name="frm" id="frm">
+	<input type="hidden" value="${sessionScope.id }" name="id"> 
 	<input type="hidden" value="${userid}" name="userid">
 	<input type="text" class="form-control" id="content" name="content" onkeyup="textCount(this,'contentcount')">
 	*100글자 이내
