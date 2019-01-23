@@ -218,6 +218,35 @@ public class MemberDAO {
 		}
 		return arr;
 	}
+	public ArrayList<MemberDTO> memberList(){
+		Connection con = null;
+		PreparedStatement ps= null;
+		ResultSet rs =null;
+		arr = new ArrayList<>();
+		try {
+			con = getConnection();
+			String sql = "select * from fmmember";
+			ps = con.prepareStatement(sql);
+	        rs = ps.executeQuery();
+
+			while (rs.next()) {
+				MemberDTO mb = new MemberDTO();
+				mb.setName(rs.getString("name"));
+				mb.setUserid(rs.getString("userid"));
+				mb.setEmail(rs.getString("email"));
+				mb.setPhone(rs.getString("phone"));
+				mb.setZipcode(rs.getString("zipcode"));
+				mb.setAddr(rs.getString("addr"));
+				arr.add(mb);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeCon(con, ps,rs);
+		}
+		return arr;
+	}
 	//占쏙옙찾占쏙옙
 	public ArrayList<ZipcodeDTO> zipSearch(String dong){
 		Connection con = null;
@@ -246,6 +275,8 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, st, rs);
 		}
 		return arr;
 	}
@@ -317,6 +348,8 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, st, rs);
 		}
 		return result;
 	}
@@ -342,6 +375,9 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			closeCon(con, ps, rs);
+		}
+		finally {
 			closeCon(con, ps, rs);
 		}
 		
@@ -376,6 +412,9 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			closeCon(con, ps, rs);
+		}
 		return id;
 	}
 	
@@ -404,6 +443,9 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally {
+			closeCon(con, ps, rs);
 		}
 		return result;
 	}

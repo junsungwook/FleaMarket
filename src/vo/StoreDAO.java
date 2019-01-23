@@ -181,6 +181,27 @@ public class StoreDAO {
 	  }
 	  return g;
 	}
+	public int StoreCount(String id) {
+		 Connection con= null;
+		 Statement st = null;
+		 ResultSet rs = null;
+		 int count =0;
+		   
+		 try {
+			 String sql = "select count(*) from store";
+			con=getConnection();
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			if(rs.next()) {
+				count = rs.getInt(count);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		   return count;
+	}
 	
 	
 	
