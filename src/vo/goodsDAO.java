@@ -68,6 +68,8 @@ public class goodsDAO {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			closeCon(con, ps);
 		}
 	}
 	public void goodsInsert(goodsDTO g,String username,String email) {
@@ -88,6 +90,8 @@ public class goodsDAO {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			closeCon(con, ps);
 		}
 	}
 	//goods수정하기
@@ -221,6 +225,8 @@ public class goodsDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, ps, rs);
 		}
 		return arr;
 	}
@@ -245,6 +251,8 @@ public class goodsDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, ps, rs);
 		}
 		return str;
 	}
@@ -263,6 +271,8 @@ public class goodsDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, ps);
 		}
 	}
 	public void goodsCartDelete(String id, int num) {
@@ -279,6 +289,8 @@ public class goodsDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, ps);
 		}
 	}
 
@@ -306,6 +318,64 @@ public class goodsDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, ps, rs);
+		}
+		
+		return arr;
+	}
+	
+	public int sellCount(String id) {
+		 Connection con= null;
+		 Statement st = null;
+		 ResultSet rs = null;
+		 int count =0;
+		   
+		 try {
+			 String sql = "select count(*) from goods where userid= '"+id+"'";
+			con=getConnection();
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeCon(con, st, rs);
+		}
+		 
+		   return count;
+	}
+	public ArrayList<goodsDTO> list() {
+		// TODO Auto-generated method stub
+		ArrayList<goodsDTO> arr = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from goods ";
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				goodsDTO dto = new goodsDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setUserid(rs.getString("userid"));
+				dto.setCategory(rs.getString("category"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPrice(Integer.parseInt(rs.getString("price")));
+				arr.add(dto);
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeCon(con, ps, rs);
 		}
 		
 		return arr;
@@ -343,6 +413,7 @@ public class goodsDAO {
 			e.printStackTrace();
 		}
 	}
+
 	
 	
 	
