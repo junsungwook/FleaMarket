@@ -29,14 +29,15 @@ public class CartDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int num = Integer.parseInt(request.getParameter("num"));
+		int goods = Integer.parseInt(request.getParameter("goods"));
 		String id = request.getParameter("id");
 		goodsDAO dao = goodsDAO.getInstance();
-		System.out.println("까꿍 장바구니 " + num+id);
+		System.out.println("삭제한디  " + id+goods);
 	
-		dao.goodsCartDelete(id, num);
+		dao.goodsCartDelete(id, goods);
 		
-		response.sendRedirect("../fm/goodsView.do?num="+num+"&cart=ok");
+		response.sendRedirect("cartList.do?id="+id);
+		
 	}
 
 	/**
