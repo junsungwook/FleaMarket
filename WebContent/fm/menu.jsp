@@ -29,7 +29,7 @@
 	        <li><a href="../fm/main.jsp">메인화면</a></li>
 	        <c:if test="${sessionScope.id !=null }">
 	         <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
-	        <li><a href="#">쪽지함<span id="newmsg">❣️</span></a></li>
+	        <li><a href="msgList.do">쪽지함<span id="newmsg">❣️</span></a></li>
 	        <li><a href="cartList.do?id=${sessionScope.id }">장바구니</a></li>
 	        </c:if>
 	    </ul>
