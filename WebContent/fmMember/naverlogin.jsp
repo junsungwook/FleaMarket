@@ -55,13 +55,10 @@
 			<br>
 			<button type="submit">확인</button>
 			</form>
-			<br/>
-			
-
 			<br>
 			<br>
 			 <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"></a>
-			 <br>
+			 <br><br><br>
 			 <input type="button" id="id_search_bt" value="아이디찾기">
 			 <input type="button" id="pwd_seach_bt" value="비밀번호찾기">
 		</div>

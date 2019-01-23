@@ -17,12 +17,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-aa
-	<c:forEach items="${lists}" var="list" varStatus="i">
+	<c:forEach items="${lists}" var="list">
 <table border=1>
 	<tr>
 		<td>
-			<a href="msgView.jsp?num=${lists.num}">${lists.userid }님에게서 온 메세지</a>
+			<a href="msgView.jsp?userid=${list}">${list}</a>
 		</td>
 	<tr>
 </table>

@@ -2,31 +2,27 @@ package action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import vo.MSGDAO;
 import vo.MSGVO;
 
 /**
- * Servlet implementation class MessageAction
+ * Servlet implementation class MessageViewAction
  */
-@WebServlet("/fm/msgList.do")
-public class MessageAction extends HttpServlet {
+@WebServlet("//msgView")
+public class MessageViewAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageAction() {
-    	
+    public MessageViewAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,17 +33,14 @@ public class MessageAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		ArrayList<String> arr = new ArrayList<>();
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		System.out.println(id);
+		MSGVO m = new MSGVO();
+		m.setUserid(request.getParameter("userid"));
+		m.setSendid(request.getParameter("sendid"));
+		m.setContent(request.getParameter("content"));
 		MSGDAO dao = MSGDAO.getInstance();
-		arr= dao.msgcheck(id);
-		request.setAttribute("lists",arr);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../fmMSG/msgList.jsp");
-		dispatcher.forward(request, response);
+		dao.msgInsert(m);
 		
-	    
+	
 	}
 
 	/**
