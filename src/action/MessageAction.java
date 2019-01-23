@@ -3,6 +3,7 @@ package action;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,19 +35,25 @@ public class MessageAction extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       request.setCharacterEncoding("utf-8");
-  	HttpSession session = request.getSession();
-	String id = (String) session.getAttribute("id");
+
+      String id = request.getParameter("id");
       MSGVO m = new MSGVO();
       m.setUserid(id);
       m.setSendid(request.getParameter("userid"));
       m.setContent(request.getParameter("content"));
-      System.out.println(id);
+      System.out.println("ggg" +id);
       System.out.println(request.getParameter("userid"));
       MSGDAO dao = MSGDAO.getInstance();
-      dao.msgInsert(m);
+      dao.msgInsert(m);/*
       PrintWriter out=response.getWriter();
       out.println("<script>history.back(); </script>");
-
+*/
+      request.setAttribute("userid",request.getParameter("userid"));
+      request.setAttribute("content",request.getParameter("content"));
+      request.setAttribute("id", id);
+      
+      RequestDispatcher rd = request.getRequestDispatcher("msgView.do");
+      rd.forward(request, response);
       
        
    }
