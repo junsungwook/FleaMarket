@@ -41,6 +41,7 @@ public class MessageViewAction extends HttpServlet {
 	
 		MSGDAO dao = MSGDAO.getInstance();
 		ArrayList <MSGVO> arr = dao.msgList(userid,id);
+
 		request.setAttribute("userid",userid);
 		request.setAttribute("lists",arr);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("../fmMSG/msgView.jsp");

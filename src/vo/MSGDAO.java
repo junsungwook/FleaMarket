@@ -90,6 +90,7 @@ public class MSGDAO {
 				 b.setUserid(rs.getString("userid"));
 				 b.setSendid(rs.getString("sendid"));
 				 b.setContent(rs.getString("content"));
+				 b.setRead(rs.getInt("read"));
 				 arr.add(b);
 				 }
 		  } catch (Exception e) {
