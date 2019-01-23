@@ -12,106 +12,8 @@
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  <script type="text/javascript" src="../fm/script.js"></script>	
- <style>
- 	.mainImage{
- 		position:relative;
- 		width: 100%;
- 		height: 100%; 
- 	}
- 	.block{
- 		position: absolute;
- 		background-color: black;
- 		opacity: 0.3;
- 		top: 0px;
- 		left: 0px;
- 		z-index: 3;
- 		width: 100%;
- 		height: 100%;
- 	}
- 	.faImage{
- 		width: 100%;
- 		height: 100%;
- 		position: absolute;
- 		top: 0px;
- 		left: 0px;
- 		z-index: 2;
- 	}
- 	.fb_text{
- 		position: absolute;
- 		top: 35%;
- 		left:32%;
- 		color: white;
- 		z-index: 4;
- 		font-size: 60pt;
- 	}
- 	.fb_smallText{
- 		position: absolute;
- 		top: 60%;
- 		left:36%;
- 		color: white;
- 		z-index: 4;
- 		font-size: 13pt;
- 	}
- 	
- 	.goodsList{
- 		width: 100%;
- 		padding-left: 143px;
- 		padding-top: 20px;
- 	}
- 	.goodsDiv{
- 		width: 320.5px;
- 		height: 450px;
- 		float: left;
- 		margin-right: 45.5px;
- 		margin-bottom: 57.8px;
- 		border: 1px solid #CBCACA;
- 		display: inline-block;
- 	}
- 	.goodsDiv:hover{
- 		border: 2px solid #7F7F7F;
- 	}
- 	.goodsListBox{
- 		width: 75%;
- 		margin: 0 auto;
- 	}
- 	.goodsDiv .imageBox{
- 		height: 70%;
- 		overflow: hidden;
- 	}
- 	.goodsDiv img{
- 		height: 100%;
- 		width: auto;
- 		display: block;
- 		margin: 0 auto;
-
- 	}
- 	.goodsListBox:after {
- 		 content:""; 
- 		 clear:both; 
- 		 display:block; 
- 	}
- 	.pricingContent ul{
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0;
-	}
-	.pricingContent ul li{
-	    border-bottom:1px solid #ededed;
-	    color: #9999A5;
-	    padding: 10px 0 ;
-	}
-	.pricingContent ul li:first-child {
-	    border-top:1px solid #ededed;
-	}
-	.searchBox{
-		width: 60%;
-		margin: 0 auto;
-		padding-left: 100px;
-		padding-bottom: 50px;
-	}
- </style>
  <script>
- function getData(pageNum){
+function getData(pageNum){
 	$("#results").load("StList.do",{"pageNum":pageNum,"field":$("#field option:selected").val(),"word":$("#word").val(),"category":"store1"},function(data){
 		$("#results").html(data);
 	})
@@ -127,7 +29,7 @@
 			가장 가까이 있던 추억마저 파는 매장1
 		</p>
 		<div class="block"></div>
-		<img alt="메인" src="../images/store11.jpg" class="faImage">
+		<img alt="메인" src="../images/store11.png" class="faImage">
 	</div>
 	<div class="goodsList">
 		<div class="goodsListBox">
