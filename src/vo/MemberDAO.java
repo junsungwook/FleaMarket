@@ -132,11 +132,13 @@ public class MemberDAO {
 					mb = new MemberDTO();
 					mb.setName(rs.getString("name"));
 					mb.setUserid(rs.getString("userid"));
-					mb.setPassword(rs.getString("pwd"));
+					mb.setPassword(rs.getString("password"));
 					mb.setEmail(rs.getString("email"));
 					mb.setPhone(rs.getString("phone"));
 					mb.setZipcode(rs.getString("zipcode"));
 					mb.setAddr(rs.getString("addr"));
+					mb.setRank(rs.getString("rank"));
+					mb.setIncome(rs.getInt("income"));
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

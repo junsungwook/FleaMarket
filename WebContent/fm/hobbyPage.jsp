@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- 패션 조회 된 페이지 -->
+<!-- 취미 조회 된 페이지 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Fashion & beauty</title>
+<title>Hobby</title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
@@ -112,7 +112,7 @@
  </style>
  <script>
  function getData(pageNum){
-	$("#results").load("CaList.do",{"pageNum":pageNum,"field":$("#field option:selected").val(),"word":$("#word").val(),"category":"fashion"},function(data){
+	$("#results").load("CaList.do",{"pageNum":pageNum,"field":$("#field option:selected").val(),"word":$("#word").val(),"category":"hobby"},function(data){
 		$("#results").html(data);
 	})
 }
@@ -121,13 +121,13 @@
 <body id="results">
 	<%@include file="../fm/menu.jsp"%>
 	<div class="mainImage">
-		<p class="fb_text">fashion & beauty</p>
+		<p class="fb_text">hobby</p>
 		<p class="fb_smallText">
-			패션은 따라 할 수 있지만 , 그 안에 담긴 추억은 흉내낼 수 없다.<br>
-			가장 가까이 있던 추억마저 파는 플리마켓 fashion & beauty 카테고리
+			그 사람을 가장 잘 알 수 있는 법은 그 사람의 취미를 보는 것<br>
+			가장 가까이 있던 추억마저 파는 플리마켓 hobby 카테고리
 		</p>
 		<div class="block"></div>
-		<img alt="패션메인" src="../images/feshion.png" class="faImage">
+		<img alt="취미메인" src="../images/elec.png" class="faImage">
 	</div>
 	<div class="goodsList">
 		<div class="goodsListBox">

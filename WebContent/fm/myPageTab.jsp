@@ -136,10 +136,10 @@
           <li role="presentation"><a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><i class="fa fa-send-o" aria-hidden="true"></i>
             <p>내상품</p>
             </a></li>
-          <li role="presentation"><a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fa fa-qrcode" aria-hidden="true"></i>
+          <li role="presentation"><a href="#cart" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fa fa-qrcode" aria-hidden="true"></i>
             <p>장바구니</p>
             </a></li>
-          <li role="presentation"><a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o" aria-hidden="true"></i>
+          <li role="presentation" ><a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o" aria-hidden="true"></i>
             <p>내등급</p>
             </a></li>
         </ul>
@@ -182,14 +182,15 @@
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
               </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="optimization">
+          <div role="tabpanel" class="tab-pane" id="cart">
             <div class="design-process-content">
               <h3 class="semi-bold">장바구니</h3>
               <table>
               	<tr>
               		<th>상품이름</th>
-              		<th>옵션</th>
+              		<th> 옵션</th>
               	</tr>
+              	
               </table>
                </div>
           </div>

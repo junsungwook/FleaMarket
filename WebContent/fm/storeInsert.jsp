@@ -34,7 +34,7 @@ function sendFile(files,editor,welEditable){
 	    $.ajax({ // ajax를 통해 파일 업로드 처리
 	        data :data,
 	        type :"POST",
-	        url :"uploadAction.re",
+	        url :"storeUploadAction.re",
 	        cache : false,
 	        contentType : false,
 	        processData : false,
@@ -64,7 +64,7 @@ function sendFile(files,editor,welEditable){
 <%@include file="../fm/menu.jsp"%>
 <%@include file="logo.jsp"%>
 <div class="container">
-<form action="uploadAction.re" enctype="multipart/form-data" id ="frm" name="frm" method="post">
+<form action="storeUploadAction.re" enctype="multipart/form-data" id ="frm" name="frm" method="post">
 	<div class="insertForm">
 		<div class="form-group">
 			<b>작성자</b>
@@ -80,11 +80,10 @@ function sendFile(files,editor,welEditable){
 		<div class="form-group">
 			<label for="noticeContent"><b>카테고리</b></label>
 		    <select class="form-control" id="category" name="category">
-				<option value="fashion">패션 / 뷰티</option>
-				<option value="living">생활</option>
-				<option value="hobby">취미</option>
-				<option value="food">식품</option>
-				<option value="pet">반려용품</option>
+				<option value="store1">스토어1</option>
+				<option value="store2">스토어2</option>
+				<option value="store3">스토어3</option>
+				<option value="store4">스토어4</option>
 		    </select>
 		</div>
 		<div class="form-group">

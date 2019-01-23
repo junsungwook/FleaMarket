@@ -1,10 +1,9 @@
-package goodsAction;
+package com.cart.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,16 +14,16 @@ import vo.goodsDAO;
 import vo.goodsDTO;
 
 /**
- * Servlet implementation class FashionList
+ * Servlet implementation class CartList
  */
-@WebServlet("/fm/fashionList.do")
-public class FashionList extends HttpServlet {
+@WebServlet({ "/CartList", "/fm/cartList.do" })
+public class CartList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FashionList() {
+    public CartList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +32,24 @@ public class FashionList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		goodsDAO dao = goodsDAO.getInstance();
-		ArrayList<goodsDTO> arr = dao.goodsList();
-		//request.setAttribute("", "");
-		request.setAttribute("lists", arr);
-		response.setContentType("text/html; charset=UTF-8");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../fm/fashionPage.jsp");
-		dispatcher.forward(request, response);
+		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		System.out.println("맞나:" + id);
+		
+		goodsDAO dao =goodsDAO.getInstance();
+		
+		ArrayList<goodsDTO> arr = dao.cartlist(id);
+
+		
+		if(arr.size() ==0) {
+			request.setAttribute("lists", "no");
+		}
+		else {
+			request.setAttribute("lists", arr);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("../fm/cart.jsp");
+		rd.forward(request, response);
+		
 	}
 
 	/**

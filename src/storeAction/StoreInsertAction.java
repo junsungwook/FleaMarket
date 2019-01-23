@@ -1,4 +1,4 @@
-package goodsAction;
+package storeAction;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -13,20 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import vo.StoreDAO;
+import vo.StoreDTO;
 import vo.goodsDAO;
 import vo.goodsDTO;
 
 /**
  * Servlet implementation class InsertAction
  */
-@WebServlet("/fm/uploadAction.re")
-public class InsertAction extends HttpServlet {
+@WebServlet("/fm/storeUploadAction.re")
+public class StoreInsertAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertAction() {
+    public StoreInsertAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,7 +52,7 @@ public class InsertAction extends HttpServlet {
 			Enumeration files = multi.getFileNames();
 			String file = (String)files.nextElement(); 
 			
-			String username=multi.getParameter("username");
+			String username=multi.getParameter("name");
 			String email=multi.getParameter("email");
 			String summernote=multi.getParameter("summernote");
 			String userid = multi.getParameter("userid");
@@ -59,24 +61,16 @@ public class InsertAction extends HttpServlet {
 			String mainpic = multi.getFilesystemName("mainpic");
 			int price = Integer.parseInt(multi.getParameter("price"));
 			
-			goodsDTO goods = new goodsDTO();
+			StoreDTO goods = new StoreDTO();
 			goods.setUserid(userid);
 			goods.setTitle(title);
 			goods.setCategory(category);
 			goods.setSummernote(summernote);
 			goods.setMainpic(mainpic);
 			goods.setPrice(price);
-			goodsDAO dao = goodsDAO.getInstance();
+			StoreDAO dao = StoreDAO.getInstance();
 			response.setContentType("text/html; charset=UTF-8");
-			if(email.equals(null)) {
-				dao.goodsInsert(goods);
-			}
-			else {
-				dao.goodsInsert(goods,username,email);
-			}
-			
-			
-			
+			dao.StoreInsert(goods);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

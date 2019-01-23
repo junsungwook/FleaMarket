@@ -34,7 +34,7 @@ function sendFile(files,editor,welEditable){
 	    $.ajax({ // ajax를 통해 파일 업로드 처리
 	        data :data,
 	        type :"POST",
-	        url :"uploadAction.re",
+	        url :"storeUpdate.do",
 	        cache : false,
 	        contentType : false,
 	        processData : false,
@@ -64,35 +64,33 @@ function sendFile(files,editor,welEditable){
 <%@include file="../fm/menu.jsp"%>
 <%@include file="logo.jsp"%>
 <div class="container">
-<form action="uploadAction.re" enctype="multipart/form-data" id ="frm" name="frm" method="post">
+<form action="storeUpdate.do" enctype="multipart/form-data" id ="frm" name="frm" method="post">
 	<div class="insertForm">
 		<div class="form-group">
 			<b>작성자</b>
-			<input type="hidden" id="email" name="email" value="${sessionScope.email}">
-			<input type="hidden" id="username" name="username" value="${sessionScope.name}">
-			<input type="hidden" id="userid2" name="userid" value="${sessionScope.id }">
-			<input type="text" class="form-control" id="userid" name="userid" value="${sessionScope.id }" disabled="disabled">
+			<input type="hidden" id="num" name="num" value="${goods.num }">
+			<input type="hidden" id="userid2" name="userid" value="${sessionScope.name }">
+			<input type="text" class="form-control" id="userid" name="userid" value="${sessionScope.name }" disabled="disabled">
 		</div>
 		<div class="form-group">
 			<b>제목</b>
-			<input type="text" class="form-control" id="title" name ="title" placeholder="제목">
+			<input type="text" class="form-control" id="title" name ="title" value="${goods.title }">
 		</div>
 		<div class="form-group">
 			<label for="noticeContent"><b>카테고리</b></label>
 		    <select class="form-control" id="category" name="category">
-				<option value="fashion">패션 / 뷰티</option>
-				<option value="living">생활</option>
-				<option value="hobby">취미</option>
-				<option value="food">식품</option>
-				<option value="pet">반려용품</option>
+				<option value="store1">스토어1</option>
+				<option value="store2">스토어2</option>
+				<option value="store3">스토어3</option>
+				<option value="store4">스토어4</option>
 		    </select>
 		</div>
 		<div class="form-group">
 			<b>가격을 입력</b>
-			<input type="text" class="form-control" id="price" name ="price" placeholder="가격">
+			<input type="text" class="form-control" id="price" name ="price" value="${goods.price }">
 		</div>
 	    <div class="form-group">
-			<textarea name="summernote" id="summernote" value=""></textarea>
+			<textarea name="summernote" id="summernote"></textarea>
 		</div>
 		<div class="form-group">
 			<input type="file" class="form-control-file" id="mainpic" name="mainpic"><b>메인으로 등록할 사진을 올려주세요 10mb 이하만 가능합니다</b>

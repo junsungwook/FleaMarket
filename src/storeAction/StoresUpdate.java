@@ -1,8 +1,9 @@
-package goodsAction;
+package storeAction;
 
 import java.io.IOException;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,20 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import vo.StoreDAO;
+import vo.StoreDTO;
 import vo.goodsDAO;
 import vo.goodsDTO;
 
 /**
- * Servlet implementation class InsertAction
+ * Servlet implementation class GoodsUpdate
  */
-@WebServlet("/fm/uploadAction.re")
-public class InsertAction extends HttpServlet {
+@WebServlet("/fm/storeUpdate.do")
+public class StoresUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertAction() {
+    public StoresUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,6 +38,21 @@ public class InsertAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		int num = Integer.parseInt(request.getParameter("num"));
+		System.out.println(num);
+		StoreDAO dao = StoreDAO.getInstance();
+		StoreDTO g = dao.StoreView(num);
+		request.setAttribute("goods", g);
+		response.setContentType("text/html; charset=UTF-8");
+		RequestDispatcher rd =request.getRequestDispatcher("../fm/storeUpdate.jsp");
+	    rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
 		String uploadPath = "upload";
@@ -50,16 +68,17 @@ public class InsertAction extends HttpServlet {
 			Enumeration files = multi.getFileNames();
 			String file = (String)files.nextElement(); 
 			
-			String username=multi.getParameter("username");
-			String email=multi.getParameter("email");
+			int num =Integer.parseInt(multi.getParameter("num"));
 			String summernote=multi.getParameter("summernote");
 			String userid = multi.getParameter("userid");
 			String title = multi.getParameter("title");
 			String category = multi.getParameter("category");
 			String mainpic = multi.getFilesystemName("mainpic");
 			int price = Integer.parseInt(multi.getParameter("price"));
-			
+			System.out.println(summernote.length());
+		
 			goodsDTO goods = new goodsDTO();
+			goods.setNum(num);
 			goods.setUserid(userid);
 			goods.setTitle(title);
 			goods.setCategory(category);
@@ -68,28 +87,10 @@ public class InsertAction extends HttpServlet {
 			goods.setPrice(price);
 			goodsDAO dao = goodsDAO.getInstance();
 			response.setContentType("text/html; charset=UTF-8");
-			if(email.equals(null)) {
-				dao.goodsInsert(goods);
-			}
-			else {
-				dao.goodsInsert(goods,username,email);
-			}
-			
-			
-			
+			dao.goodsUpdate(goods);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		response.sendRedirect("../fm/main.jsp");
 	}
-
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

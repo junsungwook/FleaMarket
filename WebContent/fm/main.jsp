@@ -36,7 +36,7 @@
 	   		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="../fmMember/joinForm.jsp"><strong>회원가입</strong></a>
 	   	</c:if>
 	   	<c:if test = "${id!=null }">
-	   	  	${name}님 환영합니다 ♥<a href="logout.do"><strong>로그아웃</strong></a>
+	   	  	${id}님 환영합니다 ♥<a href="logout.do"><strong>로그아웃</strong></a>
     	</c:if>
 
 	</div> 
@@ -55,9 +55,6 @@
 					  </figcaption>
 					  <a href="../fm/shop.jsp"></a>
 					</figure>
-					
-					
-					
 				</td>
 				<td>
 					<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />
@@ -70,6 +67,7 @@
 				</td>
 			</tr>
 		</table>
+		
 	</div>
 </div>
 <div class="section">
