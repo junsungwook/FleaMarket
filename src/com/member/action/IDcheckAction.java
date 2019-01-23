@@ -33,7 +33,7 @@ public class IDcheckAction extends HttpServlet {
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
   
       String userid=req.getParameter("userid");
-      MemberDAO dao = new MemberDAO();
+      MemberDAO dao = MemberDAO.getInstance();
       String check=dao.idcheck(userid);
       PrintWriter out = resp.getWriter();
       out.println(check);
