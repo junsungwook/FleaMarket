@@ -72,6 +72,30 @@
 		$("#back").click(function(){
 			location.href="../fm/main.jsp";
 		})
+		$("#delete_bt").click(function(){
+			if($("#id").val()==""){
+				alert("아이디를입력하세요");
+				return false;
+			}
+			//location.href="memberDelete.do?id="+$("#id").val();
+			$.ajax({
+				type:"post",
+				url:"memberDelete.do?id="+$("#id").val(),
+				success:function(data){
+					if(data.trim()=="ok"){
+						alert("삭제성공");
+						$("#member").click();
+					}
+					else{
+						alert("아이디를 다시확인해보세요");
+					}
+					
+				},
+				error:function(e){
+					
+				}
+			});
+		});
 		
 	}); 
 	
@@ -89,7 +113,7 @@
   ㅎㅎ
  </div>
  <div id="delete">
-  <input type="text" id="id"> <input type="button" value="삭제하기" id="delete_bt">
+ 삭제하실 ID를 정확하게 입력하세요 <input type="text" id="id"> <input type="button" value="삭제하기" id="delete_bt">
  </div>
 </body>
 </html>

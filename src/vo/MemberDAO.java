@@ -80,14 +80,14 @@ public class MemberDAO {
 			}
 			
 	}
-	public void memberDelete(MemberDTO mb) {
+	public void memberDelete(String id) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
 			con = getConnection();
 			String sql = "Delete from fmmember where userid=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, mb.getUserid());
+			ps.setString(1, id);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -118,27 +118,19 @@ public class MemberDAO {
 		}
 	
 	}
-	public MemberDTO memberView(String userid) {
+	public boolean memberView(String userid) {
 		Connection con =null;
 		Statement st = null;
 		ResultSet rs = null;
 		MemberDTO mb=null;
+		boolean flag =false;
 			try {
 				con = getConnection();
 				st = con.createStatement();
 				String sql = "select * from fmmember where userid='"+userid+"'";
 				rs = st.executeQuery(sql);
 				if (rs.next()) {
-					mb = new MemberDTO();
-					mb.setName(rs.getString("name"));
-					mb.setUserid(rs.getString("userid"));
-					mb.setPassword(rs.getString("password"));
-					mb.setEmail(rs.getString("email"));
-					mb.setPhone(rs.getString("phone"));
-					mb.setZipcode(rs.getString("zipcode"));
-					mb.setAddr(rs.getString("addr"));
-					mb.setRank(rs.getString("rank"));
-					mb.setIncome(rs.getInt("income"));
+					flag=true;
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -146,8 +138,11 @@ public class MemberDAO {
 			}finally {
 				closeCon(con, st,rs);
 			}
-			return mb;
+			return flag;
 		}
+	
+	
+	
 	public ArrayList<MemberDTO> memberSearch(String selsch, String textsch){
 		Connection con = null;
 		Statement st = null;
