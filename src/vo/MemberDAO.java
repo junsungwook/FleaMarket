@@ -7,19 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import util.Security_SHA256;
-
-import java.util.*;
-import javax.mail.*;
 
 
 public class MemberDAO {
@@ -80,14 +75,14 @@ public class MemberDAO {
 			}
 			
 	}
-	public void memberDelete(MemberDTO mb) {
+	public void memberDelete(String id) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
 			con = getConnection();
 			String sql = "Delete from fmmember where userid=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, mb.getUserid());
+			ps.setString(1, id);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -129,16 +124,11 @@ public class MemberDAO {
 				String sql = "select * from fmmember where userid='"+userid+"'";
 				rs = st.executeQuery(sql);
 				if (rs.next()) {
-					mb = new MemberDTO();
-					mb.setName(rs.getString("name"));
-					mb.setUserid(rs.getString("userid"));
-					mb.setPassword(rs.getString("password"));
-					mb.setEmail(rs.getString("email"));
-					mb.setPhone(rs.getString("phone"));
-					mb.setZipcode(rs.getString("zipcode"));
-					mb.setAddr(rs.getString("addr"));
-					mb.setRank(rs.getString("rank"));
-					mb.setIncome(rs.getInt("income"));
+					MemberDTO dto = new MemberDTO();
+					dto.setName(rs.getString("name"));
+					dto.setIncome(rs.getInt("income"));
+					dto.setPhone(rs.getString("phone"));
+					dto.setRank(rs.getString("rank"));
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -148,6 +138,31 @@ public class MemberDAO {
 			}
 			return mb;
 		}
+	
+	public boolean memberCheck(String userid) {
+		Connection con =null;
+		Statement st = null;
+		ResultSet rs = null;
+		boolean flag =false;
+			try {
+				con = getConnection();
+				st = con.createStatement();
+				String sql = "select * from fmmember where userid='"+userid+"'";
+				rs = st.executeQuery(sql);
+				if (rs.next()) {
+					flag=true;
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeCon(con, st,rs);
+			}
+			return flag;
+		}
+	
+	
+	
 	public ArrayList<MemberDTO> memberSearch(String selsch, String textsch){
 		Connection con = null;
 		Statement st = null;
@@ -218,6 +233,35 @@ public class MemberDAO {
 		}
 		return arr;
 	}
+	public ArrayList<MemberDTO> memberList(){
+		Connection con = null;
+		PreparedStatement ps= null;
+		ResultSet rs =null;
+		arr = new ArrayList<>();
+		try {
+			con = getConnection();
+			String sql = "select * from fmmember";
+			ps = con.prepareStatement(sql);
+	        rs = ps.executeQuery();
+
+			while (rs.next()) {
+				MemberDTO mb = new MemberDTO();
+				mb.setName(rs.getString("name"));
+				mb.setUserid(rs.getString("userid"));
+				mb.setEmail(rs.getString("email"));
+				mb.setPhone(rs.getString("phone"));
+				mb.setZipcode(rs.getString("zipcode"));
+				mb.setAddr(rs.getString("addr"));
+				arr.add(mb);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeCon(con, ps,rs);
+		}
+		return arr;
+	}
 	//占쏙옙찾占쏙옙
 	public ArrayList<ZipcodeDTO> zipSearch(String dong){
 		Connection con = null;
@@ -246,6 +290,8 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, st, rs);
 		}
 		return arr;
 	}
@@ -275,7 +321,6 @@ public class MemberDAO {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs =null;
-		HashMap<String, String> hm = new HashMap<String, String>();
 		arr = new ArrayList<>();
 		try {
 			con = getConnection();
@@ -317,6 +362,8 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeCon(con, st, rs);
 		}
 		return result;
 	}
@@ -342,6 +389,9 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			closeCon(con, ps, rs);
+		}
+		finally {
 			closeCon(con, ps, rs);
 		}
 		
@@ -376,6 +426,9 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			closeCon(con, ps, rs);
+		}
 		return id;
 	}
 	
@@ -404,6 +457,9 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally {
+			closeCon(con, ps, rs);
 		}
 		return result;
 	}
