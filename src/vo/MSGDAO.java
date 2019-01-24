@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class MSGDAO {
+
 	private static MSGDAO instance = new MSGDAO();
 	ArrayList<MemberDTO> arr ;
 	public static MSGDAO getInstance(){
@@ -44,7 +45,7 @@ public class MSGDAO {
 				closeCon(con,ps);
 			}
 	}
-	
+	//메세지 리스트
 	public ArrayList<String> msgcheck(String sendid){
 		ArrayList<String> arr = new ArrayList<>();
 		Connection con= null;
@@ -60,16 +61,55 @@ public class MSGDAO {
 				 System.out.println(rs.getString("userid"));
 				 String name = rs.getString("userid");
 				 arr.add(name);
-		     }
-			 
-		   	} catch (Exception e) {
+		     } 
+		  } catch (Exception e) {
 		    e.printStackTrace();
 		  }finally {
 			  closeCon(con,st,rs);
 		  }
-		   System.out.println(arr.get(0));
 		  return arr;
 	}
+	
+	//메세지 읽음 안읽음 확인하기, 스트링으로 반환
+		public String readcheck(String userid , String sendid) {
+			 Connection con= null;
+			   PreparedStatement  ps = null;
+			   ResultSet rs = null; 
+			   ArrayList<Integer> arr= null;
+			   String str="";
+			   String sql="";
+			   try {
+			     con = getConnection();
+			     sql = "select read from (select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=?)";
+				 ps = con.prepareStatement(sql);
+				 ps.setString(1,userid);
+				 ps.setString(2,sendid);
+				 ps.setString(3,sendid);
+				 ps.setString(4,userid);
+				 rs=ps.executeQuery();
+				 while(rs.next()) {
+					 arr.add(rs.getInt(1));
+					 System.out.println(rs.getInt(1));
+				 }
+				 for(int i=0;i<arr.size();i++) {
+					 if(arr.indexOf(i)==0) {
+						 System.out.println(arr.indexOf(i));
+						 str="안읽음";
+						 break;
+					 }else{
+						 str="읽음";
+					 }
+				 }
+			  } catch (Exception e) {
+			    e.printStackTrace();
+			  }finally {
+				  closeCon(con,ps,rs);
+			  }
+			  return str;
+		}
+	
+	
+	//메세지 뷰
 	public ArrayList<MSGVO> msgList(String userid , String sendid) {
 		 Connection con= null;
 		   PreparedStatement  ps = null;
@@ -79,6 +119,37 @@ public class MSGDAO {
 		   try {
 		     con = getConnection();
 		     sql = "select * from (select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=? )order by num asc";
+			 ps = con.prepareStatement(sql);
+			 ps.setString(1,userid);
+			 ps.setString(2,sendid);
+			 ps.setString(3,sendid);
+			 ps.setString(4,userid);
+			 rs=ps.executeQuery();
+			 while(rs.next()) {
+				 MSGVO b = new MSGVO();
+				 b.setUserid(rs.getString("userid"));
+				 b.setSendid(rs.getString("sendid"));
+				 b.setContent(rs.getString("content"));
+				 b.setRead(rs.getInt("read"));
+				 arr.add(b);
+				 }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+			  closeCon(con,ps,rs);
+		  }
+		  return arr;
+	}
+	//업데이트
+	public ArrayList<MSGVO> msgUpdate(String userid , String sendid) {
+		 Connection con= null;
+		   PreparedStatement  ps = null;
+		   ResultSet rs = null; 
+		   ArrayList<MSGVO> arr = new ArrayList<>();
+		   String sql="";
+		   try {
+		     con = getConnection();
+		     sql = "update (select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=? ) set read = 1";
 			 ps = con.prepareStatement(sql);
 			 ps.setString(1,userid);
 			 ps.setString(2,sendid);
