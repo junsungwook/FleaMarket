@@ -28,8 +28,8 @@ function textCount(obj,target){
 
 $(document).ready(function(){
 	$("#msg").click(function(){
-		$("#frm").submit;
-			location.reload();
+			$('#frm').submit();
+			
 	});
 });
 </script>
@@ -161,12 +161,13 @@ $(document).ready(function(){
 </c:forEach>
 </div>
 <hr>
-<form id="frm" action="">
-	<input type="hidden" value="${userid}">
+<form  action="message.do" name="frm" id="frm">
+	<input type="hidden" value="${sessionScope.id }" name="id"> 
+	<input type="hidden" value="${userid}" name="userid">
 	<input type="text" class="form-control" id="content" name="content" onkeyup="textCount(this,'contentcount')">
 	*100글자 이내
 		(<span id="contentcount" style="color:green;">0</span>)
-	<input type="button" value="쪽지보내기" class='btn btn-default' onclick="location.href='msgWrite.jsp?'">
+	<input type="button" value="쪽지보내기" id="msg" class='btn btn-default'>
 </form>
 </body>
 </html>
