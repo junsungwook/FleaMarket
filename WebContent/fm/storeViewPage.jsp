@@ -15,26 +15,46 @@
 <style>
 .viewbody{
 	padding:30px;
-	width: 65%;
+	width: 75%;
 	border: 2px dotted gray;
 	margin: 0 auto;
 	margin-top:100px;
 }
-.viewImg{
+.upDiv{
 	width: 100%;
+	height: 400px;
 }
-.viewImg img{
-	width: 30%;
-	height: auto;
+.upDiv:after { content:""; clear:both; display:block; }
+.upDiv .viewImg{
+	text-align:center;
+	width: 42%;
+	height:100%;
+	float: left;
 }
-.viewText{
+.upDiv .viewImg img{
+	vertical-align:middle;
+	width: auto;
+	max-width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.upDiv .sideDiv{
+	padding-top:170.2px;
+	width:56%;
+	float: right;
+	
+}
+.upDiv .sideDiv .viewText{
 	width: 100%;
+	
 }
+
 .viewText .pricingContent{
 	margin: 0 auto;
+	padding-bottom: 53.2px;
 }
 .pBtn{
-	text-align: right;
+	text-align: center;
 }
 .pricingContent ul{
     list-style: none;
@@ -49,6 +69,9 @@
 .pricingContent ul li:first-child {
     border-top:1px solid #ededed;
 }
+.note{
+	float: none;
+}
 </style>
 <title>여기에 제목을 입력하십시오</title>
 </head>
@@ -56,29 +79,36 @@
 <%@include file="menu.jsp"%>
 <%@include file="logo.jsp"%>
 <div class="viewbody">
-	<div class="viewImg">
-		<img alt="상품사진" src="../upload/${goods.mainpic}">
-	</div>
-	<div class="viewText">
-		<div class="pricingContent">
-	          <ul>
-	              <li><b>제목 :</b> ${goods.title }</li>
-	              <li><b>PRICE :</b> ${goods.price }</li>
-	              <li><b>판매자 :</b><a href="#"> ${goods.userid }</a></li>
-	          </ul>
-	          
-        </div>
-        <div class="note">
-        	<br><br>
-        	<b>글 내용</b><br><br><br>
-        	${goods.summernote }
-        </div>
-	</div>
-	<div class="pBtn">
-		<c:if test="${sessionScope.id==goods.userid or sessionScope.id=='master'}">
-		 <input type="button" class="btn btn-default" onclick="location.href='goodsUpdate.do?num=${goods.num}'" value="수정">
-		 <input type="button" class="btn btn-default" onclick="location.href='goodsDelete.do?num=${goods.num}'" value="삭제">
-		</c:if>
+	<div class="upDiv">
+		<div class="viewImg">
+			<img alt="상품사진" src="../upload/${goods.mainpic}">
+		</div>
+		<div class="sideDiv">	
+			<div class="viewText">
+				<div class="pricingContent">
+			          <ul>
+			              <li><b>제목 :</b> ${goods.title }</li>
+			              <li><b>PRICE :</b> ${goods.price }</li>
+			              <li><b>판매자 :</b><a href="memberView.do?id=${goods.userid }" onclick="window.open(this.href,'','width=500,height=500'); return false;"> ${goods.userid }</a></li>
+			          </ul>
+		        </div>
+			</div>
+			<div class="pBtn">
+				<input type="button" class="btn btn-success" value="결제하기">
+				<c:if test="${sessionScope.id!=goods.userid and sessionScope.id !=null and cart ==null}" >
+					<input type="button" class="btn btn-success" onclick="location.href='goodsCartin.do?num=${goods.num}&id=${sessionScope.id }'"  value="장바구니 담기">
+				</c:if>
+				<c:if test="${sessionScope.id==goods.userid or sessionScope.id=='master'}">
+				 <input type="button" class="btn btn-default" onclick="location.href='goodsUpdate.do?num=${goods.num}'" value="수정">
+				 <input type="button" class="btn btn-default" onclick="location.href='goodsDelete.do?num=${goods.num}'" value="삭제">
+				</c:if>
+			</div>
+		</div>
+	</div>	
+	<div class="note">
+		<br><br>
+		<b>글 내용</b><br><br><br>
+		${goods.summernote }
 	</div>
 </div>
 
