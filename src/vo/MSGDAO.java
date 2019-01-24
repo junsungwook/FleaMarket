@@ -75,7 +75,7 @@ public class MSGDAO {
 			 Connection con= null;
 			   PreparedStatement  ps = null;
 			   ResultSet rs = null; 
-			   ArrayList<Integer> arr= null;
+			   ArrayList<MSGVO> arr= new ArrayList<MSGVO>();
 			   String str="";
 			   String sql="";
 			   try {
@@ -88,12 +88,12 @@ public class MSGDAO {
 				 ps.setString(4,userid);
 				 rs=ps.executeQuery();
 				 while(rs.next()) {
-					 arr.add(rs.getInt(1));
-					 System.out.println(rs.getInt(1));
+					 MSGVO dto = new MSGVO();
+					dto.setRead(rs.getInt(1));
+					arr.add(dto);
 				 }
 				 for(int i=0;i<arr.size();i++) {
-					 if(arr.indexOf(i)==0) {
-						 System.out.println(arr.indexOf(i));
+					 if(arr.get(i).getRead()==0) {
 						 str="안읽음";
 						 break;
 					 }else{
