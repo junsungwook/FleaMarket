@@ -488,10 +488,7 @@ public class MemberDAO {
 		
 	}
 	
-	
-	public int membercnt() {
-		return arr.size();
-	}
+
 
 			
 	private void closeCon(Connection con, PreparedStatement ps){

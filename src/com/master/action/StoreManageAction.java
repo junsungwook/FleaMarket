@@ -1,7 +1,8 @@
-package storeAction;
+package com.master.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import vo.BoardDAO;
+import vo.MemberDAO;
+import vo.MemberDTO;
 import vo.StoreDAO;
 import vo.goodsDAO;
 import vo.goodsDTO;
 
 /**
- * Servlet implementation class GoodsDelete
+ * Servlet implementation class MemberManageAction
  */
-@WebServlet({"/fm/storeDelete.do","/fmMaster/store_delete.do"})
-public class StoreDelete extends HttpServlet {
+@WebServlet({ "/StoreManageAction", "/fmMaster/store_manage.do" })
+public class StoreManageAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StoreDelete() {
+    public StoreManageAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,11 +39,8 @@ public class StoreDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		int num = Integer.parseInt(request.getParameter("num"));
-		StoreDAO dao = StoreDAO.getInstance();
-		dao.StoreDelete(num);
-		response.sendRedirect("../fm/store.jsp");
+		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -44,20 +48,24 @@ public class StoreDelete extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("스토어삭제도착");
+		ArrayList<goodsDTO> arr = new ArrayList<>();
+		response.setContentType("text/html;charset=utf-8");
 		StoreDAO dao = StoreDAO.getInstance();
-		System.out.println("다오생성완료");
-		int num = Integer.parseInt(request.getParameter("store_num"));
-		System.out.println(num);
+		arr = dao.list();
+		JSONArray jarr = new JSONArray();
+		for(goodsDTO dto:arr) {
+			JSONObject obj = new JSONObject();
+			obj.put("num", dto.getNum());
+			obj.put("userid", dto.getUserid());
+			obj.put("category",dto.getCategory());
+			obj.put("title", dto.getTitle());
+			obj.put("price", dto.getPrice());
+			jarr.add(obj);
+		}
+		
 		PrintWriter out = response.getWriter();
-		boolean check =dao.StoreCheck(num); 
-		if(!check) {
-			out.print("no");
-		}
-		else {
-			dao.StoreDelete(num);
-			out.println("ok");
-		}
+		out.print(jarr.toString());
+		System.out.println(jarr.toString());
 	}
 
 }
