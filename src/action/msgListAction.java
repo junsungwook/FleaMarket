@@ -42,11 +42,11 @@ public class msgListAction extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		HashMap<String,String> map= new HashMap<>();
-		System.out.println(id);
 		MSGDAO dao = MSGDAO.getInstance();
 		arr= dao.msgcheck(id);
 		for(int i =0;i<arr.size();i++) {
 			String userid = arr.get(i);
+			System.out.println(userid);
 			String a = dao.readcheck(userid,id);
 			map.put(userid, a);
 		}
