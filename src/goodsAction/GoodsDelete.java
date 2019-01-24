@@ -1,6 +1,8 @@
 package goodsAction;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +15,7 @@ import vo.goodsDTO;
 /**
  * Servlet implementation class GoodsDelete
  */
-@WebServlet("/fm/goodsDelete.do")
+@WebServlet({"/fm/goodsDelete.do","/fmMaster/goods_delete.do"})
 public class GoodsDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,8 +32,11 @@ public class GoodsDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		int num = Integer.parseInt(request.getParameter("num"));
 		goodsDAO dao = goodsDAO.getInstance();
+		
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
 		dao.goodsDelete(num);
 		response.sendRedirect("../fm/shop.jsp");
 	}
@@ -41,7 +46,20 @@ public class GoodsDelete extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println("도착");
+		goodsDAO dao = goodsDAO.getInstance();
+		System.out.println("다오생성완료");
+		int num = Integer.parseInt(request.getParameter("goods_num"));
+		System.out.println(num);
+		PrintWriter out = response.getWriter();
+		boolean check =dao.goodsCheck(num); 
+		if(!check) {
+			out.print("no");
+		}
+		else {
+			dao.goodsDelete(num);
+			out.println("ok");
+		}
 	}
 
 }
