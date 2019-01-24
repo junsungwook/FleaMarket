@@ -7,19 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import util.Security_SHA256;
-
-import java.util.*;
-import javax.mail.*;
 
 
 public class MemberDAO {
@@ -118,11 +113,36 @@ public class MemberDAO {
 		}
 	
 	}
-	public boolean memberView(String userid) {
+	public MemberDTO memberView(String userid) {
 		Connection con =null;
 		Statement st = null;
 		ResultSet rs = null;
 		MemberDTO mb=null;
+			try {
+				con = getConnection();
+				st = con.createStatement();
+				String sql = "select * from fmmember where userid='"+userid+"'";
+				rs = st.executeQuery(sql);
+				if (rs.next()) {
+					MemberDTO dto = new MemberDTO();
+					dto.setName(rs.getString("name"));
+					dto.setIncome(rs.getInt("income"));
+					dto.setPhone(rs.getString("phone"));
+					dto.setRank(rs.getString("rank"));
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeCon(con, st,rs);
+			}
+			return mb;
+		}
+	
+	public boolean memberCheck(String userid) {
+		Connection con =null;
+		Statement st = null;
+		ResultSet rs = null;
 		boolean flag =false;
 			try {
 				con = getConnection();
@@ -301,7 +321,6 @@ public class MemberDAO {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs =null;
-		HashMap<String, String> hm = new HashMap<String, String>();
 		arr = new ArrayList<>();
 		try {
 			con = getConnection();

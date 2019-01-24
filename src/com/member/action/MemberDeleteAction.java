@@ -37,7 +37,7 @@ public class MemberDeleteAction extends HttpServlet {
 		
 		
 		
-		if(dao.memberView(id)) {
+		if(dao.memberCheck(id)) {
 			data = "ok";
 			dao.memberDelete(id);
 		}	
