@@ -1,15 +1,14 @@
-package com.member.action;
+package util;
 
 import java.io.IOException;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -56,8 +55,7 @@ public class NaverLoginAction extends HttpServlet {
 	    apiURL += "&redirect_uri=" + redirectURI;
 	    apiURL += "&code=" + code;
 	    apiURL += "&state=" + state;
-	    String access_token = "";
-	    String refresh_token = "";
+
 	    System.out.println("apiURL="+apiURL);
 	    StringBuffer res = null;
 	    try {

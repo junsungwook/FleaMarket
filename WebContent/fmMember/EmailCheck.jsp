@@ -31,7 +31,7 @@
 				alert("인증이 완료되었습니다.");
 				$(opener.document).find("#email").attr("readonly",true);
 				$(opener.document).find("#email_check_bt").attr("disabled",true);
-				$(opener.document).find("#email_check").val("1");
+				$(opener.document).find("#email_valid").val("1");
 	           	self.close();	
 			}
 		})

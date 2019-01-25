@@ -47,6 +47,7 @@ function getData(pageNum){
 		
 			<font size="5px" color="#610B21" ><strong>공지사항 </strong></font>
 			<table class="table table-hover" id="table11">
+
 				<thead>
 					<tr>
 						<th>번호</th>
