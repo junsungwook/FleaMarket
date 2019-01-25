@@ -37,7 +37,7 @@ public class MypageAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String id = request.getParameter("id");
-		
+		//System.out.println(id);
 		goodsDAO gdao = goodsDAO.getInstance();
 		MemberDAO mdao = MemberDAO.getInstance();
 		
@@ -45,13 +45,10 @@ public class MypageAction extends HttpServlet {
 		mdto = mdao.memberView(id);
 		
 		ArrayList<goodsDTO> cartArr = new ArrayList<>();
-		cartArr = gdao.cartlist();
+		cartArr = gdao.cartlist(id);
 		
 		ArrayList<goodsDTO> prodArr = new ArrayList<>();
 		prodArr = gdao.get_info(id);
-		
-		System.out.println(mdto.getPhone() + mdto.getAddr() + mdto.getName());
-		
 		
 		request.setAttribute("cartArr", cartArr);
 		request.setAttribute("mdto", mdto);
