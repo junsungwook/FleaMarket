@@ -27,7 +27,7 @@
 	    	
 	        <li><a href="../fm/shop.jsp">플리마켓</a></li>
 	        <li><a href="../fm/store.jsp">스토어</a></li>
-	        <li><a href="../fmBoard/boardList.bo">QnA</a></li> 
+	        <li><a href="boardList.bo">QnA</a></li> 
 	        <li><a href="../fm/main.jsp">메인화면</a></li>
 	        
 	        <c:if test="${sessionScope.id !=null and sessionScope.id !='master'}">
