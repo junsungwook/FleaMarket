@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
 <c:if test="${naver ==null}">// 전화번호가져오고, income, rank, 이름 가져오자 
-	일반회원이지롱
-	
-	회원정보
-	<table border=1>
+	<table border=1 class="table table-hover">
 	<tr>
 		<td>이름</td>
 		<td>전화번호</td>
@@ -29,9 +29,8 @@
 	
 </c:if>
 <c:if test="${naver !=null }">
-	네이버회원지롱 
-	회원정보 조심하세요 네이버회원은 정보가 많이없어요
-	<table border=1>
+	<b>네이버 회원은 이름과 이메일만 제공됩니다</b><br><br>
+	<table border=1 class="table table-hover">
 	<tr>
 		<td>이름</td>
 		<td>email</td>
@@ -44,8 +43,8 @@
 	</table>
 	
 </c:if>
-판매중인 상품
-	<table border=1>
+<b>판매중인 상품</b>
+	<table border=1 class="table table-hover">
 	<tr>
 		<td>판매상품</td>
 		<td>판매가격</td>
@@ -58,9 +57,9 @@
 	</c:forEach>
 	</table>
 	
-	<input type="button" value="메세지보내기" id="msg_bt">
-	<input type="button" value="닫기" onclick=self.close()>
+	<input type="button" class="btn btn-default" value="메세지보내기" id="msg_bt">
+	<input type="button" class="btn btn-default" value="닫기" onclick=self.close()>
 
-
+</div>
 </body>
 </html>

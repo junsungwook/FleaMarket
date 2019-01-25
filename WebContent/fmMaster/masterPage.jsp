@@ -6,23 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
+<link rel="stylesheet" href="../fm/style.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+<style>
+.container{
+	width: 75%;
+	margin: 0 auto;
+	padding: 40px;
+	text-align: center;
+}
+.btnbtnBox{
+	width: 100%;
+	text-align: center;
+}
+</style>
 </head>
 <body>
-  관리자페이지 입니다.<br>
+<%@include file="../fm/logo.jsp"%>
+<div class="container">
+ <b> 관리자페이지 입니다 </b><br><br>
 <input type="hidden" id="sign" value="${sign }">
 
 <script>
  	$(document).ready(function(){
- 		
  		if($("#sign").val()=="")
  			location.href="master_data.do";
  			
- 		
  		$("#mem_div").hide();
  		$("#flea_div").hide();
  		$("#store_div").hide();
@@ -44,8 +58,9 @@
 				success:function(data){
 					var data = JSON.parse(data);
 					var htmlStr='';
-					htmlStr+="<table border=1>";
-					htmlStr +="<tr><td>아이디</td><td>이름</td><td>이메일</td><td>주소</td><td>수익</td><td>순위</td><td>판매글 갯수</td></tr>"
+					htmlStr+="<table border=1 class='table table-hover'>";
+					htmlStr+="<thead>"
+					htmlStr +="<tr><td>아이디</td><td>이름</td><td>이메일</td><td>주소</td><td>수익</td><td>순위</td><td>판매글 갯수</td></tr></thead><tbody>"
 					for(var i=0;i<data.length;i++){
 						htmlStr+="<tr>";	
 						htmlStr+="<td onclick=window.open('memView.do?id="+data[i].userid+"','','width=500,height=500'); return false;>"+data[i].userid+"</td>";
@@ -57,7 +72,7 @@
 						htmlStr+="<td>"+data[i].sellcount+"</td>";
 						htmlStr+="</tr>";
 					}
-					htmlStr+="</table>";
+					htmlStr+="</tbody></table>";
 					$("#result").html(htmlStr);
 					
 				},
@@ -78,8 +93,9 @@
 				success:function(data){
 					var data = JSON.parse(data);
 					var htmlStr='';
-					htmlStr+="<table border=1>";
-					htmlStr +="<tr><td>상품번호</td><td>카테고리ID</td><td>판매아이디</td><td>상품이름</td><td>가격</td></tr>"
+					htmlStr+="<table border=1 class='table table-hover'>";
+					htmlStr+="<thead>"
+					htmlStr +="<tr><td>상품번호</td><td>카테고리ID</td><td>판매아이디</td><td>상품이름</td><td>가격</td></tr></thead><tbody>"
 					for(var i=0;i<data.length;i++){
 						htmlStr+="<tr>";
 						htmlStr+="<td>"+data[i].num+"</td>";
@@ -89,7 +105,7 @@
 						htmlStr+="<td>"+data[i].price+"</td>";
 						htmlStr+="</tr>";
 					}
-					htmlStr+="</table>";
+					htmlStr+="</tbody></table>";
 					
 					$("#result").html(htmlStr);
 					
@@ -110,8 +126,9 @@
 				success:function(data){
 					var data = JSON.parse(data);
 					var htmlStr='';
-					htmlStr+="<table border=1>";
-					htmlStr +="<tr><td>상품번호</td><td>카테고리ID</td><td>판매아이디</td><td>상품이름</td><td>가격</td></tr>"
+					htmlStr+="<table border=1 class='table table-hover'>";
+					htmlStr+="<thead>"
+					htmlStr +="<tr><td>상품번호</td><td>카테고리ID</td><td>판매아이디</td><td>상품이름</td><td>가격</td></tr></thead><tbody>"
 					for(var i=0;i<data.length;i++){
 						htmlStr+="<tr>";
 						htmlStr+="<td>"+data[i].num+"</td>";
@@ -121,7 +138,7 @@
 						htmlStr+="<td>"+data[i].price+"</td>";
 						htmlStr+="</tr>";
 					}
-					htmlStr+="</table>";
+					htmlStr+="</tbody></table>";
 					
 					$("#result").html(htmlStr);
 					
@@ -233,44 +250,45 @@
 </script>
 
  
- <input type="button" value="관리자페이지메인"  onclick="location.href='masterPage.jsp'"  >
- <input type="button" value="회원관리" id="member" >
- <input type="button" value="플리마켓관리" id="fleamarket">
- <input type="button" value="스토어관리" id="store">
- <input type="button" value="돌아가기" id="back">
+
+ <input type="button" class="btn btn-default" value="관리자페이지메인"  onclick="location.href='masterPage.jsp'"  >
+ <input type="button" class="btn btn-default" value="회원관리" id="member" >
+ <input type="button" class="btn btn-default" value="플리마켓관리" id="fleamarket">
+ <input type="button" class="btn btn-default" value="스토어관리" id="store">
+ <input type="button" class="btn btn-default" value="돌아가기" id="back">
+ <br><br><br><br>
  
- <div id="result">
-
- </div>
-
-
-
+ <div id="result"></div>
+ 
 
 <div id="graph" align ="left">
 
-	<div id="total_graph" style="width: 800px; height:300px"> </div>
-	<div id="flea_graph" style="height: 250px; width: 400px; overflow:hidden"> ${flea_total }</div>
-	<div id="store_graph" style="height: 250px; width: 400px; overflow:hidden">${store_total }</div>
 
-	<input type="button" value="홈페이지  현황" id="total_graph_bt">
-	<input type="button" value="FleaMarket 게시글 현황" id="flea_graph_bt">
-	<input type="button" value="Store 게시글 현황" id="store_graph_bt">
+<div id="total_graph" style="width: 100%; height:300px"></div>
+<div id="flea_graph" style="height: 300px; width: 100%; overflow:hidden"></div>
+<div id="store_graph" style="height: 300px; width: 100%; overflow:hidden"></div>
 
+
+<br>
+<br>
+<div class="btnbtnBox">
+<input type="button" value="홈페이지  현황" class="btn btn-default" id="total_graph_bt">
+<input type="button" value="FleaMarket 게시글 현황" class="btn btn-default" id="flea_graph_bt">
+<input type="button" class="btn btn-default" value="Store 게시글 현황" id="store_graph_bt">
+</div>
 </div>
  
   <div id="mem_div" >
-  	
- <br>삭제하실 ID를 정확하게 입력하세요 <input type="text" id="id"> <input type="button" value="삭제하기" id="member_delete_bt">
+ 삭제하실 ID를 정확하게 입력하세요 <input type="text" id="id" class="text"> <input type="button" class="btn btn-default" value="삭제하기" id="member_delete_bt">
  </div>
  
  <div id="flea_div">
- 	
-<br>삭제하실 플리마켓 상품번호를 정확하게 입력하세요 <input type="text" id="goods_num"> <input type="button" value="삭제하기" id="flea_delete_bt">
+삭제하실 플리마켓 상품번호를 정확하게 입력하세요 <input type="text" class="text" id="goods_num"> <input type="button" class="btn btn-default" value="삭제하기" id="flea_delete_bt">
  </div>
  
  <div id="store_div">
- 	
-<br>삭제하실 스토어 상품번호를 정확하게 입력하세요 <input type="text" id="store_num"> <input type="button" value="삭제하기" id="store_delete_bt">
+삭제하실 스토어 상품번호를 정확하게 입력하세요 <input type="text" class="text" id="store_num"> <input type="button" class="btn btn-default" value="삭제하기" id="store_delete_bt">
+
  </div>
  
  
@@ -279,6 +297,11 @@
  <input type="hidden" id="store_total" value="${store_total }" >
  <input type="hidden" id="cart_total" value="${cart_total }" >
  <input type="hidden" id="qna_total" value="${qna_total }" >
+ 
+ 
+ 
+ 
+ 
  
  <c:forEach items="${fleaArr }" var="list">
  	<input type="hidden" id="${list.userid }" value="${(list.num/flea_total)*100 }">
@@ -328,6 +351,6 @@
 	 formatter: function (y) { return y + "%" } 
 	 });
  </script>
-
+</div>
 </body>
 </html>
