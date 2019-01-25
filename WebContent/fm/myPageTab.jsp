@@ -180,7 +180,7 @@
                			 </div>
                 	<div class="pricingContent">
                     <ul>
-                        <li><b>E-MAIL:</b><>${mdto.email}</li>
+                        <li><b>E-MAIL:</b>${mdto.email}</li>
                         <li><b>PHONE:</b>${mdto.phone}</li>
                         <li><b>ADDRESS:</b>${mdto.addr} ${mdto.zipcode}</li>
                         <li><b>INCOME</b>${mdto.income} 원 </li>
@@ -198,12 +198,12 @@
           <div role="tabpanel" class="tab-pane" id="product" align="center">
             <div class="design-process-content" align="center">
               <font size="5px">내가 판매중인 상품</font> 
-					<c:if test="${prodArr !='no'}">
-						<table id="blueone">
+					<c:if test="${prodArr !=null}">
+						<table class='table table-hover'>
 							<tr>
-								<td>카테고리</td>
-								<td>상품이름</td>
-								<td>상품가격</td>
+								<td><b>카테고리</b></td>
+								<td><b>상품이름</b></td>
+								<td><b>상품가격</b></td>
 								<td></td>
 							</tr>
 						<c:forEach items="${prodArr}" var="list" >
@@ -215,8 +215,8 @@
 						</c:forEach>
 						</table>
 					</c:if>
-					<c:if test="${lists =='no'}">
-					  장바구니가 비어있습니다.
+					<c:if test="${lists ==null}">
+						<br><b>판매중상품없음</b>
 					</c:if>
               </div>
           </div>
@@ -224,13 +224,13 @@
            	 <div class="design-process-content" align="center">
 				<font size="5px">CART</font> 
 					<c:if test="${lists !='no'}">
-						<table id="blueone">
+						<table class='table table-hover'>
 							<tr>
-								<td>상품번호</td>
-								<td>판매자아이디</td>
-								<td>상품이름</td>
-								<td>상품가격</td>
-								<td></td>
+								<th>상품번호</th>
+								<th>판매자아이디</th>
+								<th>상품이름</th>
+								<th>상품가격</th>
+								<th>선택</th>
 							</tr>
 						<c:forEach items="${cartArr}" var="list" >
 							<tr>

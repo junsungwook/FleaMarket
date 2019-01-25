@@ -40,7 +40,7 @@ public class MessageViewAction extends HttpServlet {
 		String userid=request.getParameter("userid");//메세지 하는 대상
 		
 		MSGDAO dao = MSGDAO.getInstance();
-		dao.msgUpdate(userid, id);
+	/*	dao.msgUpdate(userid, id);*/
 		ArrayList <MSGVO> arr = dao.msgList(userid,id);
 
 		request.setAttribute("userid",userid);
