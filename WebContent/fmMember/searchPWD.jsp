@@ -56,11 +56,13 @@ $(document).ready(function(){
 <strong >가입했던 id/email 입력하세요</strong>
 <br>
 <hr>
-<div class="col-xs-12" align="center">
-id : <input type="text" id="id" name="id" class="form-control" >
-email : <input type="email" id="email" name="email"  class="form-control" >
-<br>
-<input type="button" id="submit_bt" value="확인" class="btn btn-default">
+<div style="width:100%; ">
+	<div class="col-xs-12" align="center" >
+	<label for="id" >id : </label> <input type="text" id="id" name="id" class="form-control" >
+	<label for="id" >email :</label>  <input type="email" id="email" name="email"  class="form-control" >
+	<br>
+	<input type="button" id="submit_bt" value="확인" class="btn btn-default">
+	</div>
 </div>
 </body>
 </html>

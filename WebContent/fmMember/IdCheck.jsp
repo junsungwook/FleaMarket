@@ -44,8 +44,7 @@ function sendIt(){
 <br>
 <hr>
 <div class="col-xs-6">
-	<input type="text" id="userid"class="form-control">
-	
+	<input type="text" id="userid">
 </div>
 <input type ="button"onclick="sendIt()" value="중복확인"  class="btn btn-default">
 

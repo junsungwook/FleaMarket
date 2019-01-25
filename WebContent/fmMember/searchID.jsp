@@ -5,8 +5,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+      <link rel="stylesheet" href="tabs.css">	
+      <link rel="stylesheet" href="../fm/style.css" type="text/css">
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../fm/script.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="../fm/script.js"></script>
+	<style>  
+	body{
+	padding : 30px;
+	}
+	
+	body { background: #fff; }
+	#blueone {
+	  border-collapse: collapse;
+	}  
+	#blueone th {
+	  padding: 10px;
+	  color: #168;
+	  border-bottom: 3px solid #0B2161;
+	  text-align: left;
+	}
+	#blueone td {
+	  color: #669;
+	  padding: 10px;
+	  border-bottom: 1px solid #ddd;
+	}
+	#blueone tr:hover td {
+	  color: #004;
+	}
+</style>
 </head>
 
 <script>
@@ -49,17 +80,37 @@
 
 
 <body>
-아이디찾을라면 가입정보를 입력하세요<br>
+<table id="blueone">
+	<tr>
+		<th colspan="2">
+			가입정보를 입력하세요
+		</th>
+	</tr>
+	<tr>
+		<td> 이름 : </td>
+		<td> <input type="text" id="name" name="name"></td>
+	</tr>
+	<tr>
+		<td> 이메일 : </td>
+		<td> <input type="text" id="email" name="email"></td>
+	</tr>
+	<tr>
+		<td> 전화번호 : </td>
+		<td><input type="text" name="phone" id="phone"  maxlength="13"></td>
+	</tr>
+	<tr>
+		<td> <label for="result">당신의 아이디 :</label> </td>
+		<td><input type="button" id="submit_bt" value="확인" class="btn btn-default"> <input type="text" id="result" ></td>
+	</tr>
+	<tr>
+		<td><input type="button" value="비밀번호찾기" onClick="location.href='searchPWD.jsp'"  class="btn btn-default" ></td>
+		<td><input type="button" value="로그인화면" onClick="location.href='naverlogin.jsp'"  class="btn btn-default"></td>
+	</tr>
+</table>
+<br>
+<br>
+<br>
 
-
- 이름 : <input type="text" id="name" name="name" ><br>
- 이메일: <input type="text" id="email" name="email"><br>
- 전화번호: <input type="text" name="phone" id="phone" class="form-control" maxlength="13"><br>
- <input type="button" id="submit_bt" value="확인" ><br><br>
-
-당신의 아이디 : <input type="text" id="result" ><br>
-<input type="button" value="비밀번호찾기" onClick="location.href='searchPWD.jsp'">
-<input type="button" value="로그인화면" onClick="location.href='naverlogin.jsp'">
 </body>
 
 <script>
