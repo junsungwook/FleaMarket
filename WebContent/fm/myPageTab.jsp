@@ -200,6 +200,7 @@
               <font size="5px">내가 판매중인 상품</font> 
 					<c:if test="${prodArr !=null}">
 						<table class='table table-hover'>
+
 							<tr>
 								<td><b>카테고리</b></td>
 								<td><b>상품이름</b></td>
