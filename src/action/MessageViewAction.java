@@ -38,8 +38,9 @@ public class MessageViewAction extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");//내아이디
 		String userid=request.getParameter("userid");//메세지 하는 대상
-	
+		
 		MSGDAO dao = MSGDAO.getInstance();
+		dao.msgUpdate(userid, id);
 		ArrayList <MSGVO> arr = dao.msgList(userid,id);
 
 		request.setAttribute("userid",userid);

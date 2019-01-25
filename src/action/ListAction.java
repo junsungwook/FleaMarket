@@ -64,7 +64,8 @@ public class ListAction extends HttpServlet {
 		request.setAttribute("lists", arr);
 		request.setAttribute("noticelists", arrn);
 		request.setAttribute("count", count);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("boardList.jsp");
+		request.setAttribute("sign","sign");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../fmBoard/boardList.jsp");
 		dispatcher.forward(request, response);
 		
 	}

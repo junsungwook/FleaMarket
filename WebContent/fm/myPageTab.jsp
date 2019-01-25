@@ -33,6 +33,7 @@
 	
 	
 .pricingTable{
+	margin-left:30px;
 	margin-top:50px;
     text-align: center;
     border: 1px solid #dbdbdb;
@@ -151,7 +152,7 @@
           <li role="presentation" class="active"><a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><i class="fa fa-search" aria-hidden="true"></i>
             <p>내정보</p>
             </a></li>
-          <li role="presentation"><a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><i class="fa fa-send-o" aria-hidden="true"></i>
+          <li role="presentation"><a href="#product" aria-controls="strategy" role="tab" data-toggle="tab"><i class="fa fa-send-o" aria-hidden="true"></i>
             <p>내상품</p>
             </a></li>
           <li role="presentation"><a href="#cart" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fa fa-qrcode" aria-hidden="true"></i>
@@ -165,16 +166,15 @@
         <!-- Tab panes -->
         <div class="tab-content" >
           <div role="tabpanel" class="tab-pane active" id="discover">
-            <div class="design-process-content">
+            <div class="design-process-content"  align="center">
               <div class="container">
    				 <div class="row">
-       				 <div class="col-md-3 col-sm-6">
+       				 <div class="col-xs-9">
            				 <div class="pricingTable">
             		  	  <div class="pricingTable-header">
                  		   <h3>내정보</h3>
              				   </div>
             		    <div class="price-value">
-                 		   <small class="fa fa-usd"></small>
                   	  <span>${sessionScope.id}</span>
                   	  <span class="subtitle">${mdto.name}</span>
                			 </div>
@@ -195,14 +195,33 @@
 			</div>
              </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="strategy">
-            <div class="design-process-content">
-              <h3 class="semi-bold">당신의 정보입니다. 수수료는 5% 입니다.^^ ~</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
+          <div role="tabpanel" class="tab-pane" id="product" align="center">
+            <div class="design-process-content" align="center">
+              <font size="5px">내가 판매중인 상품</font> 
+					<c:if test="${prodArr !='no'}">
+						<table id="blueone">
+							<tr>
+								<td>카테고리</td>
+								<td>상품이름</td>
+								<td>상품가격</td>
+								<td></td>
+							</tr>
+						<c:forEach items="${prodArr}" var="list" >
+							<tr>
+								<td>${list.category }</td>
+								<td>${list.title }</td>
+								<td>${list.price }</td>
+							</tr>
+						</c:forEach>
+						</table>
+					</c:if>
+					<c:if test="${lists =='no'}">
+					  장바구니가 비어있습니다.
+					</c:if>
               </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="cart">
-           	 <div class="design-process-content">
+           	 <div class="design-process-content" align="center">
 				<font size="5px">CART</font> 
 					<c:if test="${lists !='no'}">
 						<table id="blueone">
@@ -231,8 +250,8 @@
           </div>
           <div role="tabpanel" class="tab-pane" id="content">
             <div class="design-process-content">
-              <h3 class="semi-bold">Content</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>              
+              <h3 class="semi-bold">서비스 준비중입니다.^^</h3>
+                       
               </div>
           </div>
 
