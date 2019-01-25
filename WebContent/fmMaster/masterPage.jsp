@@ -245,11 +245,12 @@
 		
 	}); 
 	
-	
+
 
 </script>
 
  
+
  <input type="button" class="btn btn-default" value="관리자페이지메인"  onclick="location.href='masterPage.jsp'"  >
  <input type="button" class="btn btn-default" value="회원관리" id="member" >
  <input type="button" class="btn btn-default" value="플리마켓관리" id="fleamarket">
@@ -259,10 +260,9 @@
  
  <div id="result"></div>
  
+
 <div id="graph" align ="left">
-<!--   ㅎㅎ 요기에  회원 총 인원 / 플리마켓 전체글 갯수  / 스토어 전체 글갯수 / 회원들이 장바구니에 담은갯수 = 막대그래프로 표현 
-  		<br> 플리마켓 카테고리별 글갯수 비율로 원 그래프 표현/ 스토어도 동일 -->
- 	
+
 
 <div id="total_graph" style="width: 100%; height:300px"></div>
 <div id="flea_graph" style="height: 300px; width: 100%; overflow:hidden"></div>
@@ -288,6 +288,7 @@
  
  <div id="store_div">
 삭제하실 스토어 상품번호를 정확하게 입력하세요 <input type="text" class="text" id="store_num"> <input type="button" class="btn btn-default" value="삭제하기" id="store_delete_bt">
+
  </div>
  
  
@@ -311,21 +312,18 @@
  </c:forEach>
   
  <script>
-/*  function graph_data_load(){
-	 location.herf="master_data.do";
- } */
  Morris.Bar({
-		element: 'total_graph',     // bar를 넣을 div의 아이디를 적어주세요.
-		data: [                                // bar를 넣을 x축과 y축의 데이터를 적어줍니다.
+		element: 'total_graph',     
+		data: [                              
 		{ y: '총 회원  ', value:$("#mem_total").val() },
 		{ y: 'FleaMarket 판매글', value:$("#flea_total").val() },
 		{ y: 'Store 판매 글', value:$("#store_total").val() },
 		{ y: '장바구니 등록 글', value:$("#cart_total").val()},
 		{ y: 'QnA 등록 글', value:$("#qna_total").val()}
 		],
-		xkey: 'y',                          //x축에 들어갈 이름을 넣은 data이름을 넣어줍니다
-		ykeys: ['value'],                //y축에 들어갈 이름을 넣은 data이름을 넣어줍니다
-		labels: ['총 수'] // 라벨칸에 나타날 이름을 적어줍니다.
+		xkey: 'y',                          
+		ykeys: ['value'],              
+		labels: ['총 수']
 	});
  
  Morris.Donut({

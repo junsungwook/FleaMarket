@@ -117,18 +117,23 @@ public class MemberDAO {
 		Connection con =null;
 		Statement st = null;
 		ResultSet rs = null;
-		MemberDTO mb=null;
+		MemberDTO dto=null;
 			try {
 				con = getConnection();
 				st = con.createStatement();
 				String sql = "select * from fmmember where userid='"+userid+"'";
 				rs = st.executeQuery(sql);
 				if (rs.next()) {
-					MemberDTO dto = new MemberDTO();
+					dto = new MemberDTO();
 					dto.setName(rs.getString("name"));
+					dto.setAddr(rs.getString("addr"));
+					dto.setEmail(rs.getString("email"));
+					dto.setZipcode(rs.getString("zipcode"));
 					dto.setIncome(rs.getInt("income"));
 					dto.setPhone(rs.getString("phone"));
 					dto.setRank(rs.getString("rank"));
+					System.out.println(dto.getAddr());
+					System.out.println(dto.getEmail());
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -136,7 +141,7 @@ public class MemberDAO {
 			}finally {
 				closeCon(con, st,rs);
 			}
-			return mb;
+			return dto;
 		}
 	
 	public boolean memberCheck(String userid) {

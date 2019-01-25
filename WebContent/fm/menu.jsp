@@ -31,10 +31,14 @@
 	        <li><a href="../fm/main.jsp">메인화면</a></li>
 	        
 	        <c:if test="${sessionScope.id !=null and sessionScope.id !='master'}">
-	         	<li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
 	         	<li><a href="msgList.do">쪽지함<span id="newmsg">❣️</span></a></li>
-	         	<li><a href="cartList.do?id=${sessionScope.id }">장바구니</a></li>
 	        </c:if>
+	        
+	         <c:if test="${sessionScope.id !=null and sessionScope.id !='master' and sessionScope.id !='store1' and sessionScope.id !='store2' and sessionScope.id !='store3' and sessionScope.id !='store4'}">
+	        	<li><a href="myPage.do?id=${sessionScope.id }">마이페이지</a></li> 
+	        	<li><a href="cartList.do?id=${sessionScope.id }">장바구니</a></li>
+	        </c:if>
+	        
 	    </ul>
 	</div>
 	<svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
