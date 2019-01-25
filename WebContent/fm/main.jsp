@@ -30,9 +30,7 @@
 <div class="login" align="right" >
 <input type="hidden" id="sign" value="${sign }">
 <input type="hidden" id="id" value="${id }">
-	
 	  <c:if test="${id==null}">
-	  
 	   		<a href="../fmMember/naverlogin.jsp"><strong>로그인   | </strong></a><a href="../fmMember/joinForm.jsp"><strong>회원가입</strong></a>
 	      	</c:if>
 	   	<c:if test = "${id!=null }">

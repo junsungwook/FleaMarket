@@ -125,6 +125,11 @@
         margin-bottom: 20px;
     }
 }
+.design-process-content{
+	margin: 0 auto;
+	padding: 0;
+	
+}
 </style>
 
 </head>
@@ -135,13 +140,7 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
   <section class="design-process-section" id="process-tab">
   <div class="container">
     <div class="row">
@@ -165,11 +164,11 @@
         <!-- end design process steps--> 
         <!-- Tab panes -->
         <div class="tab-content" >
-          <div role="tabpanel" class="tab-pane active" id="discover">
-            <div class="design-process-content"  align="center">
+          <div role="tabpanel" class="tab-pane active" align="center" id="discover">
+            <div class="design-process-content"  >
               <div class="container">
    				 <div class="row">
-       				 <div class="col-xs-9">
+       				 <div class="col-xs-9" style="padding-left: 55px;">
            				 <div class="pricingTable">
             		  	  <div class="pricingTable-header">
                  		   <h3>내정보</h3>
@@ -195,16 +194,17 @@
 			</div>
              </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="product" align="center">
-            <div class="design-process-content" align="center">
-              <font size="5px">내가 판매중인 상품</font> 
+          <div role="tabpanel" class="tab-pane" id="product" >
+            	<div class="design-process-content" align="center">
+            		<br><br>
+              		<font size="5px">내가 판매중인 상품</font> 
+              		<br>
 					<c:if test="${prodArr !=null}">
-						<table id="blueone">
+						<table id="blueone" class="table table-hover">
 							<tr>
 								<td>카테고리</td>
 								<td>상품이름</td>
 								<td>상품가격</td>
-								<td></td>
 							</tr>
 						<c:forEach items="${prodArr}" var="list" >
 							<tr>
@@ -221,10 +221,12 @@
               </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="cart">
-           	 <div class="design-process-content" align="center">
-				<font size="5px">CART</font> 
+           	 	<div class="design-process-content" align="center">
+           	 		<br><br>
+					<font size="5px">CART</font> 
+					<br>
 					<c:if test="${lists !='no'}">
-						<table id="blueone">
+						<table id="blueone" class="table table-hover">
 							<tr>
 								<td>상품번호</td>
 								<td>판매자아이디</td>
