@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
- 
-  
+
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
 	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
 	 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
@@ -14,7 +13,25 @@
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 <style>
-
+#blueone {
+	  border-collapse: collapse;
+	}  
+	#blueone th {
+	  padding: 10px;
+	  color: #168;
+	  border-bottom: 3px solid #0B2161;
+	  text-align: left;
+	}
+	#blueone td {
+	  color: #669;
+	  padding: 10px;
+	  border-bottom: 1px solid #ddd;
+	}
+	#blueone tr:hover td {
+	  color: #004;
+	}
+	
+	
 .pricingTable{
 	margin-top:50px;
     text-align: center;
@@ -108,6 +125,7 @@
     }
 }
 </style>
+
 </head>
 
 <body>
@@ -157,18 +175,19 @@
              				   </div>
             		    <div class="price-value">
                  		   <small class="fa fa-usd"></small>
-                  	  <span>ID</span>
-                  	  <span class="subtitle">이름</span>
+                  	  <span>${sessionScope.id}</span>
+                  	  <span class="subtitle">${mdto.name}</span>
                			 </div>
                 	<div class="pricingContent">
                     <ul>
-                        <li><b>판매등급</b>DIAMOND</li>
-                        <li><b>총판매액</b>4.254,000</li>
-                        <li><b>구매등급</b>DIAMOND</li>
+                        <li><b>E-MAIL:</b><>${mdto.email}</li>
+                        <li><b>PHONE:</b>${mdto.phone}</li>
+                        <li><b>ADDRESS:</b>${mdto.addr} ${mdto.zipcode}</li>
+                        <li><b>INCOME</b>${mdto.income} 원 </li>
                     </ul>
              	   </div><!-- /  CONTENT BOX-->
              	   <div class="pricingTable-sign-up"><!-- BUTTON BOX-->
-             	       <a href="#" class="btn btn-block btn-default">상세보기</a>
+             	       <a href="#" class="btn btn-block btn-default">정보수정</a>
           		      		</div><!-- BUTTON BOX-->
        		    			 </div>
      				   </div>
@@ -183,15 +202,31 @@
               </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="cart">
-            <div class="design-process-content">
-              <h3 class="semi-bold">장바구니</h3>
-              <table>
-              	<tr>
-              		<th>상품이름</th>
-              		<th> 옵션</th>
-              	</tr>
-              	
-              </table>
+           	 <div class="design-process-content">
+				<font size="5px">CART</font> 
+					<c:if test="${lists !='no'}">
+						<table id="blueone">
+							<tr>
+								<td>상품번호</td>
+								<td>판매자아이디</td>
+								<td>상품이름</td>
+								<td>상품가격</td>
+								<td></td>
+							</tr>
+						<c:forEach items="${cartArr}" var="list" >
+							<tr>
+								<td>${list.num }</td>
+								<td>${list.userid }</td>
+								<td>${list.title }</td>
+								<td>${list.price }</td>
+								<td><input type="button" value="삭제하기" onClick="location.href='goodsCartdel.do?id=${sessionScope.id}&goods=${list.num }'"></td>
+							</tr>
+						</c:forEach>
+						</table>
+					</c:if>
+					<c:if test="${lists =='no'}">
+					  장바구니가 비어있습니다.
+					</c:if>
                </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="content">
