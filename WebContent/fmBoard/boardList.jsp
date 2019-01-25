@@ -40,6 +40,9 @@ function getData(pageNum){
 <title>여기에 제목을 입력하십시오</title>
 </head>
 	<body>
+	<c:if test="${sign=='sign' }">
+		location.href="boardList.jsp";
+	</c:if>
 		<%@include file="../fm/menu.jsp"%>
 		<%@include file="../fm/logo.jsp"%>
 			<br><br><br>
