@@ -115,7 +115,10 @@ $(document).ready(function(){
     left: -17px;
 }
 #write{
-	 position: absolute;
+	background-color:#fff;
+	 width:100%;
+	 height:100px;
+	 position: fixed;
 	 bottom: 0;
 }
 .message-orange:after {
@@ -161,7 +164,11 @@ $(document).ready(function(){
         <p class="message-content">${list.content }</p>
     </div>
     </c:if>
+   
 </c:forEach>
+<br>
+    <br>
+    <br>
 </div>
 <hr>
 <div id="write">
