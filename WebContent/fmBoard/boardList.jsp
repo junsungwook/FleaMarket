@@ -27,6 +27,14 @@ function getData(pageNum){
 	})
 }
 </script>
+<style>
+.container{
+	text-align: left;
+}
+.container #table11{
+	margin-bottom: 130px;
+}
+</style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
@@ -34,11 +42,12 @@ function getData(pageNum){
 	<body>
 		<%@include file="../fm/menu.jsp"%>
 		<%@include file="../fm/logo.jsp"%>
-			<br><br><br><br><br><br><br><br>
+			<br><br><br>
 		<div class="container" id="results">
-		<font size="5px" color="#610B21"  ><strong>공지사항 </strong></font>
+		
+			<font size="5px" color="#610B21" ><strong>공지사항 </strong></font>
+			<table class="table table-hover" id="table11">
 
-		<table class="table table-hover" >
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -59,7 +68,9 @@ function getData(pageNum){
 					</c:forEach>
 				</tbody>
 			</table>
-		<font size="5px" color="#610B21" ><strong>커뮤니티</strong></font>
+				
+				
+			<font size="5px" color="#610B21" ><strong>커뮤니티</strong></font>
 			<table class="table table-hover" >
 				<thead>
 					<tr>
@@ -101,9 +112,6 @@ function getData(pageNum){
 					</c:forEach>
 				</tbody>
 			</table>
-			<div align="center" id="count">
-				총 게시물 수 : ${count }
-			</div>
 			<div align="center">
 			<!-- 이전 -->
 			<c:if test="${startpage>blockpage }">
@@ -122,6 +130,7 @@ function getData(pageNum){
 			<c:if test="${endpage<totpage }">
 				<a href="javascript:getData(${endpage+1 })">[다음]</a>
 			</c:if>
+
 			<c:if test="${sessionScope.id!=null }">
 				 <input type="button" value="글등록" class="btn btn-default" onclick="location.href='writeForm.jsp'">
 			 </c:if>

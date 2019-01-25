@@ -36,10 +36,8 @@
 	}
 </script>
 <style> 
-body{
-	padding : 30px;
-	 background: #fff; 
-	font-family: "Nanum Gothic", sans-serif;
+	body{
+		font-family: "Nanum Gothic", sans-serif;
 	}
 	#blueone {
 	  border-collapse: collapse;
@@ -65,13 +63,6 @@ body{
 <body>
     <%@include file="../fm/menu.jsp"%>
 	<%@include file="../fm/logo.jsp"%>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<br>
 	<br>
 	<br>
