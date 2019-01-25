@@ -17,7 +17,7 @@
 <title>게시판 글쓰기</title>
 
 <script>
-
+<%String sendid=request.getParameter("sendid"); %>
 </script>
 <style> 
 body{
@@ -58,7 +58,7 @@ body{
 	</tr>
 	<tr>	
 		<th>받을 사람 ID:</th>
-		<th><input type="text" class ="form-control" id="sendid" name="sendid"></th>
+		<th><input type="text" class ="form-control" id="sendid" name="sendid" value="<%=sendid %>"></th>
 	</tr>
 	<tr>
 		<td>내용:</td>
@@ -67,8 +67,8 @@ body{
 		(<span id="contentcount" style="color:green;">0</span>)</td>
 	</tr>
 	<tr>
-	<td></td>
-	<td><input type="submit" value="메세지 보내기" class="btn btn-default"></td>
+		<td></td>
+		<td><input type="submit" value="메세지 보내기" class="btn btn-default"></td>
 	<tr>
 </table>
 </form>

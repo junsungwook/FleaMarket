@@ -123,9 +123,6 @@ $(document).ready(function(){
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
 	<h1>회원가입</h1>
 	<br>
 	<form name="frm" id="frm" action="join.do" method="post">

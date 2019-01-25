@@ -36,7 +36,7 @@ function getData(pageNum){
 		<%@include file="../fm/logo.jsp"%>
 			<br><br><br><br><br><br><br><br>
 		<div class="container" id="results">
-		<font size="5px" color="#610B21" ><strong>공지사항 </strong></font>
+		<font size="5px" color="#610B21"  ><strong>공지사항 </strong></font>
 
 		<table class="table table-hover" >
 				<thead>
