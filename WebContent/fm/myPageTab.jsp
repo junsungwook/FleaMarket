@@ -187,7 +187,8 @@
                     </ul>
              	   </div><!-- /  CONTENT BOX-->
              	   <div class="pricingTable-sign-up"><!-- BUTTON BOX-->
-             	       <a href="#" class="btn btn-block btn-default">정보수정</a>
+             	       <a href="../fmMember/infoUpdate.jsp" class="btn btn-block btn-default">정보수정</a>
+             	       <a href="../fmMember/pwdUpdate.jsp" class="btn btn-block btn-default">비밀번호변경</a>
           		      		</div><!-- BUTTON BOX-->
        		    			 </div>
      				   </div>
