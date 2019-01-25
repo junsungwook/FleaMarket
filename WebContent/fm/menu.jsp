@@ -12,25 +12,28 @@
 	    <ul>
 	    	<li></li>
 	    	<c:if test="${sessionScope.id==null}">
-		    <li><a href="../fmMember/naverlogin.jsp">로그인</a></li>
-		    <li><a href="../fmMember/joinForm.jsp">회원가입</a></li>
+		    	<li><a href="../fmMember/naverlogin.jsp">로그인</a></li>
+		    	<li><a href="../fmMember/joinForm.jsp">회원가입</a></li>
 	    	</c:if>
+	    	
 	    	<c:if test = "${sessionScope.id!=null }">
-	    	<li><a href="logout.do">로그아웃</a></li>
+	    		<li><a href="logout.do">로그아웃</a></li>
 	    	</c:if>
+	    	
 	    	<c:if test="${sessionScope.id=='master'}">
-	    	<li><a href="../fmBoard/noticeWrite.jsp">공지사항</a></li>
+	    		<li><a href="../fmMaster/masterPage.jsp">관리자모드</a></li>
+	    		<li><a href="../fmBoard/noticeWrite.jsp">공지사항 작성</a></li>
 	    	</c:if>
-	        <li><a href="../fm/shop.jsp">플리마켓</a>
-	        </li>
+	    	
+	        <li><a href="../fm/shop.jsp">플리마켓</a></li>
 	        <li><a href="../fm/store.jsp">스토어</a></li>
-	        <li><a href="../fmBoard/boardList.bo">커뮤니티</a></li>
-	       
+	        <li><a href="../fmBoard/boardList.bo">QnA</a></li> 
 	        <li><a href="../fm/main.jsp">메인화면</a></li>
-	        <c:if test="${sessionScope.id !=null }">
-	         <li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
-	        <li><a href="msgList.do">쪽지함<span id="newmsg">❣️</span></a></li>
-	        <li><a href="cartList.do?id=${sessionScope.id }">장바구니</a></li>
+	        
+	        <c:if test="${sessionScope.id !=null and sessionScope.id !='master'}">
+	         	<li><a href="../fm/myPageTab.jsp">마이페이지</a></li>
+	         	<li><a href="msgList.do">쪽지함<span id="newmsg">❣️</span></a></li>
+	         	<li><a href="cartList.do?id=${sessionScope.id }">장바구니</a></li>
 	        </c:if>
 	    </ul>
 	</div>
