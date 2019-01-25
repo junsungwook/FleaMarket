@@ -45,16 +45,28 @@
 		});//document
 	});
 </script>
+<style>
+.container{
+	width: 80%;
+	margin : 0 auto;	
+	padding-top: 50px;
+}
+.container table {
+	margin: 0 auto;
+}
+</style>
 </head>
 <body>
+<div class="container">
 <table>
 	<tr>
-		<td>동이름 입력:</td> 
+		<td><h5><b>동 입력:</b></h5></td> 
 		<td><input type='text' class='form-control' name="dong" id="dong"></td>
 		<td><input type ='button' id ="send" class='btn btn-default' value ="검색"></td>
 	</tr>
 </table>
 <br>
 <div id='result' ></div>
+</div>
 </body>
 </html>
