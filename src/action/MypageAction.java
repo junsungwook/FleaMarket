@@ -50,9 +50,6 @@ public class MypageAction extends HttpServlet {
 		ArrayList<goodsDTO> prodArr = new ArrayList<>();
 		prodArr = gdao.get_info(id);
 		
-		System.out.println(mdto.getAddr());
-		
-		
 		request.setAttribute("cartArr", cartArr);
 		request.setAttribute("mdto", mdto);
 		request.setAttribute("prodArr", prodArr);
