@@ -242,6 +242,7 @@ public class goodsDAO {
 			while(rs.next()) {
 				goodsDTO dto = new goodsDTO();
 				dto.setTitle(rs.getString("title"));
+				dto.setCategory(rs.getString("category"));
 				dto.setPrice(rs.getInt("price"));
 				arr.add(dto);
 			}
