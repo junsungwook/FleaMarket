@@ -1,4 +1,4 @@
-package com.member.action;
+package util;
 
 import java.io.IOException;
 
