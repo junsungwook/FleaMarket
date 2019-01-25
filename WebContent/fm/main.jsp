@@ -26,9 +26,7 @@
 </script>
 
 <div class="section">
-<c:if test="${sessionScope.id =='master' }">
-	<input type="button" value="관리자모드" onClick="location.href='../fmMaster/masterPage.jsp'">
-</c:if>
+
 <div class="login" align="right" >
 <input type="hidden" id="sign" value="${sign }">
 <input type="hidden" id="id" value="${id }">
