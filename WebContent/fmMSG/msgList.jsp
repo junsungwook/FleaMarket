@@ -24,7 +24,10 @@
 <table border=1 >
 	<c:forEach items="${lists}" var="list">
 			<tr align="right">
-				<td onclick ="window.open('msgView.do?userid=${list}','','top=300px, left=300px, height=450px, width=450px')"> ${list}님과의 쪽지입니다.
+				<td onclick ="window.open('msgView.do?userid=${list.key}','','top=300px, left=300px, height=450px, width=450px')"> ${list.key}님과의 쪽지입니다.
+				<c:if test ="${list.value eq '안읽음'}">
+					<div id="newmsg">📍</div>
+				</c:if>
 				</td>
 			<tr>
 </c:forEach>

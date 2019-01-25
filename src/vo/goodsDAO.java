@@ -203,6 +203,29 @@ public class goodsDAO {
 	  }
 	  return g;
 	}
+	public boolean goodsCheck(int num) {
+		   Connection con= null;
+		   Statement st = null;
+		   ResultSet rs = null;
+		   boolean check = false;
+		   String sql="";
+		   try {
+		     con = getConnection();
+		     sql = "select * "+
+		    	   "from goods "+
+		    	   "where num="+num;
+			 st = con.createStatement();
+			 rs = st.executeQuery(sql);
+			 if(rs.next()) {
+				 check = true;
+		     }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+		     closeCon(con,st,rs);
+		  }
+		  return check;
+		}
 	public ArrayList<goodsDTO> get_info(String id){
 		ArrayList<goodsDTO> arr = new ArrayList<>();
 		Connection con = null;
@@ -324,6 +347,34 @@ public class goodsDAO {
 		
 		return arr;
 	}
+	public ArrayList<goodsDTO> cartlist (){
+		ArrayList<goodsDTO> arr = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from goods" ;
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				goodsDTO dto = new goodsDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setUserid(rs.getString("userid"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPrice(rs.getInt("price"));
+				arr.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeCon(con, ps, rs);
+		}
+		
+		return arr;
+	}
 	
 	public int sellCount(String id) {
 		 Connection con= null;
@@ -380,6 +431,36 @@ public class goodsDAO {
 		
 		return arr;
 	}
+	
+	public ArrayList<goodsDTO> groupBy() {
+		// TODO Auto-generated method stub
+		ArrayList<goodsDTO> arr = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select category,count(*) from goods group by category ";
+			con = getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				goodsDTO dto = new goodsDTO();
+				dto.setUserid(rs.getString(1));
+				dto.setNum(rs.getInt(2));
+				arr.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeCon(con, ps, rs);
+		}
+		
+		return arr;
+	}
+	
 	
 	
 	
