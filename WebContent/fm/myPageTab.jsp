@@ -198,7 +198,7 @@
           <div role="tabpanel" class="tab-pane" id="product" align="center">
             <div class="design-process-content" align="center">
               <font size="5px">내가 판매중인 상품</font> 
-					<c:if test="${prodArr !='no'}">
+					<c:if test="${prodArr !=null}">
 						<table id="blueone">
 							<tr>
 								<td>카테고리</td>
