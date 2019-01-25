@@ -99,6 +99,10 @@ $(document).ready(function(){
         	alert("아이디 중복확인 하세요");
         	return false;
         }
+        if($("#phone").val()==""){
+        	alert("폰번호 입력하세요");
+        	return false;
+        }
         $("#frm").submit();
      });
     $("#idcheck").click(function(){
@@ -166,7 +170,7 @@ $(document).ready(function(){
 					</td>
 				</tr>
 				<tr>
-					<td>PHONE</td>
+					<td>PHONE *</td>
 					<td class="col-xs-4">
 					<input type="text" name="phone" id="phone" class="form-control" maxlength="13">
 					</td>
