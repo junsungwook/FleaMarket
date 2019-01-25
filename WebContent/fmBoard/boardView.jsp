@@ -7,12 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>여기에 제목을 입력하십시오</title>
 <head>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+      <link rel="stylesheet" href="tabs.css">	
+      <link rel="stylesheet" href="../fm/style.css" type="text/css">
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../fm/script.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <style>  
-	body{
-	padding : 30px;
-	}
-	
 	body { background: #fff; }
 	#blueone {
 	  border-collapse: collapse;
@@ -61,12 +65,14 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<div class="container">
+<%@include file="../fm/menu.jsp"%>
+<%@include file="../fm/logo.jsp"%>
+
+	<div class="container" style="padding:100px;">
 		<form action="update" method="get">
 			<table align="center" id="blueone">
 				<tr>	
 					<td>글번호</td><td>${board.BOARD_NUM }<input type="hidden" value="${board.BOARD_NUM }" name="BOARD_NUM" id="BOARD_NUM"></td>
-					
 				</tr>
 				<tr>
 					<td>작성자</td>

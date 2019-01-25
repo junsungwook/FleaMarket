@@ -17,12 +17,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
+
 	<%@include file="../fm/menu.jsp"%>
 	<%@include file="../fm/logo.jsp"%>
-	<br><br><br><br><br><br>
+	<br><br><br><br>
 	<font size="10px" color="#0B3861"><strong>쪽지함</strong></font>
-<table border=1 >
+	<hr>
+<c:if test="${list.key==null}">
+	<font size="5px">쪽지 중인 상대가 없습니다.</font>
+</c:if>
+<div  align="center" style="width:700px;" >
+<table class ="table table-hover"  border=1 >
 	<c:forEach items="${lists}" var="list">
+		
 			<tr align="right">
 				<td onclick ="window.open('msgView.do?userid=${list.key}','','top=300px, left=300px, height=450px, width=450px')"> ${list.key}님과의 쪽지입니다.
 				<c:if test ="${list.value eq '안읽음'}">
@@ -32,5 +39,7 @@
 			<tr>
 </c:forEach>
 </table>
+		<input type="button" value="쪽지쓰기" class="btn btn-default"  onclick="location.href='msgWrite.jsp'" >
+</div>
 </body>
 </html>
