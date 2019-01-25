@@ -231,7 +231,7 @@ public class goodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select title,price from goods where userid=?";
+		String sql = "select * from goods where userid=?";
 		
 		try {
 			con =getConnection();

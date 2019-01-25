@@ -45,7 +45,9 @@ function sendFile(files,editor,welEditable){
 	}
 </script>
 <style>
-
+.container{
+	padding-top: 50px;
+}
 .insertForm{
 	width:75%;
 	margin:0 auto;
