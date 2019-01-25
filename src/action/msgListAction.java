@@ -3,6 +3,7 @@ package action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,10 +41,16 @@ public class msgListAction extends HttpServlet {
 		ArrayList<String> arr = new ArrayList<>();
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		System.out.println(id);
+		HashMap<String,String> map= new HashMap<>();
 		MSGDAO dao = MSGDAO.getInstance();
 		arr= dao.msgcheck(id);
-		request.setAttribute("lists",arr);
+		for(int i =0;i<arr.size();i++) {
+			String userid = arr.get(i);
+			System.out.println(userid);
+			String a = dao.readcheck(userid,id);
+			map.put(userid, a);
+		}
+		request.setAttribute("lists",map);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("../fmMSG/msgList.jsp");
 		dispatcher.forward(request, response);
 		
