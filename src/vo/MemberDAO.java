@@ -126,6 +126,9 @@ public class MemberDAO {
 				if (rs.next()) {
 					MemberDTO dto = new MemberDTO();
 					dto.setName(rs.getString("name"));
+					dto.setAddr(rs.getString("addr"));
+					dto.setEmail(rs.getString("email"));
+					dto.setZipcode(rs.getString("zipcode"));
 					dto.setIncome(rs.getInt("income"));
 					dto.setPhone(rs.getString("phone"));
 					dto.setRank(rs.getString("rank"));
