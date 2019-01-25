@@ -5,10 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+.container{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 25px;
+}
+</style>
 <body>
 
 <script>
@@ -29,11 +38,14 @@
 	})	
 </script>
 
+<div class="container">
+<h5><b>Email 인증</b></h5>
 <input type="hidden" id="num" value ="${num }">
   ${email } 로 인증번호를 전송했습니다.<br>
-인증번호를 입력하시오 : <input type="text" id="num_check">
-<input type="button" id="check_bt" value="확인">
-
+인증번호를 입력하세요<br><br>
+<input type="text" class="text" id="num_check">
+<input type="button" class="btn btn-success" id="check_bt" value="확인">
+</div>
 
 
 </body>
