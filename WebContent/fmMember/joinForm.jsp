@@ -100,7 +100,7 @@ $(document).ready(function(){
 		window.open("zipcheck.jsp","","width=500 height =500");
 	})
 	 $("#email_check_bt").click(function(){
-		window.open("emailcheck.do?email="+$('#email').val(),"","width=500 height=150");
+		window.open("emailcheck.do?email="+$('#email').val(),"","width=500 height=220");
 	}) 
 });
 </script>
