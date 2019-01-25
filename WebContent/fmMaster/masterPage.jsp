@@ -228,7 +228,7 @@
 		
 	}); 
 	
-	
+
 
 </script>
 
@@ -240,34 +240,37 @@
  <input type="button" value="돌아가기" id="back">
  
  <div id="result">
- 
 
  </div>
- 
+
+
+
+
 <div id="graph" align ="left">
-<!--   ㅎㅎ 요기에  회원 총 인원 / 플리마켓 전체글 갯수  / 스토어 전체 글갯수 / 회원들이 장바구니에 담은갯수 = 막대그래프로 표현 
-  		<br> 플리마켓 카테고리별 글갯수 비율로 원 그래프 표현/ 스토어도 동일 -->
- 	
 
-<div id="total_graph" style="width: 800px; height:300px"></div>
-<div id="flea_graph" style="height: 250px; width: 400px; overflow:hidden"></div>
-<div id="store_graph" style="height: 250px; width: 400px; overflow:hidden"></div>
+	<div id="total_graph" style="width: 800px; height:300px"> </div>
+	<div id="flea_graph" style="height: 250px; width: 400px; overflow:hidden"> ${flea_total }</div>
+	<div id="store_graph" style="height: 250px; width: 400px; overflow:hidden">${store_total }</div>
 
-<input type="button" value="홈페이지  현황" id="total_graph_bt">
-<input type="button" value="FleaMarket 게시글 현황" id="flea_graph_bt">
-<input type="button" value="Store 게시글 현황" id="store_graph_bt">
+	<input type="button" value="홈페이지  현황" id="total_graph_bt">
+	<input type="button" value="FleaMarket 게시글 현황" id="flea_graph_bt">
+	<input type="button" value="Store 게시글 현황" id="store_graph_bt">
+
 </div>
  
   <div id="mem_div" >
- 삭제하실 ID를 정확하게 입력하세요 <input type="text" id="id"> <input type="button" value="삭제하기" id="member_delete_bt">
+  	
+ <br>삭제하실 ID를 정확하게 입력하세요 <input type="text" id="id"> <input type="button" value="삭제하기" id="member_delete_bt">
  </div>
  
  <div id="flea_div">
-삭제하실 플리마켓 상품번호를 정확하게 입력하세요 <input type="text" id="goods_num"> <input type="button" value="삭제하기" id="flea_delete_bt">
+ 	
+<br>삭제하실 플리마켓 상품번호를 정확하게 입력하세요 <input type="text" id="goods_num"> <input type="button" value="삭제하기" id="flea_delete_bt">
  </div>
  
  <div id="store_div">
-삭제하실 스토어 상품번호를 정확하게 입력하세요 <input type="text" id="store_num"> <input type="button" value="삭제하기" id="store_delete_bt">
+ 	
+<br>삭제하실 스토어 상품번호를 정확하게 입력하세요 <input type="text" id="store_num"> <input type="button" value="삭제하기" id="store_delete_bt">
  </div>
  
  
@@ -286,21 +289,18 @@
  </c:forEach>
   
  <script>
-/*  function graph_data_load(){
-	 location.herf="master_data.do";
- } */
  Morris.Bar({
-		element: 'total_graph',     // bar를 넣을 div의 아이디를 적어주세요.
-		data: [                                // bar를 넣을 x축과 y축의 데이터를 적어줍니다.
+		element: 'total_graph',     
+		data: [                              
 		{ y: '총 회원  ', value:$("#mem_total").val() },
 		{ y: 'FleaMarket 판매글', value:$("#flea_total").val() },
 		{ y: 'Store 판매 글', value:$("#store_total").val() },
 		{ y: '장바구니 등록 글', value:$("#cart_total").val()},
 		{ y: 'QnA 등록 글', value:$("#qna_total").val()}
 		],
-		xkey: 'y',                          //x축에 들어갈 이름을 넣은 data이름을 넣어줍니다
-		ykeys: ['value'],                //y축에 들어갈 이름을 넣은 data이름을 넣어줍니다
-		labels: ['총 수'] // 라벨칸에 나타날 이름을 적어줍니다.
+		xkey: 'y',                          
+		ykeys: ['value'],              
+		labels: ['총 수']
 	});
  
  Morris.Donut({
