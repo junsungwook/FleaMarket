@@ -130,9 +130,15 @@ function getData(pageNum){
 			<c:if test="${endpage<totpage }">
 				<a href="javascript:getData(${endpage+1 })">[다음]</a>
 			</c:if>
+
+			<c:if test="${sessionScope.id!=null }">
+				 <input type="button" value="글등록" class="btn btn-default" onclick="location.href='writeForm.jsp'">
+			 </c:if>
+			 <c:if test="${sessionScope.id==null }">
+			 <br>
+				로그인 후 글을 등록하실 수 있습니다.	 
+			 </c:if>
 			</div>
-			 <input type="button" value="글등록" class="btn btn-default" onclick="location.href='writeForm.jsp'">
-			
 		</div>	
 	</body>
 </html>
