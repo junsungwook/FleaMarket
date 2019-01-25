@@ -47,8 +47,8 @@
 					htmlStr+="<table border=1>";
 					htmlStr +="<tr><td>아이디</td><td>이름</td><td>이메일</td><td>주소</td><td>수익</td><td>순위</td><td>판매글 갯수</td></tr>"
 					for(var i=0;i<data.length;i++){
-						htmlStr+="<tr>";
-						htmlStr+="<td>"+data[i].userid+"</td>";
+						htmlStr+="<tr>";	
+						htmlStr+="<td onclick=window.open('memView.do?id="+data[i].userid+"','','width=500,height=500'); return false;>"+data[i].userid+"</td>";
 						htmlStr+="<td>"+data[i].name+"</td>";
 						htmlStr+="<td>"+data[i].email+"</td>";
 						htmlStr+="<td>"+data[i].addr+"</td>";
@@ -84,7 +84,7 @@
 						htmlStr+="<tr>";
 						htmlStr+="<td>"+data[i].num+"</td>";
 						htmlStr+="<td>"+data[i].category+"</td>";
-						htmlStr+="<td>"+data[i].userid+"</td>";
+						htmlStr+="<td >"+data[i].userid+"</td>";
 						htmlStr+="<td>"+data[i].title+"</td>";
 						htmlStr+="<td>"+data[i].price+"</td>";
 						htmlStr+="</tr>";
@@ -278,16 +278,12 @@
  <input type="hidden" id="qna_total" value="${qna_total }" >
  
  <c:forEach items="${fleaArr }" var="list">
- 	<input type="hidden" id="${list.userid }" value="${list.num }">
+ 	<input type="hidden" id="${list.userid }" value="${(list.num/flea_total)*100 }">
  </c:forEach>
  
  <c:forEach items="${storeArr }" var="list">
- <input type="hidden" id="${list.userid }" value="${list.num }">
+ <input type="hidden" id="${list.userid }" value="${(list.num/store_total)*100 }">
  </c:forEach>
-<%--  <input type="hidden" id="mem_total" value="${mem_total }" >
- <input type="hidden" id="mem_total" value="${mem_total }" >
- <input type="hidden" id="mem_total" value="${mem_total }" >
- --%>
   
  <script>
 /*  function graph_data_load(){
@@ -296,40 +292,40 @@
  Morris.Bar({
 		element: 'total_graph',     // bar를 넣을 div의 아이디를 적어주세요.
 		data: [                                // bar를 넣을 x축과 y축의 데이터를 적어줍니다.
-		{ y: '총 회원  ', a:$("#mem_total").val() },
-		{ y: 'FleaMarket 판매글', a:$("#flea_total").val() },
-		{ y: 'Store 판매 글', a:$("#store_total").val() },
-		{ y: '장바구니 등록 글', a:$("#cart_total").val()},
-		{ y: 'QnA 등록 글', a:$("#qna_total").val()}
+		{ y: '총 회원  ', value:$("#mem_total").val() },
+		{ y: 'FleaMarket 판매글', value:$("#flea_total").val() },
+		{ y: 'Store 판매 글', value:$("#store_total").val() },
+		{ y: '장바구니 등록 글', value:$("#cart_total").val()},
+		{ y: 'QnA 등록 글', value:$("#qna_total").val()}
 		],
 		xkey: 'y',                          //x축에 들어갈 이름을 넣은 data이름을 넣어줍니다
-		ykeys: ['a'],                //y축에 들어갈 이름을 넣은 data이름을 넣어줍니다
+		ykeys: ['value'],                //y축에 들어갈 이름을 넣은 data이름을 넣어줍니다
 		labels: ['총 수'] // 라벨칸에 나타날 이름을 적어줍니다.
 	});
  
  Morris.Donut({
-	 element: 'flea_graph',     //그래프가 들어갈 위치의 ID를 적어주세요
-	 data: [                                     //그래프에 들어갈 data를 적어주세요
-	 {label: 'Fashion', value:$("#fashion").val() },
-	 {label: 'Hobby', value: 40 },
-	 {label: 'Living', value: 15 },
-	 {label: 'Food', value: 10 },
-	 {label: 'Pet', value:10}
+	 element: 'flea_graph',    
+	 data: [                                    
+	 {label: 'Fashion', value:Math.round($("#fashion").val()) },
+	 {label: 'Hobby', value: Math.round($("#hobby").val()) },
+	 {label: 'Living', value:Math.round($("#living").val()) },
+	 {label: 'Food', value: Math.round($("#food").val()) },
+	 {label: 'Pet', value:Math.round($("#pet").val())}
 	 ],
-	 colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
-	 formatter: function (y) { return y + "%" }  //y값 뒤에 %를 추가해줍니다.
+	 colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"],
+	 formatter: function (y) { return y + "%" } 
 	 });
  
  Morris.Donut({
-	 element: 'store_graph',     //그래프가 들어갈 위치의 ID를 적어주세요
-	 data: [                                     //그래프에 들어갈 data를 적어주세요
-	 {label: 'Foraml Dress', value: 25 },
-	 {label: 'Aesop', value: 40 },
-	 {label: 'Green Shop', value: 25 },
-	 {label: 'P.P Flower', value: 10 }
+	 element: 'store_graph',   
+	 data: [                                    
+	 {label: 'Foraml Dress', value:Math.round( $("#store1").val() )},
+	 {label: 'Aesop', value:Math.round( $("#store2").val()) },
+	 {label: 'Green Shop', value:Math.round( $("#store3").val()) },
+	 {label: 'P.P Flower', value:Math.round( $("#store4").val()) }
 	 ],
-	 colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
-	 formatter: function (y) { return y + "%" }  //y값 뒤에 %를 추가해줍니다.
+	 colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], 
+	 formatter: function (y) { return y + "%" } 
 	 });
  </script>
 

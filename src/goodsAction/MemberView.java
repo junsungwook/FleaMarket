@@ -18,7 +18,7 @@ import vo.goodsDTO;
 /**
  * Servlet implementation class MemberView
  */
-@WebServlet({ "/MemberView", "/fm/memberView.do" })
+@WebServlet({ "/MemberView", "/fm/memberView.do","/fmMaster/memView.do" })
 public class MemberView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

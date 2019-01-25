@@ -59,6 +59,7 @@
 	</table>
 	
 	<input type="button" value="메세지보내기" id="msg_bt">
+	<input type="button" value="닫기" onclick=self.close()>
 
 
 </body>
