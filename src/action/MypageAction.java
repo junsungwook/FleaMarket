@@ -45,7 +45,7 @@ public class MypageAction extends HttpServlet {
 		mdto = mdao.memberView(id);
 		
 		ArrayList<goodsDTO> cartArr = new ArrayList<>();
-		cartArr = gdao.cartlist();
+		cartArr = gdao.cartlist(id);
 		
 		ArrayList<goodsDTO> prodArr = new ArrayList<>();
 		prodArr = gdao.get_info(id);
