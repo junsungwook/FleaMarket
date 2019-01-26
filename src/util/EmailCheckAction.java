@@ -1,4 +1,4 @@
-package com.member.action;
+package util;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vo.MemberDAO;
 
 /**
  * Servlet implementation class EmailCheckAction
@@ -58,9 +57,7 @@ public class EmailCheckAction extends HttpServlet {
 			final String password = "fleamarket1!";
 			int port = 465;
 			
-			String recipient =email;
-			
-			String subject = "인증번호 확인 메일";
+			String subject = "Flea Market 회원가입 인증번호 확인 메일";
 			String content = "인증번호 [" +num+ "]";
 			
 			Properties props = System.getProperties();

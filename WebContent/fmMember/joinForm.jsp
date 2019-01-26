@@ -43,7 +43,6 @@ $(document).ready(function(){
     $("#password").keyup(function(){
         $("#pwd_check").val("");
         return false;
-        
     });
     var pw_p= /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
     $("#password").keyup(function(){
@@ -91,6 +90,18 @@ $(document).ready(function(){
         	alert("이메일 형식이 아닙니다.");
         	return false;
         }
+        if($("#email_valid").val()=="false"){
+        	alert("이메일을 인증하세요");
+        	return false;
+        }
+        if($("#userid").val()=="false"){
+        	alert("아이디 중복확인 하세요");
+        	return false;
+        }
+        if($("#phone").val()==""){
+        	alert("폰번호 입력하세요");
+        	return false;
+        }
         $("#frm").submit();
      });
     $("#idcheck").click(function(){
@@ -100,7 +111,11 @@ $(document).ready(function(){
 		window.open("zipcheck.jsp","","width=500 height =500");
 	})
 	 $("#email_check_bt").click(function(){
-		window.open("emailcheck.do?email="+$('#email').val(),"","width=500 height=150");
+		 if($("#email").val()==""){
+			 alert("이메일을 입력하세요");
+			 return false;
+		 }
+		window.open("emailcheck.do?email="+$('#email').val(),"","width=500 height=220");
 	}) 
 });
 </script>
@@ -111,14 +126,14 @@ $(document).ready(function(){
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
 	<h1>회원가입</h1>
 	<br>
 	<form name="frm" id="frm" action="join.do" method="post">
-		<input type="hidden" name="userid" id="userid">
+		<input type="hidden" name="userid" id="userid" value="false">
 		<input type="hidden" name="password_valid">
+		<input type="hidden" id="email_valid" value="false">
+	
+		
 		<div align="center" class="container">
 			<table id="blueone">
 				<tr>
@@ -147,14 +162,14 @@ $(document).ready(function(){
 				</tr>
 
 				<tr>
-					<td>E-MAIL</td>
+					<td>E-MAIL *</td>
 					<td class="col-xs-4"><input type="email" name="email" id="email" class="form-control"></td>
 					<td> <input type="button" value="e-mail 인증" id="email_check_bt" class="btn btn-default" >
-						<input type="hidden" value="0" id="email_check">
+						
 					</td>
 				</tr>
 				<tr>
-					<td>PHONE</td>
+					<td>PHONE *</td>
 					<td class="col-xs-4">
 					<input type="text" name="phone" id="phone" class="form-control" maxlength="13">
 					</td>

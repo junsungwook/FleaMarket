@@ -16,7 +16,7 @@ import vo.BoardVO;
 /**
  * Servlet implementation class ListAction
  */
-@WebServlet("/fmBoard/boardList.bo")
+@WebServlet({"/fmBoard/boardList.bo","/fm/boardList.bo"})
 public class ListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -64,7 +64,8 @@ public class ListAction extends HttpServlet {
 		request.setAttribute("lists", arr);
 		request.setAttribute("noticelists", arrn);
 		request.setAttribute("count", count);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("boardList.jsp");
+		request.setAttribute("sign","sign");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../fmBoard/boardList.jsp");
 		dispatcher.forward(request, response);
 		
 	}

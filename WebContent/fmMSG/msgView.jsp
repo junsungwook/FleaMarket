@@ -114,7 +114,13 @@ $(document).ready(function(){
     top: -1px;
     left: -17px;
 }
-
+#write{
+	background-color:#fff;
+	 width:100%;
+	 height:100px;
+	 position: fixed;
+	 bottom: 0;
+}
 .message-orange:after {
     content: '';
     position: absolute;
@@ -158,16 +164,22 @@ $(document).ready(function(){
         <p class="message-content">${list.content }</p>
     </div>
     </c:if>
+   
 </c:forEach>
+<br>
+    <br>
+    <br>
 </div>
 <hr>
-<form  action="message.do" name="frm" id="frm">
-	<input type="hidden" value="${sessionScope.id }" name="id"> 
-	<input type="hidden" value="${userid}" name="userid">
-	<input type="text" class="form-control" id="content" name="content" onkeyup="textCount(this,'contentcount')">
-	*100글자 이내
-		(<span id="contentcount" style="color:green;">0</span>)
-	<input type="button" value="쪽지보내기" id="msg" class='btn btn-default'>
+<div id="write">
+	<form  action="message.do" name="frm" id="frm">
+		<input type="hidden" value="${sessionScope.id }" name="id"> 
+		<input type="hidden" value="${userid}" name="userid">
+		<input type="text" class="form-control" id="content" name="content" onkeyup="textCount(this,'contentcount')">
+		*100글자 이내
+			(<span id="contentcount" style="color:green;">0</span>)
+		<input type="button" value="쪽지보내기" id="msg" class='btn btn-default'>
 </form>
+</div>
 </body>
 </html>

@@ -7,19 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import util.Security_SHA256;
-
-import java.util.*;
-import javax.mail.*;
 
 
 public class MemberDAO {
@@ -101,15 +96,14 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		try {
 			con = getConnection();
-			String sql = "Update fmmember set name=?,password=?,email=?,phone=?,admin=?,zipcode=?,addr=? where userid='"+mb.getUserid()+"'";
+			String sql = "Update fmmember set phone=?,zipcode=?,addr=? where userid=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1,mb.getName());
-			ps.setString(2, mb.getPassword());
-			ps.setString(3, mb.getEmail());
-			ps.setString(4, mb.getPhone());
-			ps.setString(5, mb.getZipcode());
-			ps.setString(6, mb.getAddr());
+			ps.setString(1, mb.getPhone());
+			ps.setString(2, mb.getZipcode());
+			ps.setString(3, mb.getAddr());
+			ps.setString(4, mb.getUserid());
 			ps.executeUpdate();
+			System.out.println(mb.getUserid()+"수정완료");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,11 +112,41 @@ public class MemberDAO {
 		}
 	
 	}
-	public boolean memberView(String userid) {
+	public MemberDTO memberView(String userid) {
 		Connection con =null;
 		Statement st = null;
 		ResultSet rs = null;
-		MemberDTO mb=null;
+		MemberDTO dto=null;
+			try {
+				con = getConnection();
+				st = con.createStatement();
+				String sql = "select * from fmmember where userid='"+userid+"'";
+				rs = st.executeQuery(sql);
+				if (rs.next()) {
+					dto = new MemberDTO();
+					dto.setName(rs.getString("name"));
+					dto.setAddr(rs.getString("addr"));
+					dto.setEmail(rs.getString("email"));
+					dto.setZipcode(rs.getString("zipcode"));
+					dto.setIncome(rs.getInt("income"));
+					dto.setPhone(rs.getString("phone"));
+					dto.setRank(rs.getString("rank"));
+					System.out.println(dto.getAddr());
+					System.out.println(dto.getEmail());
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeCon(con, st,rs);
+			}
+			return dto;
+		}
+	
+	public boolean memberCheck(String userid) {
+		Connection con =null;
+		Statement st = null;
+		ResultSet rs = null;
 		boolean flag =false;
 			try {
 				con = getConnection();
@@ -301,7 +325,6 @@ public class MemberDAO {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs =null;
-		HashMap<String, String> hm = new HashMap<String, String>();
 		arr = new ArrayList<>();
 		try {
 			con = getConnection();
@@ -469,10 +492,7 @@ public class MemberDAO {
 		
 	}
 	
-	
-	public int membercnt() {
-		return arr.size();
-	}
+
 
 			
 	private void closeCon(Connection con, PreparedStatement ps){

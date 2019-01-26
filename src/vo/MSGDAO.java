@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class MSGDAO {
+
 	private static MSGDAO instance = new MSGDAO();
 	ArrayList<MemberDTO> arr ;
 	public static MSGDAO getInstance(){
@@ -44,7 +45,7 @@ public class MSGDAO {
 				closeCon(con,ps);
 			}
 	}
-	
+	//메세지 리스트
 	public ArrayList<String> msgcheck(String sendid){
 		ArrayList<String> arr = new ArrayList<>();
 		Connection con= null;
@@ -60,16 +61,57 @@ public class MSGDAO {
 				 System.out.println(rs.getString("userid"));
 				 String name = rs.getString("userid");
 				 arr.add(name);
-		     }
-			 
-		   	} catch (Exception e) {
+		     } 
+		  } catch (Exception e) {
 		    e.printStackTrace();
 		  }finally {
 			  closeCon(con,st,rs);
 		  }
-		   System.out.println(arr.get(0));
 		  return arr;
 	}
+	
+	//메세지 읽음 안읽음 확인하기, 스트링으로 반환
+		public String readcheck(String userid , String sendid) {
+			 Connection con= null;
+			   PreparedStatement  ps = null;
+			   ResultSet rs = null; 
+			   ArrayList<MSGVO> arr= new ArrayList<MSGVO>();
+			   String str="";
+			   String sql="";
+			   try {
+			     con = getConnection();
+			     sql = "select read from (select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=?)";
+				 ps = con.prepareStatement(sql);
+				 ps.setString(1,userid);
+				 ps.setString(2,sendid);
+				 ps.setString(3,sendid);
+				 ps.setString(4,userid);
+				 rs=ps.executeQuery();
+				 while(rs.next()) {
+					 MSGVO dto = new MSGVO();
+					dto.setRead(rs.getInt(1));
+					arr.add(dto);
+				 }
+				 for(int i=0;i<arr.size();i++) {
+					 if(arr.get(i).getRead()==0) {
+						 str="안읽음";
+						 System.out.println();
+						 break;
+					 }else{
+						 str="읽음";
+					 }
+					 System.out.println(str);
+				 }
+			  } catch (Exception e) {
+			    e.printStackTrace();
+			  }finally {
+				  closeCon(con,ps,rs);
+			  }
+			  return str;
+		}
+	
+	
+	//메세지 뷰
 	public ArrayList<MSGVO> msgList(String userid , String sendid) {
 		 Connection con= null;
 		   PreparedStatement  ps = null;
@@ -99,6 +141,40 @@ public class MSGDAO {
 			  closeCon(con,ps,rs);
 		  }
 		  return arr;
+	}
+	//업데이트
+	public void msgUpdate(String userid , String sendid) {
+		 Connection con= null;
+		  Statement  st = null;
+		  Statement  st1 = null;
+		   ArrayList<MSGVO> arr = new ArrayList<>();
+		   String sql="";
+		   try {
+		     con = getConnection();
+		     sql = "update fmmsg set read=1 where userid='"+userid+"' and sendid='"+sendid+"'";
+		     st = con.createStatement();
+		     st.executeUpdate(sql);
+			 
+			 sql="update fmmsg set read = 1 where userid='"+sendid+"' and sendid='"+userid+"'";
+			 st1 = con.createStatement();
+		     st.executeUpdate(sql);
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }finally {
+			  closeCon(con,st);
+		  }
+	
+	}
+	private void closeCon(Connection con, Statement st){
+		
+		try {
+			if(con!=null)con.close();
+			if(st!=null)st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 private void closeCon(Connection con, PreparedStatement ps){
 	
