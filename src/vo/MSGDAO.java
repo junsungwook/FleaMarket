@@ -95,10 +95,12 @@ public class MSGDAO {
 				 for(int i=0;i<arr.size();i++) {
 					 if(arr.get(i).getRead()==0) {
 						 str="안읽음";
+						 System.out.println();
 						 break;
 					 }else{
 						 str="읽음";
 					 }
+					 System.out.println(str);
 				 }
 			  } catch (Exception e) {
 			    e.printStackTrace();
@@ -141,35 +143,38 @@ public class MSGDAO {
 		  return arr;
 	}
 	//업데이트
-	public ArrayList<MSGVO> msgUpdate(String userid , String sendid) {
+	public void msgUpdate(String userid , String sendid) {
 		 Connection con= null;
-		   PreparedStatement  ps = null;
-		   ResultSet rs = null; 
+		  Statement  st = null;
+		  Statement  st1 = null;
 		   ArrayList<MSGVO> arr = new ArrayList<>();
 		   String sql="";
 		   try {
 		     con = getConnection();
-		     sql = "update (select * from fmmsg where userid=? and sendid=? union select * from fmmsg where userid=? and sendid=? ) set read = 1";
-			 ps = con.prepareStatement(sql);
-			 ps.setString(1,userid);
-			 ps.setString(2,sendid);
-			 ps.setString(3,sendid);
-			 ps.setString(4,userid);
-			 rs=ps.executeQuery();
-			 while(rs.next()) {
-				 MSGVO b = new MSGVO();
-				 b.setUserid(rs.getString("userid"));
-				 b.setSendid(rs.getString("sendid"));
-				 b.setContent(rs.getString("content"));
-				 b.setRead(rs.getInt("read"));
-				 arr.add(b);
-				 }
+		     sql = "update fmmsg set read=1 where userid='"+userid+"' and sendid='"+sendid+"'";
+		     st = con.createStatement();
+		     st.executeUpdate(sql);
+			 
+			 sql="update fmmsg set read = 1 where userid='"+sendid+"' and sendid='"+userid+"'";
+			 st1 = con.createStatement();
+		     st.executeUpdate(sql);
 		  } catch (Exception e) {
 		    e.printStackTrace();
 		  }finally {
-			  closeCon(con,ps,rs);
+			  closeCon(con,st);
 		  }
-		  return arr;
+	
+	}
+	private void closeCon(Connection con, Statement st){
+		
+		try {
+			if(con!=null)con.close();
+			if(st!=null)st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 private void closeCon(Connection con, PreparedStatement ps){
 	

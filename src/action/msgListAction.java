@@ -48,6 +48,7 @@ public class msgListAction extends HttpServlet {
 			String userid = arr.get(i);
 			System.out.println(userid);
 			String a = dao.readcheck(userid,id);
+
 			map.put(userid, a);
 		}
 		request.setAttribute("lists",map);

@@ -26,19 +26,21 @@
 <c:if test="${list.key==null}">
 	<font size="5px">쪽지 중인 상대가 없습니다.</font>
 </c:if>
-<div  align="center" style="width:700px;" >
-<table class ="table table-hover"  border=1 >
+<div  align="center" style="width:700px;margin-left:600px;margin-top:100px;" >
+
+<table class ="table table-hover" style="margin-left:100;">
 	<c:forEach items="${lists}" var="list">
-		
 			<tr align="right">
-				<td onclick ="window.open('msgView.do?userid=${list.key}','','top=300px, left=300px, height=450px, width=450px')"> ${list.key}님과의 쪽지입니다.
+				<td onclick ="window.open('msgView.do?userid=${list.key}','','top=300px, left=300px, height=450px, width=450px')"> <b style="color:#6E6E6E;size:5px;">
 				<c:if test ="${list.value eq '안읽음'}">
-					<div id="newmsg">📍</div>
+					<div id="newmsg">📍<font color="red">(새로운메세지가도착했습니다)</font></div>
 				</c:if>
+				${list.key}님과의 쪽지입니다.</b>
 				</td>
 			<tr>
 </c:forEach>
 </table>
+
 		<input type="button" value="쪽지쓰기" class="btn btn-default"  onclick="location.href='msgWrite.jsp'" >
 </div>
 </body>
