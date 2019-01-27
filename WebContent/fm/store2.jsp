@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Fashion & beauty</title>
+<title>Aesop</title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
  <link rel="stylesheet" href="../fm/style.css" type="text/css">
@@ -23,7 +23,7 @@
 <body id="results">
 	<%@include file="../fm/menu.jsp"%>
 	<div class="mainImage">
-		<p class="fb_text">store2</p>
+		<p class="fb_text">Aesop</p>
 		<p class="fb_smallText">
 			사이트와 계약한 매장 2<br>
 			가장 가까이 있던 추억마저 파는 매장2

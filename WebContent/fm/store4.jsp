@@ -23,7 +23,7 @@
 <body id="results">
 	<%@include file="../fm/menu.jsp"%>
 	<div class="mainImage">
-		<p class="fb_text">store4</p>
+		<p class="fb_text">P.P flower</p>
 		<p class="fb_smallText">
 			사이트와 계약한 매장 4<br>
 			가장 가까이 있던 추억마저 파는 매장4
