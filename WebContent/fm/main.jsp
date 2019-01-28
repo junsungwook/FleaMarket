@@ -49,7 +49,7 @@
 					  <img src="../images/market.png" alt="market" width="564px" height="333.33px"/>
 					  <figcaption>
 					    <h3>플리마켓 바로가기</h3>
-					    <p>사용자가 직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
+					    <p>직접 판매하고 구매하는 온라인 플리마켓</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
 					  <a href="../fm/shop.jsp"></a>
 					</figure>
@@ -58,7 +58,7 @@
 					<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />
 					  <figcaption>
 					    <h3>스토어 바로가기</h3>
-					    <p>전주영이 만들고 불법적으로 파는 스토어입니다</p><i class="ion-ios-arrow-right"></i>
+					    <p>해당 사이트와 계약된 정규 스토어</p><i class="ion-ios-arrow-right"></i>
 					  </figcaption>
 					  <a href="../fm/store.jsp"></a>
 					</figure>
@@ -83,24 +83,24 @@
 			<img src="../images/pic3.jpg" width="600px" height="auto"/>
 		</div>
 		<div class="text1">
-			<h3>플리마켓은 하지마세요 귀찮습니다</h3>
-			<p>진짜 귀찮게 왜 플리마켓에 오세요?</p>
-			<p>아무 쓰잘데기 없는 것만 팝니다</p>
-			<p>핵쓰레기의 천국입니다</p>
-			<p>이 사이트는 중개 수수료를 존나 떼먹습니다</p>
-			<p>양심이 있으면 사지마세요</p>
-			<p>삽되는거임 한번에</p>
-			<p>오케이?</p>
+			<h3>플리마켓(fleamarket)이란</h3>
+			<p>플리마켓이란 안 쓰는 물건을</p>
+			<p>직접 공원이나 광장에 가지고 나와서</p>
+			<p>직접 교환이나 매매하는 시민운동의 하나입니다</p>
+			<p>많은 청년들이 플리마켓을 통해 새로운 이익을 창출하고</p>
+			<p>추억이 담긴 좋은 물건을 다른 사람에게 양도하는</p>
+			<p>아름다운 순환을 기대하며</p>
+			<p>이 사이트를 만들었습니다</p>
 		</div>
 		<div class="text2">
-			<h3>하지 말라는데 굳이 이 사이트에 왜 옵니까</h3>
-			<p>말을 왜 이렇게 안듣죠?</p>
-			<p>역시 중고나라 사기 당하는 사람 답네요</p>
-			<p>여기도 다를 바가 없습니다</p>
-			<p>수수료료 한 달에 몇 백만원을 뺏어갑니다</p>
-			<p>개꿀아닙니까</p>
-			<p>기부 같은 건 당연히 안합니다</p>
-			<p>오케이?</p>
+			<h3>mémoire FleaMarket</h3>
+			<p>mémoire는 프랑스어로 추억을 뜻합니다</p>
+			<p>간단히 사고 파는 흔한 물건이 아닌</p>
+			<p>사람들의 인생을 잠시나마 거쳐간 </p>
+			<p>물건보다는 추억을 거래한다는 뜻을 담아</p>
+			<p>mémoire FleaMarket가 탄생했습니다</p>
+			<p>당신의 소중한 mémoire에게 </p>
+			<p>새로운 추억을 덧씌워드립니다</p>
 		</div>
 	</div>
 </div>

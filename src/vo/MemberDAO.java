@@ -96,15 +96,14 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		try {
 			con = getConnection();
-			String sql = "Update fmmember set name=?,password=?,email=?,phone=?,admin=?,zipcode=?,addr=? where userid='"+mb.getUserid()+"'";
+			String sql = "Update fmmember set phone=?,zipcode=?,addr=? where userid=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1,mb.getName());
-			ps.setString(2, mb.getPassword());
-			ps.setString(3, mb.getEmail());
-			ps.setString(4, mb.getPhone());
-			ps.setString(5, mb.getZipcode());
-			ps.setString(6, mb.getAddr());
+			ps.setString(1, mb.getPhone());
+			ps.setString(2, mb.getZipcode());
+			ps.setString(3, mb.getAddr());
+			ps.setString(4, mb.getUserid());
 			ps.executeUpdate();
+			System.out.println(mb.getUserid()+"수정완료");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

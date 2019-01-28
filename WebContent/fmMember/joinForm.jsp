@@ -43,7 +43,6 @@ $(document).ready(function(){
     $("#password").keyup(function(){
         $("#pwd_check").val("");
         return false;
-        
     });
     var pw_p= /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
     $("#password").keyup(function(){
