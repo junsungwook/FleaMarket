@@ -59,6 +59,7 @@
 					  <figcaption>
 					    <h3>스토어 바로가기</h3>
 					    <p>사이트와 계약한 정규 스토어</p><i class="ion-ios-arrow-right"></i>
+
 					  </figcaption>
 					  <a href="../fm/store.jsp"></a>
 					</figure>

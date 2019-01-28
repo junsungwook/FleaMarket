@@ -1,9 +1,6 @@
-package action;
+package com.member.action;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,20 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import vo.MemberDAO;
 import vo.MemberDTO;
-import vo.goodsDAO;
-import vo.goodsDTO;
 
 /**
- * Servlet implementation class MypageAction
+ * Servlet implementation class MemberUpdateAction
  */
-@WebServlet({ "/MypageAction", "/fm/myPage.do","/fmMember/myPage.do" })
-public class MypageAction extends HttpServlet {
+@WebServlet({"/MemberUpdateAction","/fmMember/infoupdate.do"})
+public class MemberUpdateAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageAction() {
+    public MemberUpdateAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,26 +32,21 @@ public class MypageAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String id = request.getParameter("id");
-		//System.out.println(id);
-		goodsDAO gdao = goodsDAO.getInstance();
-		MemberDAO mdao = MemberDAO.getInstance();
+		String zipcode = request.getParameter("zipcode");
+		String addr = request.getParameter("addr");
+		String phone = request.getParameter("phone");
 		
-		MemberDTO mdto = new MemberDTO();
-		mdto = mdao.memberView(id);
+		MemberDAO dao =MemberDAO.getInstance();
 		
-		ArrayList<goodsDTO> cartArr = new ArrayList<>();
-		cartArr = gdao.cartlist(id);
+		MemberDTO dto = new MemberDTO();
+		dto.setZipcode(zipcode);
+		dto.setAddr(addr);
+		dto.setPhone(phone);
+		dto.setUserid(id);
 		
-		ArrayList<goodsDTO> prodArr = new ArrayList<>();
-		prodArr = gdao.get_info(id);
+		dao.memberUpdate(dto);
 		
-		request.setAttribute("cartArr", cartArr);
-		request.setAttribute("mdto", mdto);
-		request.setAttribute("prodArr", prodArr);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("../fm/myPageTab.jsp");
-		rd.forward(request, response);
-		
+		response.sendRedirect("myPage.do?id="+id);
 	}
 
 	/**

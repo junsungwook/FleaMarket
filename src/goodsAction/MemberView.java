@@ -43,7 +43,7 @@ public class MemberView extends HttpServlet {
 		goodsDAO gdao = goodsDAO.getInstance();
 		MemberDAO mdao = MemberDAO.getInstance();
 		
-		member_info= mdao.memberView(id); // 전화번호가져오고, income, rank, 이름 가져오자 
+		member_info = mdao.memberView(id); // 전화번호가져오고, income, rank, 이름 가져오자 
 		sell_info = gdao.get_info(id);
 		
 		String naver_email =null;
