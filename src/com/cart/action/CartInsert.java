@@ -38,7 +38,7 @@ public class CartInsert extends HttpServlet {
 	
 		dao.goodsCartInsert(id,num);
 		
-		response.sendRedirect("../fm/goodsView.do?num="+num+"&cart=ok");
+		response.sendRedirect("storeView.do?num="+num+"&cart=ok");
 	}
 
 	/**
