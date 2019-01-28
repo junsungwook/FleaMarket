@@ -124,6 +124,7 @@ public class MemberDAO {
 				rs = st.executeQuery(sql);
 				if (rs.next()) {
 					dto = new MemberDTO();
+					dto.setUserid(rs.getString("userid"));
 					dto.setName(rs.getString("name"));
 					dto.setAddr(rs.getString("addr"));
 					dto.setEmail(rs.getString("email"));
@@ -131,8 +132,6 @@ public class MemberDAO {
 					dto.setIncome(rs.getInt("income"));
 					dto.setPhone(rs.getString("phone"));
 					dto.setRank(rs.getString("rank"));
-					System.out.println(dto.getAddr());
-					System.out.println(dto.getEmail());
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
