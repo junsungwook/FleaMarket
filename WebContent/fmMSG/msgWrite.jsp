@@ -58,7 +58,7 @@ body{
 	</tr>
 	<tr>	
 		<th>받을 사람 ID:</th>
-		<th><input type="text" class ="form-control" id="sendid" name="sendid" value="<%=sendid %>"></th>
+		<th><input type="text" class ="form-control" id="id" name="id" value="<%=sendid %>"></th>
 	</tr>
 	<tr>
 		<td>내용:</td>

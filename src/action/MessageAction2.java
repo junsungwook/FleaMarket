@@ -17,14 +17,14 @@ import vo.MSGVO;
 /**
  * Servlet implementation class MessageAction
  */
-@WebServlet("/fm/message.do")
-public class MessageAction extends HttpServlet {
+@WebServlet({"/fmMSG/message.do"})
+public class MessageAction2 extends HttpServlet {
    private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageAction() {
+    public MessageAction2() {
        
         super();
         // TODO Auto-generated constructor stub
@@ -52,7 +52,7 @@ public class MessageAction extends HttpServlet {
       request.setAttribute("content",request.getParameter("content"));
       request.setAttribute("id", id);
       
-      RequestDispatcher rd = request.getRequestDispatcher("msgView.do");
+      RequestDispatcher rd = request.getRequestDispatcher("msgList.do");
       rd.forward(request, response);
       
        
