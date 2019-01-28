@@ -35,10 +35,10 @@ public class StoreView extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		int num = Integer.parseInt(request.getParameter("num"));
-		System.out.println("dddd");
-		System.out.println(num);
 		StoreDAO dao = StoreDAO.getInstance();
 		StoreDTO g = dao.StoreView(num);
+		System.out.println("나오세요 좀 예?");
+		System.out.println(g.getNum());
 		request.setAttribute("goods", g);
 		response.setContentType("text/html; charset=UTF-8");
 		RequestDispatcher rd =request.getRequestDispatcher("storeViewPage.jsp");
