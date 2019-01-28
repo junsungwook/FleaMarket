@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import vo.StoreDTO;
 import vo.goodsDAO;
 import vo.goodsDTO;
 
@@ -39,7 +40,7 @@ public class CartList extends HttpServlet {
 		
 		goodsDAO dao =goodsDAO.getInstance();
 		
-		ArrayList<goodsDTO> arr = dao.cartlist(id);
+		ArrayList<StoreDTO> arr = dao.cartlist(id);
 
 		
 		if(arr.size() ==0) {

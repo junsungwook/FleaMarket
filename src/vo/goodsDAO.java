@@ -319,12 +319,12 @@ public class goodsDAO {
 	}
 
 	
-	public ArrayList<goodsDTO> cartlist (String id){
-		ArrayList<goodsDTO> arr = new ArrayList<>();
+	public ArrayList<StoreDTO> cartlist (String id){
+		ArrayList<StoreDTO> arr = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select * from goods where num IN (select goods_num from fmcart where id=?)";
+		String sql = "select * from store where num IN (select goods_num from fmcart where id=?)";
 		try {
 			con = getConnection();
 			ps = con.prepareStatement(sql);
@@ -332,7 +332,7 @@ public class goodsDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				goodsDTO dto = new goodsDTO();
+				StoreDTO dto = new StoreDTO();
 				dto.setNum(rs.getInt("num"));
 				dto.setUserid(rs.getString("userid"));
 				dto.setTitle(rs.getString("title"));

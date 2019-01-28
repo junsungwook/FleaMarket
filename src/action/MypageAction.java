@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import vo.MemberDAO;
 import vo.MemberDTO;
+import vo.StoreDTO;
 import vo.goodsDAO;
 import vo.goodsDTO;
 
@@ -44,7 +45,7 @@ public class MypageAction extends HttpServlet {
 		MemberDTO mdto = new MemberDTO();
 		mdto = mdao.memberView(id);
 		
-		ArrayList<goodsDTO> cartArr = new ArrayList<>();
+		ArrayList<StoreDTO> cartArr = new ArrayList<>();
 		cartArr = gdao.cartlist(id);
 		
 		ArrayList<goodsDTO> prodArr = new ArrayList<>();

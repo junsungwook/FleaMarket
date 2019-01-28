@@ -37,6 +37,8 @@ public class StoreView extends HttpServlet {
 		int num = Integer.parseInt(request.getParameter("num"));
 		StoreDAO dao = StoreDAO.getInstance();
 		StoreDTO g = dao.StoreView(num);
+		System.out.println("나오세요 좀 예?");
+		System.out.println(g.getNum());
 		request.setAttribute("goods", g);
 		response.setContentType("text/html; charset=UTF-8");
 		RequestDispatcher rd =request.getRequestDispatcher("storeViewPage.jsp");

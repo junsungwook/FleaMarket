@@ -36,7 +36,6 @@
 	        
 	         <c:if test="${sessionScope.id !=null and sessionScope.id !='master' and sessionScope.id !='store1' and sessionScope.id !='store2' and sessionScope.id !='store3' and sessionScope.id !='store4'}">
 	        	<li><a href="myPage.do?id=${sessionScope.id }">마이페이지</a></li> 
-	        	<li><a href="cartList.do?id=${sessionScope.id }">장바구니</a></li>
 	        </c:if>
 	        
 	    </ul>

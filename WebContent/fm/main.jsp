@@ -42,7 +42,7 @@
 		<img alt="로고그림" src="../images/logo4.png">
 	</div>
 	<div id="btnImage">
-		<table>
+		<table> 
 			<tr>
 				<td>
 					<figure class="snip1384">
@@ -58,7 +58,8 @@
 					<figure class="snip1384"><img src="../images/store.png" alt="store" width="564px" height="333.33px" />
 					  <figcaption>
 					    <h3>스토어 바로가기</h3>
-					    <p>해당 사이트와 계약된 정규 스토어</p><i class="ion-ios-arrow-right"></i>
+					    <p>사이트와 계약한 정규 스토어</p><i class="ion-ios-arrow-right"></i>
+
 					  </figcaption>
 					  <a href="../fm/store.jsp"></a>
 					</figure>
