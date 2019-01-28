@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-<c:if test="${naver ==null}">// 전화번호가져오고, income, rank, 이름 가져오자 
+<c:if test="${naver ==null}">
 	<table border=1 class="table table-hover">
 	<tr>
 		<td>이름</td>
@@ -56,7 +56,7 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<input type="button" class="btn btn-default" value="메세지보내기" id="msg_bt" onclick="location.href='../fmMSG/msgWrite.jsp?sendid=${member_info.userid}>'">
+	<input type="button" class="btn btn-default" value="메세지보내기" id="msg_bt" onclick="location.href='../fmMSG/msgWrite.jsp?sendid=${member_info.userid}'">
 	<input type="button" class="btn btn-default" value="닫기" onclick=self.close()>
 </div>
 </body>

@@ -17,7 +17,7 @@ import vo.MSGVO;
 /**
  * Servlet implementation class MessageAction
  */
-@WebServlet("/fm/message.do")
+@WebServlet({"/fm/message.do"})
 public class MessageAction extends HttpServlet {
    private static final long serialVersionUID = 1L;
        
